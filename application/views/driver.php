@@ -138,7 +138,7 @@
                                                  <td><?php echo $key-> price; ?></td>
                                                 <td><img src="../assets/picture/<?php echo $key->foto;?>" width="50px" height="50px"></td>
                                                 <td>
-                                                    <a href="../admin/update/<?=$key->id_driver?>"><button type="button" class="btn btn-primary">Update</button></a>
+                                                    <a href="../admin/ubah_driver/<?=$key->id_driver?>"><button type="button" class="btn btn-primary">Update</button></a>
                                                     <a href="../admin/hapus_driver/<?=$key->id_driver?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
                                                 </td>
                                             </tr>

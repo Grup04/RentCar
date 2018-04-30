@@ -111,32 +111,33 @@
                                 <div class="table-responsive">
                                     <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
 <?php echo form_open('admin/tambah_admin', array('enctype'=>'multipart/form-data')); ?>
+<?php echo validation_errors(); ?>
 
     <table border="0px">
             <tr>
                 <td>Username</td>
                 <td>:</td>
-                <td><input type="text" name="input_username" value="<?php echo set_value('input_username'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username'); ?>"></td>
             </tr>
             <tr>
                 <td>Password</td>
                 <td>:</td><br>
-                <td><input type="text" name="input_password" value="<?php echo set_value('input_password'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password'); ?>"></td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>:</td>
-                <td><input type="text" name="input_email" value="<?php echo set_value('input_email'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email'); ?>"></td>
             </tr>
             <tr>
                 <td>No Telfon</td>
                 <td>:</td><br>
-                <td><input type="text" name="input_no_telp" value="<?php echo set_value('input_no_telp'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp'); ?>"></td>
             </tr>
             <tr>
                 <td>Alamat</td>
                 <td>:</td><br>
-                <td><input type="text" name="input_alamat" value="<?php echo set_value('input_alamat'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat'); ?>"></td>
             </tr>
             <td colspan="3" align="center">
                 <input type="submit" name="simpan" value="Add">

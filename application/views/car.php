@@ -109,6 +109,7 @@
                                 <h4 class="card-title">Car Table</h4>
                                 <h6 class="card-subtitle">Add Car<code>.table</code></h6>
                                  <a href="../admin/tambah_car"><button type="button" class="btn btn-primary">Tambah Mobil</button></a>
+                                 <a href="../admin/kategori"><button type="button" class="btn btn-primary">Kategori Mobil</button></a>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
@@ -138,7 +139,7 @@
                                                 <td><?php echo $key-> price; ?></td>
                                                 <td><img src="../assets/picture/<?php echo $key->img;?>" width="50px" height="50px"></td>
                                                <td>
-                                                    <a href="../admin/update/<?=$key->id_mobil?>"><button type="button" class="btn btn-primary">Update</button></a>
+                                                    <a href="../admin/ubah_car/<?=$key->id_mobil?>"><button type="button" class="btn btn-primary">Update</button></a>
                                                     <a href="../admin/hapus_car/<?=$key->id_mobil?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
                                                 </td>
                                             </tr>

@@ -64,10 +64,10 @@
                             <a href="../admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
+                            <a href="../admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
                         </li>
                         <li>
-                            <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
+                            <a href="admin/tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
                         </li>
                         <li>
                             <a href="tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
@@ -101,14 +101,13 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">Admin Table</h4>
-                                <h6 class="card-subtitle">Add Admin<code>.table</code></h6>
+                                <h4 class="card-title">User Table</h4>
+                                <h6 class="card-subtitle">Add User<code>.table</code></h6>
                                 <div class="table-responsive">
                                   <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
 
 <?php echo validation_errors(); ?>
 <?php $this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');?>
-
 <form method="post" class="form-horizontal" enctype="multipart/form-data">
 <form class="needs-validation" novalidate>
 
@@ -116,31 +115,41 @@
             <tr>
                 <td>Username</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>"></td>
+                <td><input type="text" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>"></td>
             </tr>
             <tr>
-                <td>Password</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>"></td>
+                <td>Alamat</td>
+                <td>:</td>
+                <td><input type="text" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>"></td>
+            </tr>
+            <tr>
+                <td>No_Telp</td>
+                <td>:</td>
+                <td><input type="text" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>"></td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>"></td>
+                <td><input type="text" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>"></td>
             </tr>
             <tr>
-                <td>No Telfon</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>"></td>
+                <td>Birth</td>
+                <td>:</td>
+                <td><input type="text" name="input_birth" value="<?php echo set_value('input_birth', $tampil->birth); ?>"></td>
             </tr>
             <tr>
-                <td>Alamat</td>
+                <td>Password</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>"></td>
+                <td><input type="text" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>"></td>
+            </tr>
+            <tr>
+                <td>Image</td>
+                <td>:</td>
+                <td><input type="file" name="input_img" ></td>
             </tr>
             <td colspan="3" align="center">
-                <input type="submit" name="simpan" value="Update">
-                <input type="reset" name="reset" value="Reset">
+                <input type="submit" name="simpan" value="Add">
+                <input type="reset" name="reset" value="Cancel">
             </td>
         </table>
         </form>

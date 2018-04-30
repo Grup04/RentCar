@@ -64,7 +64,7 @@
                             <a href="../admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
+                            <a href="tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
                         </li>
                         <li>
                             <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
@@ -73,7 +73,7 @@
                             <a href="tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
                         </li>
                         <li>
-                            <a href="tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
+                            <a href="admin/tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
                         </li>
                         <li>
                             <a href="<?=site_url('login/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
@@ -101,8 +101,8 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">Admin Table</h4>
-                                <h6 class="card-subtitle">Add Admin<code>.table</code></h6>
+                                <h4 class="card-title">User Table</h4>
+                                <h6 class="card-subtitle">Add User<code>.table</code></h6>
                                 <div class="table-responsive">
                                   <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
 
@@ -113,34 +113,55 @@
 <form class="needs-validation" novalidate>
 
     <table border="0px">
-            <tr>
-                <td>Username</td>
+             <tr>
+                <td>Nama</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>"></td>
+                <td><input type="text" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>"></td>
             </tr>
             <tr>
-                <td>Password</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>"></td>
+                <td>Alamat</td>
+                <td>:</td>
+                <td><input type="text" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>"></td>
+            </tr>
+            <tr>
+                <td>No Telpon</td>
+                <td>:</td>
+                <td><input type="text" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>"></td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>"></td>
+                <td><input type="text" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>"></td>
             </tr>
             <tr>
-                <td>No Telfon</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>"></td>
+                <td>Umur</td>
+                <td>:</td>
+                <td><input type="text" name="input_umur" value="<?php echo set_value('input_umur', $tampil->umur); ?>"></td>
             </tr>
             <tr>
-                <td>Alamat</td>
+                <td>Gender</td>
+                <td>:</td>
+                <td>
+                    <select name="input_gender" style="width: 200px;">
+                        <option value="<?php echo set_value('input_gender', $tampil->gender); ?>">Choose</option>
+                        <option value="Laki-Laki">Laki-Laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Price/Day</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>"></td>
+                <td><input type="text" name="input_price" value="<?php echo set_value('input_price', $tampil->price); ?>"></td>
+            </tr>
+            <tr>
+                <td>Foto</td>
+                <td>:</td>
+                <td><input type="file" name="input_gambar"></td>
             </tr>
             <td colspan="3" align="center">
-                <input type="submit" name="simpan" value="Update">
-                <input type="reset" name="reset" value="Reset">
+                <input type="submit" name="simpan" value="Add">
+                <input type="reset" name="reset" value="Cancel">
             </td>
         </table>
         </form>

@@ -136,7 +136,7 @@
                                                 <td><?php echo $key-> password; ?></td>
                                                 <td><img src="../assets/picture/<?php echo $key->img;?>" width="50px" height="50px"></td>
                                                 <td>
-                                                    <a href="../admin/update/<?=$key->id_user?>"><button type="button" class="btn btn-primary">Update</button></a>
+                                                    <a href="../admin/ubah_user/<?=$key->id_user?>"><button type="button" class="btn btn-primary">Update</button></a>
                                                     <a href="../admin/hapus_user/<?=$key->id_user?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
                                                 </td>
                                             </tr>

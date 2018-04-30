@@ -70,7 +70,7 @@
                             <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
                         </li>
                         <li>
-                            <a href="tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
+                            <a href="admin/tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
                         </li>
                         <li>
                             <a href="tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
@@ -108,39 +108,61 @@
 
 <?php echo validation_errors(); ?>
 <?php $this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');?>
-
 <form method="post" class="form-horizontal" enctype="multipart/form-data">
 <form class="needs-validation" novalidate>
 
     <table border="0px">
             <tr>
-                <td>Username</td>
+                <td>No Polisi</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>"></td>
+                <td><input type="text" name="input_no_polisi" value="<?php echo set_value('input_no_polisi', $tampil->no_polisi); ?>"></td>
             </tr>
             <tr>
-                <td>Password</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>"></td>
-            </tr>
-            <tr>
-                <td>Email</td>
+                <td>Merk</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>"></td>
+                <td><input type="text" name="input_merk" value="<?php echo set_value('input_merk', $tampil->merk); ?>"></td>
             </tr>
             <tr>
-                <td>No Telfon</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>"></td>
+                <td>Jenis Mobil</td>
+                <td>:</td>
+                <td>
+                    <select name="input_jenis_mobil" style="width: 200px;">
+                        <option value="<?php echo set_value('input_jenis_mobil', $tampil->jenis_mobil); ?>">Choose</option>
+                        <option value="Van">Van</option>
+                        <option value="MiniBus">Mini Bus</option>
+                        <option value="Family">Family</option>
+                        <option value="MiniCar">Mini Car</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-                <td>Alamat</td>
+                <td>Warna Mobil</td>
+                <td>:</td>
+                <td><input type="text" name="input_warna_mobil" value="<?php echo set_value('input_warna_mobil', $tampil->warna_mobil); ?>"></td>
+            </tr>
+            <tr>
+                <td>Tahun Mobil</td>
+                <td>:</td>
+                <td><input type="text" name="input_tahun_mobil" value="<?php echo set_value('input_tahun_mobil', $tampil->tahun_mobil); ?>"></td>
+            </tr>
+            <tr>
+                <td>Bahan Bakar</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>"></td>
+                <td><input type="text" name="input_bahan_bakar" value="<?php echo set_value('input_bahan_bakar', $tampil->bahan_bakar); ?>"></td>
+            </tr>
+            <tr>
+                <td>Price/Day</td>
+                <td>:</td><br>
+                <td><input type="text" name="input_price" value="<?php echo set_value('input_price', $tampil->price); ?>"></td>
+            </tr>
+            <tr>
+                <td>Image</td>
+                <td>:</td>
+                <td><input type="file" name="input_img"></td>
             </tr>
             <td colspan="3" align="center">
-                <input type="submit" name="simpan" value="Update">
-                <input type="reset" name="reset" value="Reset">
+                <input type="submit" name="simpan" value="Add">
+                <input type="reset" name="reset" value="Cancel">
             </td>
         </table>
         </form>

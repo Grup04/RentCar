@@ -9,28 +9,33 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="../image/png" sizes="16x16" href="../../assets/admin/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/admin/images/favicon.png">
     <title>RentCar Admin</title>
     <!-- Bootstrap Core CSS -->
-    <link href="../../assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../../assets/admin/css/style.css" rel="stylesheet">
+    <link href="../assets/admin/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="../../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link href="../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+
     <div id="main-wrapper">
         <header class="topbar">
             <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
                         <b>
-                            <img src="../../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
                             
                         </b>
                         <span>
-                            <img src="../../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
                         </span>
                     </a>
                 </div>
@@ -47,7 +52,7 @@
 
                     <ul class="navbar-nav my-lg-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/admin/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/admin/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
                         </li>
                     </ul>
                 </div>
@@ -70,7 +75,7 @@
                             <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
                         </li>
                         <li>
-                            <a href="tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
+                            <a href="admin/tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
                         </li>
                         <li>
                             <a href="tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
@@ -101,49 +106,35 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">Admin Table</h4>
-                                <h6 class="card-subtitle">Add Admin<code>.table</code></h6>
+                                <h4 class="card-title">Car Category Table</h4>
+                                <h6 class="card-subtitle">Add Car Category<code>.table</code></h6>
+                                 <a href=""><button type="button" class="btn btn-primary">Kategori Mobil</button></a>
                                 <div class="table-responsive">
-                                  <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
-
-<?php echo validation_errors(); ?>
-<?php $this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');?>
-
-<form method="post" class="form-horizontal" enctype="multipart/form-data">
-<form class="needs-validation" novalidate>
-
-    <table border="0px">
-            <tr>
-                <td>Username</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>"></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>"></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>"></td>
-            </tr>
-            <tr>
-                <td>No Telfon</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>"></td>
-            </tr>
-            <tr>
-                <td>Alamat</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>"></td>
-            </tr>
-            <td colspan="3" align="center">
-                <input type="submit" name="simpan" value="Update">
-                <input type="reset" name="reset" value="Reset">
-            </td>
-        </table>
-        </form>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID Car Category</th>
+                                                <th>Category Car</th>
+                                                <th>Description</th>
+                                                <th>Date Created</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <?php foreach ($tampil_kategori as $key): ?>
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo $key-> id_cat; ?></td>
+                                                <td><?php echo $key-> cat_mobil; ?></td>
+                                                <td><?php echo $key-> description; ?></td>
+                                                <td><?php echo $key-> date_created; ?></td>
+                                               <td>
+                                                    <a href="category/ubah/<?=$key->id_cat?>"><button type="button" class="btn btn-primary">Update</button></a>
+                                                    <a href="category/hapus/<?=$key->id_cat?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    <?php endforeach ?>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -157,24 +148,24 @@
         </div>
     </div>
    
-    <script src="../../assets/admin/plugins/jquery/jquery.min.js"></script>
+    <script src="../assets/admin/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../../assets/admin/plugins/bootstrap/js/tether.min.js"></script>
-    <script src="../../assets/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/admin/plugins/bootstrap/js/tether.min.js"></script>
+    <script src="../assets/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="../../assets/admin/js/jquery.slimscroll.js"></script>
+    <script src="../assets/admin/js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
-    <script src="../../assets/admin/js/waves.js"></script>
+    <script src="../assets/admin/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="../../assets/admin/js/sidebarmenu.js"></script>
+    <script src="../assets/admin/js/sidebarmenu.js"></script>
     <!--stickey kit -->
-    <script src="../../assets/admin/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="../assets/admin/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <!--Custom JavaScript -->
-    <script src="../../assets/admin/js/custom.min.js"></script>
+    <script src="../assets/admin/js/custom.min.js"></script>
     <!-- Flot Charts JavaScript -->
-    <script src="../../assets/admin/plugins/flot/jquery.flot.js"></script>
-    <script src="../../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="../../assets/admin/js/flot-data.js"></script>
-    <script src="../../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="../assets/admin/plugins/flot/jquery.flot.js"></script>
+    <script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="../assets/admin/js/flot-data.js"></script>
+    <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
 </html>

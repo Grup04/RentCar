@@ -29,8 +29,18 @@ class Admin extends CI_Controller {
 // READ
 	public function index()
 	{
+		$this->load->model('blog_rentcar');
+		$data['categories'] = $this->blog_rentcar->get_all_categories();
+		// $this->load->view('cat_create', $data);
 		$this->load->view('dashboard');
 	}
+
+	public function artikel($id)
+	{
+		$data['page_title'] = $this->blog_model->get_category_by_id($id)->cat_mobil;
+		$data['all_artikel'] = $this->blog_model->get_artikel_by_category($id);
+	}
+
 	public function tampil_admin()
 	{
 		$this->load->model('blog_rentcar');
@@ -55,11 +65,17 @@ class Admin extends CI_Controller {
 		$data['tampil_driver'] = $this->blog_rentcar->tampil_driver();
 		$this->load->view('driver', $data);
 	}
+	public function tampil_order()
+	{
+		$this->load->model('blog_rentcar');
+		$data['tampil_order'] = $this->blog_rentcar->tampil_order();
+		$this->load->view('order', $data);
+	}
 	public function tampil_kategori()
 	{
 		$this->load->model('blog_rentcar');
 		$data['tampil_kategori'] = $this->blog_rentcar->tampil_kategori();
-		$this->load->view('categories', $data);
+		$this->load->view('tampil_kategori', $data);
 	}
 
 	// CREAT
@@ -168,6 +184,71 @@ class Admin extends CI_Controller {
 		}
 
 		$this->load->view('tambah_driver', $data);
+	}
+
+	public function tambah_order()
+	{
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+
+		$this->load->model('blog_rentcar');
+		$data = array();
+
+		// $this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[login.username]',
+		// array(
+		// 		'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
+		// 		'is_unique' 	=> 'Judul ' .$this->input->post('input_username'). ' sudah ada!'
+		// 	));
+		// $this->form_validation->set_rules('input_password', 'Password', 'required');
+		// $this->form_validation->set_rules('input_email', 'Email', 'required');
+		// $this->form_validation->set_rules('input_no_telp', 'Contact', 'required|numeric|min_length[12]',
+		// 	array(
+		// 		'required' 		=> 'Isi %s, tidak boleh kosong',
+		// 		'min_length' 	=> 'angka %s belum mencapai limit',
+		// 	));
+		// $this->form_validation->set_rules('input_alamat', 'Alamat', 'required');
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			if ($this->input->post('simpan'))
+			{
+				$this->blog_rentcar->insert();
+				redirect('admin/tampil_order');
+			}
+		}
+		else
+		{
+			$this->load->view('tambah_order', $data);
+		}
+	}
+
+	public function tambah_kategori()
+	{
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+
+		$this->load->model('blog_rentcar');
+		$data = array();
+
+		$this->form_validation->set_rules('cat_mobil', 'Cat', 'required|is_unique[categories.cat_mobil]',
+		array(
+				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
+				'is_unique' 	=> 'Judul ' .$this->input->post('cat_mobil'). ' sudah ada!'
+			));
+		$this->form_validation->set_rules('description', 'Desc', 'required');
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			if ($this->input->post('simpan'))
+			{
+				$this->blog_rentcar->insert_kategori();
+				redirect('admin/tampil_kategori');
+			}
+		}
+		else
+		{
+			$this->load->view('cat_create', $data);
+		}
 	}
 
 //UPDATE
@@ -353,6 +434,37 @@ class Admin extends CI_Controller {
 		}
 	 }
 
+	 public function ubah_kategori($id){
+
+		$this->load->model('blog_rentcar');
+
+	    if($this->input->post('simpan'))
+		    {
+		    	$this->blog_rentcar->update_kategori($id);
+		        redirect('admin/tampil_kategori');
+		    } 
+		    $data['tampil'] = $this->blog_rentcar->view_by_kategori($id);
+
+	    $this->load->helper('form');
+	    $this->load->library('form_validation');
+
+		$this->form_validation->set_rules('cat_mobil', 'Cat', 'required|is_unique[categories.cat_mobil]',
+		array(
+				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
+				'is_unique' 	=> 'Username ' .$this->input->post('cat_mobil'). ' sudah ada!'
+			));
+		$this->form_validation->set_rules('description', 'Desc', 'required');
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			echo "SUKSES";
+		}
+		else
+		{
+			$this->load->view('ubah_kategori', $data);
+		}
+	 }
+
 //DELETE
 	public function hapus($id) //ADMIN
 	{
@@ -381,6 +493,20 @@ class Admin extends CI_Controller {
 
 	    $this->blog_rentcar->delete_driver($id);
 	    redirect('admin/tampil_driver');
+	}
+	public function hapus_order($id) //ADMIN
+	{
+		$this->load->model('blog_rentcar');
+
+	    $this->blog_rentcar->delete_order($id);
+	    redirect('admin/tampil_order');
+	}
+	public function hapus_kategori($id)
+	{
+		$this->load->model('blog_rentcar');
+
+	    $this->blog_rentcar->delete_kategori($id);
+	    redirect('admin/tampil_kategori');
 	}
 }
 ?>

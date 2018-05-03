@@ -46,9 +46,9 @@
                     </ul>
 
                     <ul class="navbar-nav my-lg-0">
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/admin/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
@@ -76,6 +76,9 @@
                             <a href="admin/tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
                         </li>
                         <li>
+                            <a href="tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
+                        </li>
+                        <li>
                             <a href="<?=site_url('login/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
                         </li>
                     </ul>
@@ -92,7 +95,7 @@
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Admin</li>
+                            <li class="breadcrumb-item active">Driver</li>
                         </ol>
                     </div>
                 </div>
@@ -101,8 +104,8 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">User Table</h4>
-                                <h6 class="card-subtitle">Add User<code>.table</code></h6>
+                                <h4 class="card-title">Driver Table</h4>
+                                <h6 class="card-subtitle">Edit Driver<code>.table</code></h6>
                                 <div class="table-responsive">
                                   <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
 

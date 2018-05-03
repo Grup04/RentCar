@@ -4,22 +4,22 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="../image/png" sizes="16x16" href="../../assets/admin/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/admin/images/favicon.png">
     <title>RentCar Admin</title>
-    <!-- Bootstrap Core CSS -->
     <link href="../../assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link href="../../assets/admin/css/style.css" rel="stylesheet">
-    <!-- You can change the theme colors from here -->
     <link href="../../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+
     <div id="main-wrapper">
         <header class="topbar">
             <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
@@ -27,8 +27,8 @@
                     <a class="navbar-brand" href="index.html">
                         <b>
                             <img src="../../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            
                         </b>
+
                         <span>
                             <img src="../../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
                         </span>
@@ -55,9 +55,7 @@
         </header>
 
         <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li>
@@ -83,9 +81,7 @@
                         </li>
                     </ul>
                 </nav>
-                <!-- End Sidebar navigation -->
             </div>
-            <!-- End Sidebar scroll-->
         </aside>
 
         <div class="page-wrapper">
@@ -104,90 +100,52 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">Car Table</h4>
-                                <h6 class="card-subtitle">Add Car<code>.table</code></h6>
+                                <h4 class="card-title">Edit Car Table</h4>
+                                <h6 class="card-subtitle">Edit Car<code>.table</code></h6>
                                 <div class="table-responsive">
-                                  <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
 
+<?php echo form_open("admin/ubah_kategori/".$tampil->id_cat, array('enctype'=>'multipart/form-data')); ?> 
 <?php echo validation_errors(); ?>
 <?php $this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');?>
-<form method="post" class="form-horizontal" enctype="multipart/form-data">
-<form class="needs-validation" novalidate>
 
-    <table border="0px">
+            <table border="0px">
+                <h1>Edit Kategori Baru</h1>
             <tr>
-                <td>No Polisi</td>
-                <td>:</td>
-                <td><input type="text" name="input_no_polisi" value="<?php echo set_value('input_no_polisi', $tampil->no_polisi); ?>"></td>
-            </tr>
-            <tr>
-                <td>Merk</td>
-                <td>:</td>
-                <td><input type="text" name="input_merk" value="<?php echo set_value('input_merk', $tampil->merk); ?>"></td>
-            </tr>
-           <tr>
-                <td>Jenis Mobil</td>
+                <td>Kategori</td>
                 <td>:</td>
                 <td>
-                    <select name="id_cat" class="form-control">
-                    <option value="">Pilih Jenis Mobil</option>
-                    <?php foreach($categories as $category): ?>
-                    <option value="<?php echo $category->id_cat; ?>"><?php echo $category->cat_mobil; ?></option>
-                    <?php endforeach; ?>
-                </select>
+                    <input type="text" class="form-control" name="cat_mobil" value="<?php echo set_value('cat_mobil', $tampil->cat_mobil); ?>" size="30">
                 </td>
             </tr>
-            <!-- <tr>
-                <td>Jenis Mobil</td>
+            <tr>
+                <td>Deskripsi</td>
                 <td>:</td>
                 <td>
-                    <select name="input_jenis_mobil" style="width: 200px;">
-                        <option value="<?php echo set_value('input_jenis_mobil', $tampil->jenis_mobil); ?>">Choose</option>
-                        <option value="Van">Van</option>
-                        <option value="MiniBus">Mini Bus</option>
-                        <option value="Family">Family</option>
-                        <option value="MiniCar">Mini Car</option>
-                    </select>
+                    <input type="text" class="form-control" name="description" value="<?php echo set_value('description', $tampil->description); ?>" size="30">
                 </td>
-            </tr> -->
-            <tr>
-                <td>Warna Mobil</td>
-                <td>:</td>
-                <td><input type="text" name="input_warna_mobil" value="<?php echo set_value('input_warna_mobil', $tampil->warna_mobil); ?>"></td>
-            </tr>
-            <tr>
-                <td>Tahun Mobil</td>
-                <td>:</td>
-                <td><input type="text" name="input_tahun_mobil" value="<?php echo set_value('input_tahun_mobil', $tampil->tahun_mobil); ?>"></td>
-            </tr>
-            <tr>
-                <td>Bahan Bakar</td>
-                <td>:</td><br>
-                <td><input type="text" name="input_bahan_bakar" value="<?php echo set_value('input_bahan_bakar', $tampil->bahan_bakar); ?>"></td>
-            </tr>
-            <tr>
-                <td>Price/Day</td>
-                <td>:</td><br>
-                <td><input type="text" name="input_price" value="<?php echo set_value('input_price', $tampil->price); ?>"></td>
-            </tr>
-            <tr>
-                <td>Image</td>
-                <td>:</td>
-                <td><input type="file" name="input_gambar"></td>
             </tr>
             <td colspan="3" align="center">
-                <input type="submit" name="simpan" value="Add">
-                <input type="reset" name="reset" value="Cancel">
+                <input type="submit" name="simpan" value="Update">
+                <input type="reset" name="reset" value="Reset">
             </td>
         </table>
-        </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                </div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
             <footer class="footer text-center">
                 © 2018 RentCar by Group4
             </footer>

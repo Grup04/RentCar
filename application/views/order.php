@@ -51,9 +51,9 @@
                     </ul>
 
                     <ul class="navbar-nav my-lg-0">
-                        <!-- <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/admin/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -69,19 +69,19 @@
                             <a href="../admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
+                            <a href="tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
                         </li>
                         <li>
                             <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
                         </li>
                         <li>
-                            <a href="admin/tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
+                            <a href="tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
                         </li>
                         <li>
-                            <a href="tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
+                            <a href="admin/tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
                         </li>
                         <li>
-                            <a href="tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
+                            <a href="admin/tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
                         </li>
                         <li>
                             <a href="<?=site_url('login/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
@@ -100,7 +100,7 @@
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Car</li>
+                            <li class="breadcrumb-item active">Admin</li>
                         </ol>
                     </div>
                 </div>
@@ -109,42 +109,36 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">Car Table</h4>
-                                <h6 class="card-subtitle">Add Car<code>.table</code></h6>
-                                 <a href="../admin/tambah_car"><button type="button" class="btn btn-primary">Tambah Mobil</button></a>
-                                 <a href="../admin/tampil_kategori"><button type="button" class="btn btn-primary">Kategori Mobil</button></a>
+                                <h4 class="card-title">Driver Table</h4>
+                                <h6 class="card-subtitle">Add Driver<code>.table</code></h6>
+                                 <!-- <a href="../admin/tambah_driver"><button type="button" class="btn btn-primary">Tambah Driver</button></a> -->
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>ID Mobil</th>
-                                                <th>No Polisi</th>
+                                                <th>ID Order</th>
+                                                <th>ID User</th>
+                                                <th>Jenis Mobil</th>
                                                 <th>Merk</th>
-                                                <th>Kategori Mobil</th>
-                                                <th>Warna Mobil</th>
-                                                <th>Tahun Mobil</th>
-                                                <th>Bahan Bakar</th>
-                                                <th>Price/Day</th>
-                                                <th>Gambar</th>
+                                                <th>Day</th>
+                                                <th>Price</th>
+                                                <th>Date Order</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
-                                        <?php foreach ($tampil_car as $key): ?>
+                                        <?php foreach ($tampil_order as $key): ?>
                                         <tbody>
                                             <tr>
-                                                <td><?php echo $key-> id_mobil; ?></td>
-                                                <td><?php echo $key-> no_polisi; ?></td>
-                                                <td><?php echo $key-> merk; ?></td>
+                                                <td><?php echo $key-> id_order; ?></td>
+                                                <td><?php echo $key-> id_user; ?></td>
                                                 <td><?php echo $key-> cat_mobil; ?></td>
-                                                <!-- <td><?php echo $key-> jenis_mobil; ?></td> -->
-                                                <td><?php echo $key-> warna_mobil; ?></td>
-                                                <td><?php echo $key-> tahun_mobil; ?></td>
-                                                <td><?php echo $key-> bahan_bakar; ?></td>
+                                                <td><?php echo $key-> merk; ?></td>
+                                                <td><?php echo $key-> day; ?></td>
                                                 <td><?php echo $key-> price; ?></td>
-                                                <td><img src="../assets/picture/<?php echo $key->img;?>" width="50px" height="50px"></td>
-                                               <td>
-                                                    <a href="../admin/ubah_car/<?=$key->id_mobil?>"><button type="button" class="btn btn-primary">Update</button></a>
-                                                    <a href="../admin/hapus_car/<?=$key->id_mobil?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
+                                                <td><?php echo $key-> date_order; ?></td>
+                                                <td>
+                                                    <a href="../admin/ubah_order/<?=$key->id_order?>"><button type="button" class="btn btn-primary">Update</button></a>
+                                                    <a href="../admin/hapus_order/<?=$key->id_order?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
                                                 </td>
                                             </tr>
                                         </tbody>

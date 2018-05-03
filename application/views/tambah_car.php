@@ -46,9 +46,9 @@
                     </ul>
 
                     <ul class="navbar-nav my-lg-0">
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/admin/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
@@ -74,6 +74,9 @@
                             <a href="tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
                         </li>
                         <li>
+                            <a href="tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
+                        </li>
+                        <li>
                             <a href="<?=site_url('login/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
                         </li>
                     </ul>
@@ -88,7 +91,7 @@
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">User</li>
+                            <li class="breadcrumb-item active">Car</li>
                         </ol>
                     </div>
                 </div>
@@ -118,15 +121,27 @@
                 <td>Jenis Mobil</td>
                 <td>:</td>
                 <td>
+                    <select name="id_cat" class="form-control">
+                    <option value="">Pilih Jenis Mobil</option>
+                    <?php foreach($categories as $category): ?>
+                    <option value="<?php echo $category->id_cat; ?>"><?php echo $category->cat_mobil; ?></option>
+                    <?php endforeach; ?>
+                </select>
+                </td>
+            </tr>
+            <!-- <tr>
+                <td>Jenis Mobil</td>
+                <td>:</td>
+                <td>
                     <select name="input_jenis_mobil" style="width: 200px;">
                         <option value="Van">Van</option>
                         <option value="MiniBus">Mini Bus</option>
                         <option value="Family">Family</option>
                         <option value="MiniCar">Mini Car</option>
                     </select>
-                </td>
+                </td> -->
                 <!-- <td><input type="text" name="input_jenis_mobil" value="<?php echo set_value('input_jenis_mobil'); ?>"></td> -->
-            </tr>
+            <!-- </tr> -->
             <tr>
                 <td>Warna Mobil</td>
                 <td>:</td>

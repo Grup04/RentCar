@@ -4,18 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/admin/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/admin/images/favicon.png">
     <title>RentCar Admin</title>
-    <!-- Bootstrap Core CSS -->
     <link href="../assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link href="../assets/admin/css/style.css" rel="stylesheet">
-    <!-- You can change the theme colors from here -->
     <link href="../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
 </head>
 
@@ -32,8 +27,8 @@
                     <a class="navbar-brand" href="index.html">
                         <b>
                             <img src="../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            
                         </b>
+
                         <span>
                             <img src="../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
                         </span>
@@ -60,9 +55,7 @@
         </header>
 
         <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li>
@@ -88,9 +81,7 @@
                         </li>
                     </ul>
                 </nav>
-                <!-- End Sidebar navigation -->
             </div>
-            <!-- End Sidebar scroll-->
         </aside>
 
         <div class="page-wrapper">
@@ -109,54 +100,52 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">Car Table</h4>
-                                <h6 class="card-subtitle">Add Car<code>.table</code></h6>
-                                 <a href="../admin/tambah_car"><button type="button" class="btn btn-primary">Tambah Mobil</button></a>
-                                 <a href="../admin/tampil_kategori"><button type="button" class="btn btn-primary">Kategori Mobil</button></a>
+                                <h4 class="card-title">Car Category Table</h4>
+                                <h6 class="card-subtitle">Add Car Category<code>.table</code></h6>
                                 <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>ID Mobil</th>
-                                                <th>No Polisi</th>
-                                                <th>Merk</th>
-                                                <th>Kategori Mobil</th>
-                                                <th>Warna Mobil</th>
-                                                <th>Tahun Mobil</th>
-                                                <th>Bahan Bakar</th>
-                                                <th>Price/Day</th>
-                                                <th>Gambar</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <?php foreach ($tampil_car as $key): ?>
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo $key-> id_mobil; ?></td>
-                                                <td><?php echo $key-> no_polisi; ?></td>
-                                                <td><?php echo $key-> merk; ?></td>
-                                                <td><?php echo $key-> cat_mobil; ?></td>
-                                                <!-- <td><?php echo $key-> jenis_mobil; ?></td> -->
-                                                <td><?php echo $key-> warna_mobil; ?></td>
-                                                <td><?php echo $key-> tahun_mobil; ?></td>
-                                                <td><?php echo $key-> bahan_bakar; ?></td>
-                                                <td><?php echo $key-> price; ?></td>
-                                                <td><img src="../assets/picture/<?php echo $key->img;?>" width="50px" height="50px"></td>
-                                               <td>
-                                                    <a href="../admin/ubah_car/<?=$key->id_mobil?>"><button type="button" class="btn btn-primary">Update</button></a>
-                                                    <a href="../admin/hapus_car/<?=$key->id_mobil?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    <?php endforeach ?>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                </div>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+
+                    <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
+
+                    <?php echo form_open('admin/tambah_kategori', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+                    <?php echo validation_errors(); ?>
+
+            <table border="0px">
+                <h1>Tambah Kategori Baru</h1>
+            <tr>
+                <td>Kategori</td>
+                <td>:</td>
+                <td>
+                    <input type="text" class="form-control" name="cat_mobil" value="<?php echo set_value('cat_mobil'); ?>" size="30">
+                </td>
+            </tr>
+            <tr>
+                <td>Deskripsi</td>
+                <td>:</td>
+                <td>
+                    <input type="text" class="form-control" name="description" value="<?php echo set_value('description'); ?>" size="30">
+                </td>
+            </tr>
+            <td colspan="3" align="center">
+                <input type="submit" name="simpan" value="Simpan">
+                <input type="reset" name="reset" value="Cancel">
+            </td>
+        </table>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
             <footer class="footer text-center">
                 © 2018 RentCar by Group4
             </footer>

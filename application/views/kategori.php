@@ -4,13 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/admin/images/favicon.png">
     <title>RentCar Admin</title>
+    <!-- Bootstrap Core CSS -->
     <link href="../assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link href="../assets/admin/css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
     <link href="../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
 </head>
 
@@ -27,8 +32,8 @@
                     <a class="navbar-brand" href="index.html">
                         <b>
                             <img src="../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            
                         </b>
-
                         <span>
                             <img src="../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
                         </span>
@@ -46,42 +51,43 @@
                     </ul>
 
                     <ul class="navbar-nav my-lg-0">
-                        <!-- <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/admin/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
             </nav>
         </header>
 
         <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li>
                             <a href="../admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
+                            <a href="admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
                         </li>
                         <li>
                             <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
                         </li>
                         <li>
-                            <a href="tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
+                            <a href="admin/tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
                         </li>
                         <li>
-                            <a href="admin/tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
-                        </li>
-                        <li>
-                            <a href="tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
+                            <a href="tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
                         </li>
                         <li>
                             <a href="<?=site_url('login/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
                         </li>
                     </ul>
                 </nav>
+                <!-- End Sidebar navigation -->
             </div>
+            <!-- End Sidebar scroll-->
         </aside>
 
         <div class="page-wrapper">
@@ -91,7 +97,7 @@
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Driver</li>
+                            <li class="breadcrumb-item active">Admin</li>
                         </ol>
                     </div>
                 </div>
@@ -100,65 +106,35 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">Driver Table</h4>
-                                <h6 class="card-subtitle">Add Driver<code>.table</code></h6>
-                                <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
+                                <h4 class="card-title">Car Category Table</h4>
+                                <h6 class="card-subtitle">Add Car Category<code>.table</code></h6>
+                                 <a href=""><button type="button" class="btn btn-primary">Kategori Mobil</button></a>
                                 <div class="table-responsive">
-                                    <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
-<?php echo form_open('admin/tambah_driver', array('enctype'=>'multipart/form-data')); ?>
-<?php echo validation_errors(); ?>
-    <table border="0px">
-             <tr>
-                <td>Nama</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username'); ?>"></td>
-            </tr>
-            <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat'); ?>"></td>
-            </tr>
-            <tr>
-                <td>No Telpon</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp'); ?>"></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email'); ?>"></td>
-            </tr>
-            <tr>
-                <td>Umur</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_umur" value="<?php echo set_value('input_umur'); ?>"></td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td>:</td>
-                <td>
-                    <select name="input_gender" style="width: 200px;">
-                        <option value="Laki-Laki">Laki-Laki</option>
-                        <option value="Perempuan">Perempuan</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Price/Day</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price'); ?>"></td>
-            </tr>
-            <tr>
-                <td>Foto</td>
-                <td>:</td>
-                <td><input type="file" name="input_gambar"></td>
-            </tr>
-            <td colspan="3" align="center">
-                <input type="submit" name="simpan" value="Add">
-                <input type="reset" name="reset" value="Cancel">
-            </td>
-        </table>
-        </font>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID Car Category</th>
+                                                <th>Category Car</th>
+                                                <th>Description</th>
+                                                <th>Date Created</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <?php foreach ($tampil_kategori as $key): ?>
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo $key-> id_cat; ?></td>
+                                                <td><?php echo $key-> cat_mobil; ?></td>
+                                                <td><?php echo $key-> description; ?></td>
+                                                <td><?php echo $key-> date_created; ?></td>
+                                               <td>
+                                                    <a href="category/ubah/<?=$key->id_cat?>"><button type="button" class="btn btn-primary">Update</button></a>
+                                                    <a href="category/hapus/<?=$key->id_cat?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    <?php endforeach ?>
+                                    </table>
                                 </div>
                             </div>
                         </div>

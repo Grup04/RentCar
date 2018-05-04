@@ -93,7 +93,7 @@ class Admin extends CI_Controller {
 				'is_unique' 	=> 'Judul ' .$this->input->post('input_username'). ' sudah ada!'
 			));
 		$this->form_validation->set_rules('input_password', 'Password', 'required');
-		$this->form_validation->set_rules('input_email', 'Email', 'required');
+		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('input_no_telp', 'Contact', 'required|numeric|min_length[12]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
@@ -117,73 +117,121 @@ class Admin extends CI_Controller {
 
 	public function tambah_user()
 	{
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+
 		$this->load->model('blog_rentcar');
 		$data = array();
 
-		if ($this->input->post('simpan'))
-		{
-			$upload = $this->blog_rentcar->upload();
+		$this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[login.username]',
+		array(
+				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
+				'is_unique' 	=> 'Judul ' .$this->input->post('input_username'). ' sudah ada!'
+			));
+		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required');
+		$this->form_validation->set_rules('input_no_telp', 'Contact', 'required|numeric|min_length[12]',
+			array(
+				'required' 		=> 'Isi %s, tidak boleh kosong',
+				'min_length' 	=> 'angka %s belum mencapai limit',
+			));
+		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
+		
+		$this->form_validation->set_rules('input_password', 'Password', 'required');
 
-			if ($upload['result'] == 'success')
+
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			if ($this->input->post('simpan'))
 			{
-				$this->blog_rentcar->insert_user($upload);
+				$this->blog_rentcar->insert();
 				redirect('admin/tampil_user');
 			}
-			else
-			{
-				$data['messege'] = $upload['error'];
-			}
+		}
+		else
+		{
+			$this->load->view('tambah_user', $data);
 		}
 
-		$this->load->view('tambah_user', $data);
+		
 	}
 
 	public function tambah_car()
 	{
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+
 		$this->load->model('category_model');
 		$this->load->model('blog_rentcar');
+		
 		$data = array();
 		$data['categories'] = $this->category_model->get_all_categories();
 
-		if ($this->input->post('simpan'))
-		{
-			$upload = $this->blog_rentcar->upload();
+		$this->form_validation->set_rules('input_no_polisi', 'No polisi', 'required');
+		$this->form_validation->set_rules('input_merk', 'Merk', 'required');
+		$this->form_validation->set_rules('input_warna_mobil', 'Warna Mobil', 'required');
+		$this->form_validation->set_rules('input_tahun_mobil', 'Tahun Mobil', 'required|numeric|min_length[4]',
+			array(
+				'differs' 		=> 'Isi %s, tidak boleh kosong',
+				'required' 		=> 'Isi %s, tidak boleh kosong',
+				'min_length' 	=> 'angka %s belum mencapai limit',
+			));
+		$this->form_validation->set_rules('input_bahan_bakar', 'Bahan Bakar', 'required');
 
-			if ($upload['result'] == 'success')
+		if ($this->form_validation->run() == TRUE)
+		{
+			if ($this->input->post('simpan'))
 			{
-				$this->blog_rentcar->insert_car($upload);
+				$this->blog_rentcar->insert();
 				redirect('admin/tampil_car');
 			}
-			else
-			{
-				$data['messege'] = $upload['error'];
-			}
+		}
+		else
+		{
+			$this->load->view('tambah_car', $data);
 		}
 
-		$this->load->view('tambah_car', $data);
+			
 	}
 
 	public function tambah_driver()
 	{
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+
 		$this->load->model('blog_rentcar');
 		$data = array();
 
-		if ($this->input->post('simpan'))
+		$this->form_validation->set_rules('input_username', 'Nama', 'required');
+		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required');
+		$this->form_validation->set_rules('input_no_telp', 'Contact', 'required|numeric|min_length[12]',
+			array(
+				'required' 		=> 'Isi %s, tidak boleh kosong',
+				'min_length' 	=> 'angka %s belum mencapai limit',
+			));
+		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('input_umur', 'umur', 'required|numeric|min_length[2]',
+			array(
+				
+				'required' 		=> 'Isi %s, tidak boleh kosong',
+				'min_length' 	=> 'angka %s belum mencapai limit',
+			));		
+		$this->form_validation->set_rules('input_pricep', 'Price', 'required');
+		
+		if ($this->form_validation->run() == TRUE)
 		{
-			$upload = $this->blog_rentcar->upload();
-
-			if ($upload['result'] == 'success')
+			if ($this->input->post('simpan'))
 			{
-				$this->blog_rentcar->insert_driver($upload);
+				$this->blog_rentcar->insert();
 				redirect('admin/tampil_driver');
 			}
-			else
-			{
-				$data['messege'] = $upload['error'];
-			}
+		}
+		else
+		{
+			$this->load->view('tambah_driver', $data);
 		}
 
-		$this->load->view('tambah_driver', $data);
+		
 	}
 
 	public function tambah_order()
@@ -256,6 +304,9 @@ class Admin extends CI_Controller {
 
 		$this->load->model('blog_rentcar');
 
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+
 	    if($this->input->post('simpan'))
 		    {
 		    	$this->blog_rentcar->update($id);
@@ -276,7 +327,7 @@ class Admin extends CI_Controller {
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'text %s belum mencapai limit',
 			));
-		$this->form_validation->set_rules('input_email', 'Email', 'required');
+		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('input_no_telp', 'No HP', 'required|numeric|min_length[12]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
@@ -297,6 +348,9 @@ class Admin extends CI_Controller {
 	public function ubah_user($id){
 
 		$this->load->model('blog_rentcar');
+
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
 
 	    if($this->input->post('simpan'))
 		    {
@@ -324,7 +378,7 @@ class Admin extends CI_Controller {
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'angka %s belum mencapai limit',
 			));
-		$this->form_validation->set_rules('input_email', 'Email', 'required');
+		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('input_birth', 'Birth', 'required');
 		$this->form_validation->set_rules('input_password', 'Password', 'required');
 
@@ -343,6 +397,9 @@ class Admin extends CI_Controller {
 		$this->load->model('blog_rentcar');
 		$this->load->model('category_model');
 		$data['categories'] = $this->category_model->get_all_categories();
+
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
 
 
 	    if($this->input->post('simpan'))
@@ -394,6 +451,9 @@ class Admin extends CI_Controller {
 
 		$this->load->model('blog_rentcar');
 
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+
 	    if($this->input->post('simpan'))
 		    {
 		    	$upload=$this->blog_rentcar->upload();
@@ -437,6 +497,9 @@ class Admin extends CI_Controller {
 	 public function ubah_kategori($id){
 
 		$this->load->model('blog_rentcar');
+
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
 
 	    if($this->input->post('simpan'))
 		    {

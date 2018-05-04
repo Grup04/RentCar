@@ -106,16 +106,18 @@
                                 <div class="table-responsive">
                                     <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
 <?php echo form_open('admin/tambah_car', array('enctype'=>'multipart/form-data')); ?>
+<?php echo validation_errors(); ?>
+
     <table border="0px">
              <tr>
                 <td>No Polisi</td>
                 <td>:</td>
-                <td><input type="text" name="input_no_polisi" value="<?php echo set_value('input_polisi'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_no_polisi" value="<?php echo set_value('input_polisi'); ?>"></td>
             </tr>
             <tr>
                 <td>Merk</td>
                 <td>:</td>
-                <td><input type="text" name="input_merk" value="<?php echo set_value('input_merk'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_merk" value="<?php echo set_value('input_merk'); ?>"></td>
             </tr>
             <tr>
                 <td>Jenis Mobil</td>
@@ -145,22 +147,22 @@
             <tr>
                 <td>Warna Mobil</td>
                 <td>:</td>
-                <td><input type="text" name="input_warna_mobil" value="<?php echo set_value('input_warna_mobil'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_warna_mobil" value="<?php echo set_value('input_warna_mobil'); ?>"></td>
             </tr>
             <tr>
                 <td>Tahun Mobil</td>
                 <td>:</td>
-                <td><input type="text" name="input_tahun_mobil" value="<?php echo set_value('input_tahun_mobil'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_tahun_mobil" value="<?php echo set_value('input_tahun_mobil'); ?>"></td>
             </tr>
             <tr>
                 <td>Bahan Bakar</td>
                 <td>:</td><br>
-                <td><input type="text" name="input_bahan_bakar" value="<?php echo set_value('input_bahan_bakar'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_bahan_bakar" value="<?php echo set_value('input_bahan_bakar'); ?>"></td>
             </tr>
             <tr>
                 <td>Price/Day</td>
                 <td>:</td><br>
-                <td><input type="text" name="input_price" value="<?php echo set_value('input_price'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price'); ?>"></td>
             </tr>
             <tr>
                 <td>Image</td>

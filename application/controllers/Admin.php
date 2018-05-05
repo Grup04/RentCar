@@ -434,6 +434,35 @@ class Admin extends CI_Controller {
 		}
 	 }
 
+	 public function ubah_order($id){
+
+		$this->load->model('blog_rentcar');
+
+	    if($this->input->post('simpan'))
+		    {
+		    	$this->blog_rentcar->update_order($id);
+		        redirect('admin/tampil_order');
+		    } 
+		    $data['tampil'] = $this->blog_rentcar->view_by_order($id);
+
+	    $this->load->helper('form');
+	    $this->load->library('form_validation');
+
+		$this->form_validation->set_rules('input_merk', 'Merk', 'required');
+		$this->form_validation->set_rules('input_day', 'Day', 'required');
+		$this->form_validation->set_rules('input_price', 'Price', 'required');
+
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			echo "SUKSES";
+		}
+		else
+		{
+			$this->load->view('ubah_order', $data);
+		}
+	 }
+
 	 public function ubah_kategori($id){
 
 		$this->load->model('blog_rentcar');

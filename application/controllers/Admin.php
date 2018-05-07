@@ -47,6 +47,7 @@ class Admin extends CI_Controller {
 		$data['tampil'] = $this->blog_rentcar->tampil();
 		$this->load->view('admin', $data);
 	}
+	
 	public function tampil_user()
 	{
 		$this->load->model('blog_rentcar');

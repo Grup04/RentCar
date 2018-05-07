@@ -309,10 +309,9 @@ class Blog_rentcar extends CI_Model {
 	public function update_order($id)
 	{
 			$data = array(
-				'cat_mobil' => $this->input->post('input_username'),
-				'merk' => $this->input->post('input_password'),
-				'day' => $this->input->post('input_email'),
-				'price' => $this->input->post('input_no_telp')
+				'merk' => $this->input->post('input_merk'),
+				'day' => $this->input->post('input_day'),
+				'price' => $this->input->post('input_price')
 	    );
 	    
 	    $this->db->where('id_order', $id);

@@ -133,7 +133,7 @@
                                                 <td><?php echo $key-> password; ?></td>
                                                 <td><?php echo $key-> email; ?></td>
                                                 <td><?php echo $key-> no_telp; ?></td>
-                                                <td><?php echo $key-> email; ?></td>
+                                                <td><?php echo $key-> alamat; ?></td>
                                                 <td>
                                                     <a href="../admin/ubah/<?=$key->id?>"><button type="button" class="btn btn-primary">Update</button></a>
                                                     <a href="../admin/hapus/<?=$key->id?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>

@@ -118,17 +118,14 @@
                 <td>Merk</td>
                 <td>:</td>
                 <td>
-                    <input type="text" class="form-control" name="input_merk" value="<?php echo set_value('input_merk', $tampil->merk); ?>" size="30">
+                    <input type="text" class="form-control" name="input_merk" value="<?php echo set_value('input_merk', $tampil->merk); ?>" size="30" required>
                 </td>
             </tr>
-
-           
-
             <tr>
                 <td>Day</td>
                 <td>:</td>
                 <td>
-                    <input type="text" class="form-control" name="input_day" value="<?php echo set_value('input_day', $tampil->day); ?>" size="30">
+                    <input type="text" class="form-control" name="input_day" value="<?php echo set_value('input_day', $tampil->day); ?>" size="30" required>
                 </td>
             </tr>
 
@@ -136,7 +133,7 @@
                 <td>Price</td>
                 <td>:</td>
                 <td>
-                    <input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price', $tampil->price); ?>" size="30">
+                    <input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price', $tampil->price); ?>" size="30" required>
                 </td>
             </tr>
             <td colspan="3" align="center">

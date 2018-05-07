@@ -113,6 +113,7 @@
                                 <h6 class="card-subtitle">Add Admin<code>.table</code></h6>
                                 <div class="table-responsive">
                                     <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
+                                    
 <?php echo form_open('admin/tambah_admin', array('enctype'=>'multipart/form-data')); ?>
 <?php echo validation_errors(); ?>
 

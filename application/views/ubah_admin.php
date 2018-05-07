@@ -108,7 +108,6 @@
                                 <h6 class="card-subtitle">Add Admin<code>.table</code></h6>
                                 <div class="table-responsive">
                                   <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
-
 <?php echo validation_errors(); ?>
 <?php $this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');?>
 
@@ -119,27 +118,27 @@
             <tr>
                 <td>Username</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>"></td>
+                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>" required></td>
             </tr>
             <tr>
                 <td>Password</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>"></td>
+                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>" required></td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>"></td>
+                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>" required></td>
             </tr>
             <tr>
                 <td>No Telfon</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>"></td>
+                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>" required></td>
             </tr>
             <tr>
                 <td>Alamat</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>"></td>
+                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>" required></td>
             </tr>
             <td colspan="3" align="center">
                 <input type="submit" name="simpan" value="Update">

@@ -337,13 +337,17 @@ class Admin extends CI_Controller {
 
 		if ($this->form_validation->run() == TRUE)
 		{
-			echo "SUKSES";
+			if ($this->input->post('simpan'))
+			{
+				$this->blog_rentcar->insert();
+				redirect('admin/tampil_admin');
+			}
 		}
 		else
 		{
 			$this->load->view('ubah_admin', $data);
 		}
-	 }
+	}
 
 	public function ubah_user($id){
 

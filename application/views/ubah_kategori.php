@@ -119,14 +119,14 @@
                 <td>Kategori</td>
                 <td>:</td>
                 <td>
-                    <input type="text" class="form-control" name="cat_mobil" value="<?php echo set_value('cat_mobil', $tampil->cat_mobil); ?>" size="30">
+                    <input type="text" class="form-control" name="cat_mobil" value="<?php echo set_value('cat_mobil', $tampil->cat_mobil); ?>" size="30" required>
                 </td>
             </tr>
             <tr>
                 <td>Deskripsi</td>
                 <td>:</td>
                 <td>
-                    <input type="text" class="form-control" name="description" value="<?php echo set_value('description', $tampil->description); ?>" size="30">
+                    <input type="text" class="form-control" name="description" value="<?php echo set_value('description', $tampil->description); ?>" size="30" required>
                 </td>
             </tr>
             <td colspan="3" align="center">

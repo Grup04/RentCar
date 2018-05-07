@@ -118,32 +118,32 @@
             <tr>
                 <td>Username</td>
                 <td>:</td>
-                <td><input type="text" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>"></td>
+                <td><input type="text" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>" required></td>
             </tr>
             <tr>
                 <td>Alamat</td>
                 <td>:</td>
-                <td><input type="text" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>"></td>
+                <td><input type="text" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>" required></td>
             </tr>
             <tr>
                 <td>No_Telp</td>
                 <td>:</td>
-                <td><input type="text" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>"></td>
+                <td><input type="text" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>" required></td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>:</td>
-                <td><input type="text" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>"></td>
+                <td><input type="text" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>" required></td>
             </tr>
             <tr>
                 <td>Birth</td>
                 <td>:</td>
-                <td><input type="text" name="input_birth" value="<?php echo set_value('input_birth', $tampil->birth); ?>"></td>
+                <td><input type="text" name="input_birth" value="<?php echo set_value('input_birth', $tampil->birth); ?>" required></td>
             </tr>
             <tr>
                 <td>Password</td>
                 <td>:</td><br>
-                <td><input type="text" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>"></td>
+                <td><input type="text" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>" required></td>
             </tr>
             <tr>
                 <td>Image</td>

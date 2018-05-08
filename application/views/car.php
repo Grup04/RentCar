@@ -17,6 +17,8 @@
     <link href="../assets/admin/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?> assets/dt/datatables.min.css"/>
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -114,7 +116,7 @@
                                  <a href="../admin/tambah_car"><button type="button" class="btn btn-primary">Tambah Mobil</button></a>
                                  <a href="../admin/tampil_kategori"><button type="button" class="btn btn-primary">Kategori Mobil</button></a>
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table" id="myTable">
                                         <thead>
                                             <tr>
                                                 <th>ID Mobil</th>
@@ -129,8 +131,8 @@
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
-                                        <?php foreach ($tampil_car as $key): ?>
                                         <tbody>
+                                        <?php foreach ($tampil_car as $key): ?>
                                             <tr>
                                                 <td><?php echo $key-> id_mobil; ?></td>
                                                 <td><?php echo $key-> no_polisi; ?></td>
@@ -147,8 +149,8 @@
                                                     <a href="../admin/hapus_car/<?=$key->id_mobil?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
                                                 </td>
                                             </tr>
-                                        </tbody>
                                     <?php endforeach ?>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -182,5 +184,12 @@
     <script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../assets/admin/js/flot-data.js"></script>
     <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/dt/datatables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
 </body>
 </html>

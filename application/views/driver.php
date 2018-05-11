@@ -17,6 +17,8 @@
     <link href="../assets/admin/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?> assets/dt/datatables.min.css"/>
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -113,7 +115,7 @@
                                 <h6 class="card-subtitle">Add Driver<code>.table</code></h6>
                                 <a href="../admin/tambah_driver"><button type="button" class="btn btn-primary">Tambah Driver</button></a>
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table" id="myTable">
                                         <thead>
                                             <tr>
                                                 <th>ID Driver</th>
@@ -128,6 +130,7 @@
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
+<<<<<<< HEAD
                                         <?php foreach ($tampil_driver as $key): ?>
                                             <tbody>
                                                 <tr>
@@ -147,6 +150,27 @@
                                                 </tr>
                                             </tbody>
                                         <?php endforeach ?>
+=======
+                                        <tbody>
+                                        <?php foreach ($tampil_driver as $key): ?>
+                                            <tr>
+                                                <td><?php echo $key-> id_driver; ?></td>
+                                                <td><?php echo $key-> username; ?></td>
+                                                <td><?php echo $key-> alamat; ?></td>
+                                                <td><?php echo $key-> no_telp; ?></td>
+                                                <td><?php echo $key-> email; ?></td>
+                                                <td><?php echo $key-> umur; ?></td>
+                                                <td><?php echo $key-> gender; ?></td>
+                                                 <td><?php echo $key-> price; ?></td>
+                                                <td><img src="../assets/picture/<?php echo $key->foto;?>" width="50px" height="50px"></td>
+                                                <td>
+                                                    <a href="../admin/ubah_driver/<?=$key->id_driver?>"><button type="button" class="btn btn-primary">Update</button></a>
+                                                    <a href="../admin/hapus_driver/<?=$key->id_driver?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
+                                                </td>
+                                            </tr>
+                                    <?php endforeach ?>
+                                        </tbody>
+>>>>>>> 1b2a6c66968279dd84c485e632ace1425daa0783
                                     </table>
                                 </div>
                             </div>
@@ -159,6 +183,7 @@
             © 2018 RentCar by Group4
         </footer>
     </div>
+<<<<<<< HEAD
 </div>
 
 <script src="../assets/admin/plugins/jquery/jquery.min.js"></script>
@@ -180,5 +205,34 @@
 <script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 <script src="../assets/admin/js/flot-data.js"></script>
 <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+=======
+   
+    <script src="../assets/admin/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../assets/admin/plugins/bootstrap/js/tether.min.js"></script>
+    <script src="../assets/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../assets/admin/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="../assets/admin/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../assets/admin/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="../assets/admin/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../assets/admin/js/custom.min.js"></script>
+    <!-- Flot Charts JavaScript -->
+    <script src="../assets/admin/plugins/flot/jquery.flot.js"></script>
+    <script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="../assets/admin/js/flot-data.js"></script>
+    <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/dt/datatables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
+>>>>>>> 1b2a6c66968279dd84c485e632ace1425daa0783
 </body>
 </html>

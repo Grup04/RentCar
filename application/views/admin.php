@@ -17,6 +17,8 @@
     <link href="../assets/admin/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?> assets/dt/datatables.min.css"/>
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -113,7 +115,7 @@
                                 <h6 class="card-subtitle">Add Admin<code>.table</code></h6>
                                 <a href="../admin/tambah_admin"><button type="button" class="btn btn-primary">Tambah Admin</button></a>
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table" id="myTable">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -125,8 +127,9 @@
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
-                                        <?php foreach ($tampil as $key): ?>
+                                        
                                         <tbody>
+                                            <?php foreach ($tampil as $key): ?>
                                             <tr>
                                                 <td><?php echo $key-> id; ?></td>
                                                 <td><?php echo $key-> username; ?></td>
@@ -139,8 +142,8 @@
                                                     <a href="../admin/hapus/<?=$key->id?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
                                                 </td>
                                             </tr>
-                                        </tbody>
                                     <?php endforeach ?>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -174,5 +177,12 @@
     <script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../assets/admin/js/flot-data.js"></script>
     <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/dt/datatables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
 </body>
 </html>

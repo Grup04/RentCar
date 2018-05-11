@@ -22,19 +22,19 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="fa fa-bars color-white"></span>
-					</button>
+          <span class="fa fa-bars color-white"></span>
+        </button>
         <h1><a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;">			RentCar
-					</a></h1>
+        </a></h1>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
           <li class="active"><a href="home">Home</a></li>
           <li><a href="#section-about">About Drivers</a></li>
           <li><a href="#section-about_car">About the Cars</a></li>
-           <li><a href="#section-contact_order">Get Order</a></li>
+          <li><a href="#section-contact_order">Get Order</a></li>
           <li><a href="#section-contact">Contact</a></li>
-           <li><a href="#section-works">Login</a></li>
+          <li><a href="#section-works">Login</a></li>
         </ul>
       </div>
     </div>
@@ -64,9 +64,9 @@
         <div class="col-lg-12">
           <div class="align-center">
             <div class="testimonial pad-top40 pad-bot40 clearfix">
-                <h5>
-        						INI WEBSITE RENTAL MOBIL
-        				</h5>
+              <h5>
+                INI WEBSITE RENTAL MOBIL
+              </h5>
               <br/>
               <!-- <span class="author">&mdash; MIKE DOE <a href="#">www.siteurl.com</a></span> -->
             </div>
@@ -89,7 +89,7 @@
       </div>
       <!-- batas gambar -->
       <div class="row align-center mar-bot40">
-  <?php foreach ($tampil as $key){ ?>
+        <?php foreach ($tampil as $key){ ?>
         <div class="col-md-3">
           <div class="team-member">
             <figure class="member-photo"><img src="<?=base_url()?>/assets/picture/<?php echo $key->foto;?>" width="50" height="50" alt="" /></figure>
@@ -99,7 +99,7 @@
             </div>
           </div>
         </div>
-  <?php  } ?>
+        <?php  } ?>
         
       </div>
     </div>
@@ -143,9 +143,9 @@
         <div class="col-md-12">
           <div class="row">
             <div class="portfolio-items isotopeWrapper clearfix" id="3">
-              
-<!-- Batas gambar -->
-  <?php foreach ($tampil_mobil as $key){ ?>
+
+              <!-- Batas gambar -->
+              <?php foreach ($tampil_mobil as $key){ ?>
               <article class="col-md-4 isotopeItem webdesign">
                 <div class="portfolio-item">
                   <img src="<?=base_url()?>/assets/picture/<?php echo $key->img;?>"  alt="" />
@@ -157,7 +157,7 @@
                   </div>
                 </div>
               </article>
-  <?php  } ?>   
+              <?php  } ?>   
             </div>
           </div>
         </div>
@@ -268,48 +268,69 @@
     <div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div>
   </section>
 
-  <section id="footer" class="section footer">
-    <div class="container">
-      <div class="row animated opacity mar-bot20" data-andown="fadeIn" data-animation="animation">
-        <div class="col-sm-12 align-center">
-          <ul class="social-network social-circle">
-            <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
-            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-          </ul>
-        </div>
+  <!-- pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+
+  <?php        
+  // $links ini berasal dari fungsi pagination        
+  // Jika $links ada (data melebihi jumlah max per page), maka tampilkan        
+  if (isset($links)) {            
+    echo $links;        
+  }        
+  ?>            
+</main>
+
+
+<section id="footer" class="section footer">
+  <div class="container">
+    <div class="row animated opacity mar-bot20" data-andown="fadeIn" data-animation="animation">
+      <div class="col-sm-12 align-center">
+        <ul class="social-network social-circle">
+          <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+          <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
       </div>
+    </div>
 
-      <div class="row align-center copyright">
-        <div class="col-sm-12">
-          <p>Copyright &copy; RentCar</p>
-          <div class="credits">
+    <div class="row align-center copyright">
+      <div class="col-sm-12">
+        <p>Copyright &copy; RentCar</p>
+        <div class="credits">
 
-            <a href="https://bootstrapmade.com/">Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-          </div>
+          <a href="https://bootstrapmade.com/">Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a>
-  <script src="assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-  <script src="assets/js/jquery.js"></script>
-  <script src="assets/js/jquery.easing.1.3.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.isotope.min.js"></script>
-  <script src="assets/js/jquery.nicescroll.min.js"></script>
-  <script src="assets/js/fancybox/jquery.fancybox.pack.js"></script>
-  <script src="assets/js/skrollr.min.js"></script>
-  <script src="assets/js/jquery.scrollTo.js"></script>
-  <script src="assets/js/jquery.localScroll.js"></script>
-  <script src="assets/js/stellar.js"></script>
-  <script src="assets/js/jquery.appear.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="contactform/contactform.js"></script>
+<a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+<script src="assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery.easing.1.3.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.isotope.min.js"></script>
+<script src="assets/js/jquery.nicescroll.min.js"></script>
+<script src="assets/js/fancybox/jquery.fancybox.pack.js"></script>
+<script src="assets/js/skrollr.min.js"></script>
+<script src="assets/js/jquery.scrollTo.js"></script>
+<script src="assets/js/jquery.localScroll.js"></script>
+<script src="assets/js/stellar.js"></script>
+<script src="assets/js/jquery.appear.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+<script src="assets/js/main.js"></script>
+<script src="contactform/contactform.js"></script>
 
 </body>
 </html>

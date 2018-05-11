@@ -1,6 +1,68 @@
 <?php
 class Blog_rentcar extends CI_Model {
 
+
+	// public function get_all_artikel( $limit = FALSE, $offset = FALSE ) 
+	// {
+ //        // Jika variable $limit ada pada parameter maka kita limit query-nya
+	// 	if ( $limit ) {
+	// 		$this->db->limit($limit, $offset);
+	// 	}
+ //    	// Query Manual
+ //    	// $query = $this->db->query('
+ //    	// 		SELECT * FROM blogs
+ //    	// 	');
+
+ //        // Memakai Query Builder
+ //        // Urutkan berdasar tanggal
+	// 	$this->db->order_by('user.post_date', 'DESC');
+
+ //        // Inner Join dengan table Categories
+	// 	$this->db->join('categories', 'categories.cat_id = blogs.fk_cat_id');
+
+	// 	$query = $this->db->get('blogs');
+
+ //    	// Return dalam bentuk object
+	// 	return $query->result();
+	// }
+
+// 	public function get_total() 
+// 	{
+//         // Dapatkan jumlah total artikel
+// 		return $this->db->count_all("blogs");
+// 	}
+// // ...............
+
+	public function get_all_artikel( $limit = FALSE, $offset = FALSE ) 
+	{
+        // Jika variable $limit ada pada parameter maka kita limit query-nya
+		if ( $limit ) {
+			$this->db->limit($limit, $offset);
+		}
+    	// Query Manual
+    	// $query = $this->db->query('
+    	// 		SELECT * FROM blogs
+    	// 	');
+
+        // Memakai Query Builder
+        // Urutkan berdasar tanggal
+		$this->db->order_by('categories.date_created', 'DESC');
+
+        // Inner Join dengan table Categories
+		$this->db->join('categories', 'categories.cat_id = car.fk_cat_id');
+
+		$query = $this->db->get('car');
+
+    	// Return dalam bentuk object
+		return $query->result();
+	}
+
+	public function get_total() 
+	{
+        // Dapatkan jumlah total artikel
+		return $this->db->count_all("car");
+	}
+
 	public function tampil()
 	{
 		$this->db->select('*');
@@ -176,22 +238,22 @@ class Blog_rentcar extends CI_Model {
 //UPDATE
 	public function update($id)
 	{
-			$data = array(
-				'username' => $this->input->post('input_username'),
-				'password' => $this->input->post('input_password'),
-				'email' => $this->input->post('input_email'),
-				'no_telp' => $this->input->post('input_no_telp'),
-				'alamat' => $this->input->post('input_alamat')
-	    );
-	    
-	    $this->db->where('id', $id);
-	    $this->db->update('login', $data);
+		$data = array(
+			'username' => $this->input->post('input_username'),
+			'password' => $this->input->post('input_password'),
+			'email' => $this->input->post('input_email'),
+			'no_telp' => $this->input->post('input_no_telp'),
+			'alamat' => $this->input->post('input_alamat')
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('login', $data);
 	}
 
 	public function view_by($id)
 	{
-	    $this->db->where('id', $id);
-	    return $this->db->get('login')->row();
+		$this->db->where('id', $id);
+		return $this->db->get('login')->row();
 	}
 
 	public function update_user($upload, $id)
@@ -206,28 +268,28 @@ class Blog_rentcar extends CI_Model {
 				'birth' => $this->input->post('input_birth'),
 				'password' => $this->input->post('input_password'),
 				'img' => $upload['file']['file_name']
-	    );
-	    }
-	    else
-	    {
-	    	$data = array(
+			);
+		}
+		else
+		{
+			$data = array(
 				'username' => $this->input->post('input_username'),
 				'alamat' => $this->input->post('input_alamat'),
 				'no_telp' => $this->input->post('input_no_telp'),
 				'email' => $this->input->post('input_email'),
 				'birth' => $this->input->post('input_birth'),
 				'password' => $this->input->post('input_password')
-	    );
-	    }	    
-	    
-	    $this->db->where('id_user', $id);
-	    $this->db->update('user', $data);
+			);
+		}	    
+
+		$this->db->where('id_user', $id);
+		$this->db->update('user', $data);
 	}
 
 	public function view_by_user($id)
 	{
-	    $this->db->where('id_user', $id);
-	    return $this->db->get('user')->row();
+		$this->db->where('id_user', $id);
+		return $this->db->get('user')->row();
 	}
 
 	public function update_car($upload, $id)
@@ -243,11 +305,11 @@ class Blog_rentcar extends CI_Model {
 				'bahan_bakar' => $this->input->post('input_bahan_bakar'),
 				'price' => $this->input->post('input_price'),
 				'img' => $upload['file']['file_name']
-	    );
-	    }
-	    else
-	    {
-	    	$data = array(
+			);
+		}
+		else
+		{
+			$data = array(
 				'no_polisi' => $this->input->post('input_no_polisi'),
 				'merk' => $this->input->post('input_merk'),
 				'jenis_mobil' => $this->input->post('input_jenis_mobil'),
@@ -255,17 +317,17 @@ class Blog_rentcar extends CI_Model {
 				'tahun_mobil' => $this->input->post('input_tahun_mobil'),
 				'bahan_bakar' => $this->input->post('input_bahan_bakar'),
 				'price' => $this->input->post('input_price')
-	    );
-	    }	    
-	    
-	    $this->db->where('id_mobil', $id);
-	    $this->db->update('car', $data);
+			);
+		}	    
+
+		$this->db->where('id_mobil', $id);
+		$this->db->update('car', $data);
 	}
 
 	public function view_by_car($id)
 	{
-	    $this->db->where('id_mobil', $id);
-	    return $this->db->get('car')->row();
+		$this->db->where('id_mobil', $id);
+		return $this->db->get('car')->row();
 	}
 
 	public function update_driver($upload, $id)
@@ -281,11 +343,11 @@ class Blog_rentcar extends CI_Model {
 				'gender' => $this->input->post('input_gender'),
 				'price' => $this->input->post('input_price'),
 				'foto' => $upload['file']['file_name']
-	    );
-	    }
-	    else
-	    {
-	    	$data = array(
+			);
+		}
+		else
+		{
+			$data = array(
 				'username' => $this->input->post('input_username'),
 				'alamat' => $this->input->post('input_alamat'),
 				'no_telp' => $this->input->post('input_no_telp'),
@@ -293,85 +355,85 @@ class Blog_rentcar extends CI_Model {
 				'umur' => $this->input->post('input_umur'),
 				'gender' => $this->input->post('input_gender'),
 				'price' => $this->input->post('input_price'),
-	    );
-	    }	    
-	    
-	    $this->db->where('id_driver', $id);
-	    $this->db->update('driver', $data);
+			);
+		}	    
+
+		$this->db->where('id_driver', $id);
+		$this->db->update('driver', $data);
 	}
 
 	public function view_by_driver($id)
 	{
-	    $this->db->where('id_driver', $id);
-	    return $this->db->get('driver')->row();
+		$this->db->where('id_driver', $id);
+		return $this->db->get('driver')->row();
 	}
 
 	public function update_order($id)
 	{
-			$data = array(
-				'merk' => $this->input->post('input_merk'),
-				'day' => $this->input->post('input_day'),
-				'price' => $this->input->post('input_price')
-	    );
-	    
-	    $this->db->where('id_order', $id);
-	    $this->db->update('order', $data);
+		$data = array(
+			'merk' => $this->input->post('input_merk'),
+			'day' => $this->input->post('input_day'),
+			'price' => $this->input->post('input_price')
+		);
+
+		$this->db->where('id_order', $id);
+		$this->db->update('order', $data);
 	}
 
 	public function view_by_order($id)
 	{
-	    $this->db->where('id_order', $id);
-	    return $this->db->get('order')->row();
+		$this->db->where('id_order', $id);
+		return $this->db->get('order')->row();
 	}
 
 	public function update_kategori($id)
 	{
-			$data = array(
-				'cat_mobil' => $this->input->post('cat_mobil'),
-				'description' => $this->input->post('description')
-	    );
-	    
-	    $this->db->where('id_cat', $id);
-	    $this->db->update('categories', $data);
+		$data = array(
+			'cat_mobil' => $this->input->post('cat_mobil'),
+			'description' => $this->input->post('description')
+		);
+
+		$this->db->where('id_cat', $id);
+		$this->db->update('categories', $data);
 	}
 
 	public function view_by_kategori($id)
 	{
-	    $this->db->where('id_cat', $id);
-	    return $this->db->get('categories')->row();
+		$this->db->where('id_cat', $id);
+		return $this->db->get('categories')->row();
 	}
 
 //DELETE
 
 	public function delete($id) //ADMIN
 	{
-	    $this->db->where('id', $id);
-	    $this->db->delete('login');
+		$this->db->where('id', $id);
+		$this->db->delete('login');
 	}
 	public function delete_user($id)
 	{
-	    $this->db->where('id_user', $id);
-	    $this->db->delete('user');
+		$this->db->where('id_user', $id);
+		$this->db->delete('user');
 	}
 	public function delete_car($id)
 	{
-	    $this->db->where('id_mobil', $id);
-	    $this->db->delete('car');
+		$this->db->where('id_mobil', $id);
+		$this->db->delete('car');
 	}
 	public function delete_driver($id)
 	{
-	    $this->db->where('id_driver', $id);
-	    $this->db->delete('driver');
+		$this->db->where('id_driver', $id);
+		$this->db->delete('driver');
 	}
 	public function delete_order($id)
 	{
-	    $this->db->where('id_order', $id);
-	    $this->db->delete('order');
+		$this->db->where('id_order', $id);
+		$this->db->delete('order');
 	}
 	public function delete_kategori($id)
 	{
-	    $this->db->where('id_cat', $id);
-	    $this->db->delete('categories');
+		$this->db->where('id_cat', $id);
+		$this->db->delete('categories');
 	}
 
 	//LOGIN

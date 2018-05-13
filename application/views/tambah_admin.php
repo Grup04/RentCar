@@ -23,34 +23,34 @@
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-    </div>
+        </div>
 
-    <div id="main-wrapper">
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <b>
-                            <img src="../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            
-                        </b>
-                        <span>
-                            <img src="../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
-                        </span>
-                    </a>
-                </div>
-                
-                <div class="navbar-collapse">
-                    <ul class="navbar-nav mr-auto mt-md-0 ">
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                        <li class="nav-item hidden-sm-down">
-                            <form class="app-search p-l-20">
-                                <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
-                            </form>
-                        </li>
-                    </ul>
+        <div id="main-wrapper">
+            <header class="topbar">
+                <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">
+                            <b>
+                                <img src="../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
+                                
+                            </b>
+                            <span>
+                                <img src="../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            </span>
+                        </a>
+                    </div>
+                    
+                    <div class="navbar-collapse">
+                        <ul class="navbar-nav mr-auto mt-md-0 ">
+                            <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                            <li class="nav-item hidden-sm-down">
+                                <form class="app-search p-l-20">
+                                    <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
+                                </form>
+                            </li>
+                        </ul>
 
-                    <ul class="navbar-nav my-lg-0">
+                        <ul class="navbar-nav my-lg-0">
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/admin/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
                         </li> -->
@@ -80,7 +80,7 @@
                         <li>
                             <a href="tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
                         </li>
                         <li>
@@ -104,7 +104,7 @@
                         </ol>
                     </div>
                 </div>
-<div class="row">
+                <div class="row">
                     <!-- column -->
                     <div class="col-sm-12">
                         <div class="card">
@@ -151,19 +151,21 @@
         </table>
         </font>
                                 </div>
+
+                                </font>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-                </div>
-            <footer class="footer text-center">
-                © 2018 RentCar by Group4
-            </footer>
         </div>
     </div>
-   
-    <script src="../assets/admin/plugins/jquery/jquery.min.js"></script>
+        © 2018 RentCar by Group4
+    </footer>
+</div>
+</div>
+ <script src="../assets/admin/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/admin/plugins/bootstrap/js/tether.min.js"></script>
     <script src="../assets/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -182,7 +184,7 @@
     <script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../assets/admin/js/flot-data.js"></script>
     <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-<!-- js2 dan css2 buat validation boostrap -->
+    <!-- js2 dan css2 buat validation boostrap -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/custom.css">
 

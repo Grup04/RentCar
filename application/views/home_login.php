@@ -22,19 +22,19 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="fa fa-bars color-white"></span>
-					</button>
+          <span class="fa fa-bars color-white"></span>
+        </button>
         <h1><a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;">			RentCar
-					</a></h1>
+        </a></h1>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
           <li class="active"><a href="home">Home</a></li>
           <li><a href="#section-about">About Drivers</a></li>
           <li><a href="#section-about_car">About the Cars</a></li>
-           <li><a href="#section-contact_order">Get Order</a></li>
+          <li><a href="#section-contact_order">Get Order</a></li>
           <li><a href="#section-contact">Contact</a></li>
-           <li><a href="#section-works">Login</a></li>
+          <li><a href="#section-works">Login</a></li>
         </ul>
       </div>
     </div>
@@ -64,9 +64,9 @@
         <div class="col-lg-12">
           <div class="align-center">
             <div class="testimonial pad-top40 pad-bot40 clearfix">
-                <h5>
-        						INI WEBSITE RENTAL MOBIL
-        				</h5>
+              <h5>
+                INI WEBSITE RENTAL MOBIL
+              </h5>
               <br/>
               <!-- <span class="author">&mdash; MIKE DOE <a href="#">www.siteurl.com</a></span> -->
             </div>
@@ -285,7 +285,7 @@
     </div>
   </section>
 
-<section id="section-contact_order" class="section appear clearfix">
+  <section id="section-contact_order" class="section appear clearfix">
     <div class="container">
 
       <div class="row mar-bot40">
@@ -419,6 +419,12 @@
     </div>
   </section>
 
+  <br>
+  <br>
+  <br>
+  <br>
+
+  
   <a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a>
   <script src="assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   <script src="assets/js/jquery.js"></script>

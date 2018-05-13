@@ -105,33 +105,40 @@
                                 <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
                                 <div class="table-responsive">
                                     <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
-<?php echo form_open('admin/tambah_driver', array('enctype'=>'multipart/form-data')); ?>
+<!-- <?php //echo form_open('admin/tambah_driver', array('enctype'=>'multipart/form-data')); ?> -->
 <?php echo validation_errors(); ?>
+<?php echo form_open_multipart ('admin/tambah_car', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+
     <table border="0px">
              <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username'); ?>"required>
+                <div class="invalid-feedback">wajib isi nama </div></td>
             </tr>
             <tr>
                 <td>Alamat</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat'); ?>"required>
+                <div class="invalid-feedback">wajib isi alamat </div></td>
             </tr>
             <tr>
                 <td>No Telpon</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp'); ?>"></td>
+                <td><input type="number" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp'); ?>"required>
+                <div class="invalid-feedback">isi nomor HP </div></td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email'); ?>"required>
+                <div class="invalid-feedback">masukan Email </div></td>
             </tr>
             <tr>
                 <td>Umur</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_umur" value="<?php echo set_value('input_umur'); ?>"></td>
+                <td><input type="number" class="form-control" name="input_umur" value="<?php echo set_value('input_umur'); ?>"required>
+                <div class="invalid-feedback">isi umur </div></td>
             </tr>
             <tr>
                 <td>Gender</td>
@@ -146,7 +153,8 @@
             <tr>
                 <td>Price/Day</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price'); ?>"required>
+                <div class="invalid-feedback">isi username </div></td>
             </tr>
             <tr>
                 <td>Foto</td>
@@ -154,7 +162,7 @@
                 <td><input type="file" name="input_gambar"></td>
             </tr>
             <td colspan="3" align="center">
-                <input type="submit" name="simpan" value="Add">
+                <input type="submit" name="simpan" value="Add" id="submitBtn">
                 <input type="reset" name="reset" value="Cancel">
             </td>
         </table>
@@ -191,5 +199,18 @@
     <script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../assets/admin/js/flot-data.js"></script>
     <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-</body>
+
+    <!-- js2 dan css2 buat validation boostrap -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/custom.css">
+
+    <script src="<?php echo base_url() ?>assets/js2/jquery-1.9.1.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js2/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="<?php echo base_url() ?>assets/js2/holder.min.js"></script>
+
+    <!-- Custom -->
+    <script src="<?php echo base_url() ?>assets/js2/custom.js"></script>
+</body> 
 </html>

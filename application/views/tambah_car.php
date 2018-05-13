@@ -105,19 +105,22 @@
                                 <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
                                 <div class="table-responsive">
                                     <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
-<?php echo form_open('admin/tambah_car', array('enctype'=>'multipart/form-data')); ?>
+<!--<?php //echo form_open('admin/tambah_car', array('enctype'=>'multipart/form-data')); ?> -->
 <?php echo validation_errors(); ?>
+<?php echo form_open_multipart ('admin/tambah_car', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
 
     <table border="0px">
              <tr>
                 <td>No Polisi</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_no_polisi" value="<?php echo set_value('input_polisi'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_no_polisi" value="<?php echo set_value('input_polisi'); ?>" required>
+                <div class="invalid-feedback">isi nomer polisi</div></td>
             </tr>
             <tr>
                 <td>Merk</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_merk" value="<?php echo set_value('input_merk'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_merk" value="<?php echo set_value('input_merk'); ?>" required>
+                <div class="invalid-feedback">isi merk</div></td>
             </tr>
             <tr>
                 <td>Jenis Mobil</td>
@@ -147,22 +150,26 @@
             <tr>
                 <td>Warna Mobil</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_warna_mobil" value="<?php echo set_value('input_warna_mobil'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_warna_mobil" value="<?php echo set_value('input_warna_mobil'); ?>"required>
+                <div class="invalid-feedback">isi warna mobilnya</div></td>
             </tr>
             <tr>
                 <td>Tahun Mobil</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_tahun_mobil" value="<?php echo set_value('input_tahun_mobil'); ?>"></td>
+                <td><input type="number" class="form-control" name="input_tahun_mobil" value="<?php echo set_value('input_tahun_mobil'); ?>" required>
+                <div class="invalid-feedback">isi tahun mobil</div></td>
             </tr>
             <tr>
                 <td>Bahan Bakar</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_bahan_bakar" value="<?php echo set_value('input_bahan_bakar'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_bahan_bakar" value="<?php echo set_value('input_bahan_bakar'); ?>"required>
+                <div class="invalid-feedback">isi bahan bakar</div></td>
             </tr>
             <tr>
                 <td>Price/Day</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price'); ?>"></td>
+                <td><input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price'); ?>"required>
+                <div class="invalid-feedback">isi Price/Day</div></td>
             </tr>
             <tr>
                 <td>Image</td>
@@ -170,7 +177,7 @@
                 <td><input type="file" name="input_gambar"></td>
             </tr>
             <td colspan="3" align="center">
-                <input type="submit" name="simpan" value="Add">
+                <input type="submit" name="simpan" value="Add" id="submitBtn">
                 <input type="reset" name="reset" value="Cancel">
             </td>
         </table>
@@ -207,5 +214,17 @@
     <script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../assets/admin/js/flot-data.js"></script>
     <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <!-- js2 dan css2 buat validation boostrap -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/custom.css">
+
+    <script src="<?php echo base_url() ?>assets/js2/jquery-1.9.1.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js2/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="<?php echo base_url() ?>assets/js2/holder.min.js"></script>
+
+    <!-- Custom -->
+    <script src="<?php echo base_url() ?>assets/js2/custom.js"></script>
 </body>
 </html>

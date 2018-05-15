@@ -53,9 +53,9 @@
                     </ul>
 
                     <ul class="navbar-nav my-lg-0">
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/admin/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>

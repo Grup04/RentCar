@@ -26,36 +26,27 @@
         </div>
 
         <div id="main-wrapper">
-            <header class="topbar">
-                <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="index.html">
-                            <b>
-                                <img src="../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
-                                
-                            </b>
-                            <span>
-                                <img src="../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
-                            </span>
-                        </a>
-                    </div>
-                    
-                    <div class="navbar-collapse">
-                        <ul class="navbar-nav mr-auto mt-md-0 ">
-                            <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                            <li class="nav-item hidden-sm-down">
-                                <form class="app-search p-l-20">
-                                    <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
-                                </form>
-                            </li>
-                        </ul>
-
-                        <ul class="navbar-nav my-lg-0">
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/admin/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
-                        </li> -->
-                    </ul>
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <b>
+                            <img src="../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
+                        </b>
+                        <span>
+                            <img src="../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
+                        </span>
+                    </a>
                 </div>
+                    <ul class="navbar-nav mr-auto mt-md-0 ">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> 
+                        </li>
+                        <li class="nav-item hidden-sm-down">
+                            <form class="app-search p-l-20">
+                                <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
+                            </form>
+                        </li>
+                    </ul>
             </nav>
         </header>
 
@@ -69,7 +60,7 @@
                             <a href="../admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
+                            <a href="../admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
                         </li>
                         <li>
                             <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
@@ -115,14 +106,14 @@
                                     <div class="alert-warning"><?php echo (isset($message))? : "";?></div>                                  
 
 <?php echo validation_errors(); ?>
-<!-- <?php //echo form_open(//'admin/tambah_admin', array('enctype'=>'multipart/form-data')); ?> -->
+<!-- <?php echo form_open('admin/tambah_admin', array('enctype'=>'multipart/form-data')); ?> -->
 <?php echo form_open_multipart ('admin/tambah_admin', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
     <table border="0px">                    
             <tr>
                 <td>Username</td>
                 <td>:</td>
                 <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username'); ?>" required>
-                <div class="invalid-feedback">isi username </div></td>
+                <div class="invalid-feedback">isi username</div></td>
             </tr>
             <tr>
                 <td>Password</td>
@@ -165,6 +156,7 @@
     </footer>
 </div>
 </div>
+
  <script src="../assets/admin/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/admin/plugins/bootstrap/js/tether.min.js"></script>

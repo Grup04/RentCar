@@ -7,13 +7,13 @@
   <title>RentCar</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="assets/text/css" href="assets/css/isotope.css" media="screen" />
-  <link rel="stylesheet" href="assets/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-  <link rel="stylesheet" href="assets/css/bootstrap.css">
-  <link rel="stylesheet" href="assets/css/bootstrap-theme.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" type="assets/text/css" href="<?php echo base_url()?>assets/css/isotope.css" media="screen" />
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
   <!-- skin -->
-  <link rel="stylesheet" href="assets/skin/default.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/skin/default.css">
 </head>
 
 <body>
@@ -31,8 +31,8 @@
         <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
           <li class="active"><a href="home">Home</a></li>
           <li><a href="#section-about">About Drivers</a></li>
-          <li><a href="#section-about_car">About the Cars</a></li>
-          <li><a href="#section-contact_order">Get Order</a></li>
+          <li><a href="#section-about_car">About Cars</a></li>
+          <li><a href="#section-order">Get Order</a></li>
           <li><a href="#section-contact">Contact</a></li>
           <li><a href="#section-works">Login</a></li>
         </ul>
@@ -92,10 +92,10 @@
         <?php foreach ($tampil as $key){ ?>
         <div class="col-md-3">
           <div class="team-member">
-            <figure class="member-photo"><img src="<?=base_url()?>/assets/picture/<?php echo $key->foto;?>" width="50" height="50" alt="" /></figure>
+            <figure class="member-photo"><img src="<?=base_url()?>/assets/picture/<?php echo $key->foto;?>" width="150" height="150" alt="" /></figure>
             <div class="team-detail">
               <h4><?php echo $key-> username; ?></h4>
-              <span><?php echo $key-> umur; ?></span>
+              <span><?php echo $key-> umur; ?> th </span>
             </div>
           </div>
         </div>
@@ -110,9 +110,9 @@
     <div class="container">
       <div class="align-center pad-top40 pad-bot40">
         <blockquote class="bigquote color-white">Harga Sewa</blockquote>
-        <p class="color-white">1 hari = 300k</p>
+        <p class="color-white">1 hari = 250k</p>
         <p class="color-white">2 hari = 400k</p>
-        <p class="color-white">3 hari = 500k</p>
+        <p class="color-white">3 hari = 600k</p>
       </div>
     </div>
   </section>
@@ -134,9 +134,9 @@
         <nav id="filter" class="col-md-12 text-center">
           <ul>
             <li><a href="#" class="current btn-theme btn-small" data-filter="*">Van</a></li>
-            <li><a href="#" class="btn-theme btn-small" data-filter=".webdesign">Mini Bus</a></li>
-            <li><a href="#" class="btn-theme btn-small" data-filter=".photography">Elf</a></li>
-            <li><a href="#" class="btn-theme btn-small" data-filter=".print">Sedan</a></li>
+            <li><a href="#" class="btn-theme btn-small" data-filter="*">Mini Bus</a></li>
+            <li><a href="#" class="btn-theme btn-small" data-filter="*">Elf</a></li>
+            <li><a href="#" class="btn-theme btn-small" data-filter="*">Sedan</a></li>
           </ul>
         </nav>
         
@@ -152,6 +152,7 @@
                   <div class="portfolio-desc align-center">
                     <div class="folio-info">
                       <h5><a href="#"><?php echo $key-> merk; ?></a></h5>
+                      <h5><a href="#"><?php echo $key-> cat_mobil; ?></a></h5>
                       <a href="<?=base_url()?>/assets/picture/<?php echo $key->img;?>" class="fancybox"><i class="fa fa-plus fa-2x"></i></a>
                     </div>
                   </div>
@@ -164,13 +165,15 @@
       </div>
     </div>
   </section>
-<!-- <section id="section-contact_order" class="section appear clearfix">
+
+<section id="section-order" class="section appear clearfix">
     <div class="container">
 
       <div class="row mar-bot40">
         <div class="col-md-offset-3 col-md-6">
           <div class="section-header">
             <h2 class="section-heading animated" data-animation="bounceInUp">Get Order</h2>
+            <?php echo form_open_multipart ('home/index', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
             <p>Order your trip</p>
           </div>
         </div>
@@ -185,43 +188,66 @@
             <form action="" method="post" role="form" class="contactForm">
               <div class="form-group">
                 <label for="name">Your Name</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username'); ?>" required>
+                <!-- <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" /> -->
                 <div class="validation"></div>
               </div>
               <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <label for="email">Category Car</label>
+                <input type="text" class="form-control" name="input_jenis_mobil" value="<?php echo set_value('input_jenis_mobil'); ?>" required>
+                <!-- <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" /> -->
                 <div class="validation"></div>
               </div>
               <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <label for="subject">Merk</label>
+                <input type="text" class="form-control" name="input_merk" value="<?php echo set_value('input_merk'); ?>" required>
+                <!-- <input type="text" class="form-control" name="subject" id="subject" placeholder="Your Number Phone" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
                 <div class="validation"></div>
               </div>
               <div class="form-group">
-                <label for="message">Message</label>
+                <label for="subject">Day</label>
+                <input type="text" class="form-control" name="input_day" value="<?php echo set_value('input_day'); ?>" required>
+                <!-- <input type="text" class="form-control" name="subject" id="subject" placeholder="Category Car" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <label for="subject">Price</label>
+                <input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price'); ?>" required>
+                <!-- <input type="text" class="form-control" name="subject" id="subject" placeholder="Merk" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
+                <div class="validation"></div>
+              </div>
+              <!-- <div class="form-group">
+                <label for="subject">Day</label>
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Day" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validation"></div>
+              </div> -->
+             <!--  <div class="form-group">
+                <label for="message">Day</label>
                 <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
                 <div class="validation"></div>
-              </div>
+              </div> -->
 
-              <button type="submit" class="btn btn-theme pull-left">SEND MESSAGE</button>
+              <!-- <button type="submit" class="btn btn-theme pull-left">SEND ORDER</button> -->
+              <input type="submit" name="simpan" value="ORDER">
             </form>
 
           </div>
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
   <!-- contact -->
   <section id="section-contact" class="section appear clearfix">
     <div class="container">
-
       <div class="row mar-bot40">
         <div class="col-md-offset-3 col-md-6">
           <div class="section-header">
             <h2 class="section-heading animated" data-animation="bounceInUp">Contact us</h2>
-            <p align="left">WA : 087864866013</p>
+            <p align="left">Company : Kuy!RentCar</p>
             <p align="left">Alamat : Malang</p>
+            <p align="left">Email : RentcarMalang@gmail.com</p>
+            <p align="left">WA : 087864866013</p>
+            <p align="left">Customer Service : 08123768816</p>
           </div>
         </div>
       </div>
@@ -264,11 +290,12 @@
     </div>
   </section>
   <!-- map -->
-  <section id="section-map" class="clearfix">
+ <!--  <section id="section-map" class="clearfix">
     <div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div>
-  </section>
+  </section> -->
 
   <!-- pagination -->
+  <center>
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -278,6 +305,7 @@
       <li class="page-item"><a class="page-link" href="#">Next</a></li>
     </ul>
   </nav>
+  </center>
 
   <?php        
   // $links ini berasal dari fungsi pagination        
@@ -287,8 +315,6 @@
   }        
   ?>            
 </main>
-
-
 <section id="footer" class="section footer">
   <div class="container">
     <div class="row animated opacity mar-bot20" data-andown="fadeIn" data-animation="animation">
@@ -307,8 +333,7 @@
       <div class="col-sm-12">
         <p>Copyright &copy; RentCar</p>
         <div class="credits">
-
-          <a href="https://bootstrapmade.com/">Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          <!-- <a href="https://bootstrapmade.com/">Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
         </div>
       </div>
     </div>
@@ -316,21 +341,21 @@
 </section>
 
 <a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a>
-<script src="assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/jquery.easing.1.3.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.isotope.min.js"></script>
-<script src="assets/js/jquery.nicescroll.min.js"></script>
-<script src="assets/js/fancybox/jquery.fancybox.pack.js"></script>
-<script src="assets/js/skrollr.min.js"></script>
-<script src="assets/js/jquery.scrollTo.js"></script>
-<script src="assets/js/jquery.localScroll.js"></script>
-<script src="assets/js/stellar.js"></script>
-<script src="assets/js/jquery.appear.js"></script>
+<script src="<?php echo base_url()?>assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery.easing.1.3.js"></script>
+<script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery.isotope.min.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery.nicescroll.min.js"></script>
+<script src="<?php echo base_url()?>assets/js/fancybox/jquery.fancybox.pack.js"></script>
+<script src="<?php echo base_url()?>assets/js/skrollr.min.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery.scrollTo.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery.localScroll.js"></script>
+<script src="<?php echo base_url()?>assets/js/stellar.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery.appear.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
-<script src="assets/js/main.js"></script>
-<script src="contactform/contactform.js"></script>
+<script src="<?php echo base_url()?>assets/js/main.js"></script>
+<script src="<?php echo base_url()?>contactform/contactform.js"></script>
 
 </body>
 </html>

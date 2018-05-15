@@ -53,9 +53,9 @@
                         </ul>
 
                         <ul class="navbar-nav my-lg-0">
-                            <li class="nav-item dropdown">
+                            <!-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/admin/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </nav>
@@ -119,8 +119,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID Order</th>
-                                                    <th>ID User</th>
-                                                    <th>ID Mobil</th>
+                                                    <th>Username</th>
+                                                    <th>Jenis Mobil</th>
                                                     <th>Merk</th>
                                                     <th>Day</th>
                                                     <th>Price</th>
@@ -132,8 +132,8 @@
                                                 <tbody>
                                                     <tr>
                                                         <td><?php echo $key-> id_order; ?></td>
-                                                        <td><?php echo $key-> id_user; ?></td>
-                                                        <td><?php echo $key-> id_mobil; ?></td>
+                                                        <td><?php echo $key-> username; ?></td>
+                                                        <td><?php echo $key-> jenis_mobil; ?></td>
                                                         <td><?php echo $key-> merk; ?></td>
                                                         <td><?php echo $key-> day; ?></td>
                                                         <td><?php echo $key-> price; ?></td>

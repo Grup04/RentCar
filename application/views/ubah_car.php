@@ -70,7 +70,7 @@
                             <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
                         </li>
                         <li>
-                            <a href="admin/tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
+                            <a href="../../admin/tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
                         </li>
                         <li>
                             <a href="tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
@@ -111,19 +111,21 @@
 
 <?php echo validation_errors(); ?>
 <?php $this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');?>
+    <?php echo form_open_multipart ('admin/tambah_admin', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+
 <form method="post" class="form-horizontal" enctype="multipart/form-data">
 <form class="needs-validation" novalidate>
 
     <table border="0px">
             <tr>
-                <td>No Polisi</td>
+                <td  class=control-label>No Polisi</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_no_polisi" value="<?php echo set_value('input_no_polisi', $tampil->no_polisi); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_no_polisi" value="<?php echo set_value('input_no_polisi', $tampil->no_polisi); ?>" required><div class="invalid-feedback">isi NOPOL </div></td>
             </tr>
             <tr>
-                <td>Merk</td>
+                <td  class=control-label>Merk</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_merk" value="<?php echo set_value('input_merk', $tampil->merk); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_merk" value="<?php echo set_value('input_merk', $tampil->merk); ?>" required><div class="invalid-feedback">isi MERKnya </div></td>
             </tr>
            <tr>
                 <td>Jenis Mobil</td>
@@ -151,32 +153,32 @@
                 </td>
             </tr> -->
             <tr>
-                <td>Warna Mobil</td>
+                <td class=control-label>Warna Mobil</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_warna_mobil" value="<?php echo set_value('input_warna_mobil', $tampil->warna_mobil); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_warna_mobil" value="<?php echo set_value('input_warna_mobil', $tampil->warna_mobil); ?>" required><div class="invalid-feedback">isi warnanya! </div></td>
             </tr>
             <tr>
-                <td>Tahun Mobil</td>
+                <td  class=control-label>Tahun Mobil</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_tahun_mobil" value="<?php echo set_value('input_tahun_mobil', $tampil->tahun_mobil); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_tahun_mobil" value="<?php echo set_value('input_tahun_mobil', $tampil->tahun_mobil); ?>" required><div class="invalid-feedback">jangan lupa tahun mobil </div></td>
             </tr>
             <tr>
-                <td>Bahan Bakar</td>
+                <td  class=control-label>Bahan Bakar</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_bahan_bakar" value="<?php echo set_value('input_bahan_bakar', $tampil->bahan_bakar); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_bahan_bakar" value="<?php echo set_value('input_bahan_bakar', $tampil->bahan_bakar); ?>" required><div class="invalid-feedback">isi bahan bahan_bakar </div></td>
             </tr>
             <tr>
-                <td>Price/Day</td>
+                <td  class=control-label>Price/Day</td>
                 <td>:</td><br>
                 <td><input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price', $tampil->price); ?>" required></td>
             </tr>
             <tr>
-                <td>Image</td>
+                <td  class=control-label>Image</td>
                 <td>:</td>
                 <td><input type="file" name="input_gambar"></td>
             </tr>
             <td colspan="3" align="center">
-                <input type="submit" name="simpan" value="Add">
+                <input type="submit" name="simpan" value="Add" id="submitBtn">
                 <input type="reset" name="reset" value="Cancel">
             </td>
         </table>
@@ -213,5 +215,17 @@
     <script src="../../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../../assets/admin/js/flot-data.js"></script>
     <script src="../../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <!-- js2 dan css2 buat validation boostrap -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/custom.css">
+
+    <script src="<?php echo base_url() ?>assets/js2/jquery-1.9.1.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js2/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="<?php echo base_url() ?>assets/js2/holder.min.js"></script>
+
+    <!-- Custom -->
+    <script src="<?php echo base_url() ?>assets/js2/custom.js"></script>
 </body>
 </html>

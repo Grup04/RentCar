@@ -87,19 +87,19 @@ class Admin extends CI_Controller {
 		$this->load->model('blog_rentcar');
 		$data = array();
 
-		$this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[login.username]',
+		$this->form_validation->set_rules('input_username', 'Username', 'is_unique[login.username]',
 		array(
 				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
 				'is_unique' 	=> 'Judul ' .$this->input->post('input_username'). ' sudah ada!'
 			));
-		$this->form_validation->set_rules('input_password', 'Password', 'required');
-		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
-		$this->form_validation->set_rules('input_no_telp', 'Contact', 'required|numeric|min_length[12]',
+		$this->form_validation->set_rules('input_password', 'Password');
+		$this->form_validation->set_rules('input_email', 'Email', 'valid_email');
+		$this->form_validation->set_rules('input_no_telp', 'Contact', 'numeric|min_length[12]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'angka %s belum mencapai limit',
 			));
-		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required');
+		$this->form_validation->set_rules('input_alamat', 'Alamat');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -189,9 +189,7 @@ class Admin extends CI_Controller {
 		else
 		{
 			$this->load->view('tambah_car', $data);
-		}
-
-			
+		}	
 	}
 
 	public function tambah_driver()
@@ -229,9 +227,7 @@ class Admin extends CI_Controller {
 		else
 		{
 			$this->load->view('tambah_driver', $data);
-		}
-
-		
+		}		
 	}
 
 	public function tambah_order()
@@ -339,7 +335,7 @@ class Admin extends CI_Controller {
 		{
 			if ($this->input->post('simpan'))
 			{
-				$this->blog_rentcar->insert();
+				$this->blog_rentcar->update();
 				redirect('admin/tampil_admin');
 			}
 		}

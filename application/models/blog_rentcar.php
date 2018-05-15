@@ -1,55 +1,17 @@
 <?php
 class Blog_rentcar extends CI_Model {
 
-
-	// public function get_all_artikel( $limit = FALSE, $offset = FALSE ) 
-	// {
- //        // Jika variable $limit ada pada parameter maka kita limit query-nya
-	// 	if ( $limit ) {
-	// 		$this->db->limit($limit, $offset);
-	// 	}
- //    	// Query Manual
- //    	// $query = $this->db->query('
- //    	// 		SELECT * FROM blogs
- //    	// 	');
-
- //        // Memakai Query Builder
- //        // Urutkan berdasar tanggal
-	// 	$this->db->order_by('user.post_date', 'DESC');
-
- //        // Inner Join dengan table Categories
-	// 	$this->db->join('categories', 'categories.cat_id = blogs.fk_cat_id');
-
-	// 	$query = $this->db->get('blogs');
-
- //    	// Return dalam bentuk object
-	// 	return $query->result();
-	// }
-
-// 	public function get_total() 
-// 	{
-//         // Dapatkan jumlah total artikel
-// 		return $this->db->count_all("blogs");
-// 	}
-// // ...............
-
 	public function get_all_artikel( $limit = FALSE, $offset = FALSE ) 
 	{
         // Jika variable $limit ada pada parameter maka kita limit query-nya
 		if ( $limit ) {
 			$this->db->limit($limit, $offset);
 		}
-    	// Query Manual
-    	// $query = $this->db->query('
-    	// 		SELECT * FROM blogs
-    	// 	');
 
-        // Memakai Query Builder
-        // Urutkan berdasar tanggal
 		$this->db->order_by('categories.date_created', 'DESC');
 
         // Inner Join dengan table Categories
-		$this->db->join('categories', 'categories.cat_id = car.fk_cat_id');
+		$this->db->join('categories', 'categories.id_cat = car.id_cat');
 
 		$query = $this->db->get('car');
 
@@ -79,15 +41,8 @@ class Blog_rentcar extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('car');
-		$this->db->join('categories', 'car.id_cat= categories.id_cat');
+		$this->db->join('categories', 'car.id_cat = categories.id_cat');
 		return $this->db->get()->result();
-
-		// $this->db->select('*');
-		// $this->db->from('car');
-		// $query = $this->db->get('car');
-		// return $query->result();
-		// $this->db->join('categories', 'car.id_cat= categories.id_cat');
-		// return $this->db->get()->result();
 	}
 	public function tampil_driver()
 	{
@@ -204,6 +159,21 @@ class Blog_rentcar extends CI_Model {
 			'merk' => $this->input->post('input_email'),
 			'day' => $this->input->post('input_no_telp'),
 			'price' => $this->input->post('input_alamat'),
+			'date_order' => date('Y-m-d')
+		);
+
+		$this->db->insert('order', $data);
+	}
+
+	public function insert_order_user()
+	{
+		$data = array(
+			'id_order' => '',
+			'username' => $this->input->post('input_username'),
+			'jenis_mobil' => $this->input->post('input_jenis_mobil'),
+			'merk' => $this->input->post('input_merk'),
+			'day' => $this->input->post('input_day'),
+			'price' => $this->input->post('input_price'),
 			'date_order' => date('Y-m-d')
 		);
 

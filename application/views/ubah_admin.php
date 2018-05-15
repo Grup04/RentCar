@@ -64,7 +64,7 @@
                             <a href="../admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
+                            <a href="../../admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
                         </li>
                         <li>
                             <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
@@ -110,38 +110,39 @@
                                   <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
 <?php echo validation_errors(); ?>
 <?php $this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');?>
+    <?php echo form_open_multipart ('admin/tambah_admin', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
 
 <form method="post" class="form-horizontal" enctype="multipart/form-data">
 <form class="needs-validation" novalidate>
 
     <table border="0px">
             <tr>
-                <td>Username</td>
+                <td class=control-label>Username</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>" required><div class="invalid-feedback">isi username </div> </td>
             </tr>
             <tr>
-                <td>Password</td>
+                <td class=control-label>Password</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>" required><div class="invalid-feedback">isi passwordnya gan </div></td>
             </tr>
             <tr>
-                <td>Email</td>
+                <td class=control-label>Email</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>" required><div class="invalid-feedback">isi email </div></td>
             </tr>
             <tr>
-                <td>No Telfon</td>
+                <td class=control-label>No Telfon</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>" required><div class="invalid-feedback">isi no telp </div></td>
             </tr>
             <tr>
-                <td>Alamat</td>
+                <td class=control-label>Alamat</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>" required><div class="invalid-feedback">isi alamat </div></td>
             </tr>
             <td colspan="3" align="center">
-                <input type="submit" name="simpan" value="Update">
+                <input type="submit" name="simpan" value="Update" id="submitBtn">
                 <input type="reset" name="reset" value="Cancel">
             </td>
         </table>
@@ -182,5 +183,17 @@
     <script src="../../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../../assets/admin/js/flot-data.js"></script>
     <script src="../../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <!-- js2 dan css2 buat validation boostrap -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/custom.css">
+
+    <script src="<?php echo base_url() ?>assets/js2/jquery-1.9.1.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js2/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="<?php echo base_url() ?>assets/js2/holder.min.js"></script>
+
+    <!-- Custom -->
+    <script src="<?php echo base_url() ?>assets/js2/custom.js"></script>
 </body>
 </html>

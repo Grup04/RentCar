@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 
-                <div class="navbar-collapse">
+                <!-- <div class="navbar-collapse"> -->
                     <ul class="navbar-nav mr-auto mt-md-0 ">
                         <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                         <li class="nav-item hidden-sm-down">
@@ -71,7 +71,7 @@
                             <a href="tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
                         </li>
                         <li>
-                            <a href="admin/tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
+                            <a href="../admin/tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
                         </li>
                         <li>
                             <a href="tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>

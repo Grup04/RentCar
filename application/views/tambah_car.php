@@ -192,7 +192,7 @@
             <footer class="footer text-center">
                 © 2018 RentCar by Group4
             </footer>
-        </div>
+        </div
     </div>
    
     <script src="../assets/admin/plugins/jquery/jquery.min.js"></script>

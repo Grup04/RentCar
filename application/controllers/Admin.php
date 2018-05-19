@@ -138,13 +138,12 @@ class Admin extends CI_Controller {
 		
 		$this->form_validation->set_rules('input_password', 'Password', 'required');
 
-
-
 		if ($this->form_validation->run() == TRUE)
 		{
+			$upload=$this->blog_rentcar->upload();
 			if ($this->input->post('simpan'))
 			{
-				$this->blog_rentcar->insert();
+				$this->blog_rentcar->insert_user($upload);
 				redirect('admin/tampil_user');
 			}
 		}
@@ -180,9 +179,10 @@ class Admin extends CI_Controller {
 
 		if ($this->form_validation->run() == TRUE)
 		{
+			$upload=$this->blog_rentcar->upload();
 			if ($this->input->post('simpan'))
 			{
-				$this->blog_rentcar->insert();
+				$this->blog_rentcar->insert_car($upload);
 				redirect('admin/tampil_car');
 			}
 		}
@@ -214,13 +214,14 @@ class Admin extends CI_Controller {
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'angka %s belum mencapai limit',
 			));		
-		$this->form_validation->set_rules('input_pricep', 'Price', 'required');
+		$this->form_validation->set_rules('input_price', 'Price', 'required');
 		
 		if ($this->form_validation->run() == TRUE)
 		{
+			$upload=$this->blog_rentcar->upload();
 			if ($this->input->post('simpan'))
 			{
-				$this->blog_rentcar->insert();
+				$this->blog_rentcar->insert_driver($upload);
 				redirect('admin/tampil_driver');
 			}
 		}
@@ -256,7 +257,7 @@ class Admin extends CI_Controller {
 		{
 			if ($this->input->post('simpan'))
 			{
-				$this->blog_rentcar->insert();
+				$this->blog_rentcar->insert_order();
 				redirect('admin/tampil_order');
 			}
 		}

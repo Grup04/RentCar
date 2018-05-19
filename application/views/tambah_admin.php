@@ -106,7 +106,6 @@
                                     <div class="alert-warning"><?php echo (isset($message))? : "";?></div>                                  
 
 <?php echo validation_errors(); ?>
-<!-- <?php echo form_open('admin/tambah_admin', array('enctype'=>'multipart/form-data')); ?> -->
 <?php echo form_open_multipart ('admin/tambah_admin', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
     <table border="0px">                    
             <tr>
@@ -118,7 +117,7 @@
             <tr>
                 <td>Password</td>
                 <td>:</td><br>
-                <td><input type="password" class="form-control" name="input_password" value="<?php echo set_value('input_password'); ?>" required><div class="invalid-feedback">masukan password </div></td>
+                <td><input type="password" class="form-control" name="input_password" value="<?php echo set_value('input_password'); ?>" required><div class="invalid-feedback">masukan password</div></td>
             </tr>
             <tr>
                 <td>Email</td>

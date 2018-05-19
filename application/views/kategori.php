@@ -34,7 +34,6 @@
                     <a class="navbar-brand" href="index.html">
                         <b>
                             <img src="../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            
                         </b>
                         <span>
                             <img src="../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
@@ -110,7 +109,7 @@
                             <div class="card-block">
                                 <h4 class="card-title">Car Category Table</h4>
                                 <h6 class="card-subtitle">Add Car Category<code>.table</code></h6>
-                                 <a href=""><button type="button" class="btn btn-primary">Kategori Mobil</button></a>
+                                <a href=""><button type="button" class="btn btn-primary">Kategori Mobil</button></a>
                                 <div class="table-responsive">
                                     <table class="table" id="myTable">
                                         <thead>
@@ -129,7 +128,7 @@
                                                 <td><?php echo $key-> cat_mobil; ?></td>
                                                 <td><?php echo $key-> description; ?></td>
                                                 <td><?php echo $key-> date_created; ?></td>
-                                               <td>
+                                                <td>
                                                     <a href="category/ubah/<?=$key->id_cat?>"><button type="button" class="btn btn-primary">Update</button></a>
                                                     <a href="category/hapus/<?=$key->id_cat?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
                                                 </td>
@@ -169,7 +168,6 @@
     <script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../assets/admin/js/flot-data.js"></script>
     <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-
 
     <script type="text/javascript" src="<?php echo base_url()?> assets/dt/datatables.min.js"></script>
     <script type="text/javascript">

@@ -124,7 +124,6 @@
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
-                                        
                                         <tbody>
                                             <?php foreach ($tampil as $key): ?>
                                             <tr>

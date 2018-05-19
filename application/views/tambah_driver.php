@@ -107,7 +107,7 @@
                                     <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
 <!-- <?php //echo form_open('admin/tambah_driver', array('enctype'=>'multipart/form-data')); ?> -->
 <?php echo validation_errors(); ?>
-<?php echo form_open_multipart ('admin/tambah_car', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+<?php echo form_open_multipart ('admin/tambah_driver', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
 
     <table border="0px">
              <tr>
@@ -154,7 +154,7 @@
                 <td>Price/Day</td>
                 <td>:</td><br>
                 <td><input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price'); ?>"required>
-                <div class="invalid-feedback">isi username </div></td>
+                <div class="invalid-feedback">isi harga</div></td>
             </tr>
             <tr>
                 <td>Foto</td>

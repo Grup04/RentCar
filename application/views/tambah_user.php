@@ -114,8 +114,8 @@
                                 <div class="table-responsive">
                                     <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
 <!-- <?php //echo form_open('admin/tambah_user', array('enctype'=>'multipart/form-data')); ?> -->
-    <?php echo validation_errors(); ?>
-<?php echo form_open_multipart ('admin/tambah_admin', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+<?php echo validation_errors(); ?>
+<?php echo form_open_multipart ('admin/tambah_user', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
     <table border="0px">
             <tr>
                 <td>Username</td>
@@ -127,31 +127,31 @@
                 <td>Alamat</td>
                 <td>:</td>
                 <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat'); ?>"required>
-                <div class="invalid-feedback">isi username </div></td>
+                <div class="invalid-feedback">isi alamat </div></td>
             </tr>
             <tr>
                 <td>No_Telp</td>
                 <td>:</td>
                 <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp'); ?>"required>
-                <div class="invalid-feedback">isi username </div></td>
+                <div class="invalid-feedback">isi notelp </div></td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>:</td>
                 <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email'); ?>"required>
-                <div class="invalid-feedback">isi username </div></td>
+                <div class="invalid-feedback">isi email </div></td>
             </tr>
             <tr>
                 <td>Birth</td>
                 <td>:</td>
                 <td><input type="text" class="form-control" name="input_birth" value="<?php echo set_value('input_birth'); ?>"required>
-                <div class="invalid-feedback">isi username </div></td>
+                <div class="invalid-feedback">isi birthday </div></td>
             </tr>
             <tr>
                 <td>Password</td>
                 <td>:</td><br>
                 <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password'); ?>"required>
-                <div class="invalid-feedback">isi username </div></td>
+                <div class="invalid-feedback">isi password </div></td>
             </tr>
             <tr>
                 <td>Image</td>

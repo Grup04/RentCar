@@ -1,59 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php 
+    $this->load->view('template/header2');
+ ?>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/admin/images/favicon.png">
-    <title>RentCar Admin</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="../assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="../assets/admin/css/style.css" rel="stylesheet">
-    <!-- You can change the theme colors from here -->
-    <link href="../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
-</head>
-
-<body class="fix-header fix-sidebar card-no-border">
-    <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-        </div>
-
-        <div id="main-wrapper">
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <b>
-                            <img src="../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
-                        </b>
-                        <span>
-                            <img src="../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
-                        </span>
-                    </a>
-                </div>
-                    <ul class="navbar-nav mr-auto mt-md-0 ">
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> 
-                        </li>
-                        <li class="nav-item hidden-sm-down">
-                            <form class="app-search p-l-20">
-                                <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
-                            </form>
-                        </li>
-                    </ul>
-            </nav>
-        </header>
+ <title>Data Admin</title>
 
         <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li>
@@ -79,9 +31,7 @@
                         </li>
                     </ul>
                 </nav>
-                <!-- End Sidebar navigation -->
             </div>
-            <!-- End Sidebar scroll-->
         </aside>
 
         <div class="page-wrapper">
@@ -103,8 +53,7 @@
                                 <h4 class="card-title">Admin Table</h4>
                                 <h6 class="card-subtitle">Add Admin<code>.table</code></h6>
                                 <div class="table-responsive">
-                                    <div class="alert-warning"><?php echo (isset($message))? : "";?></div>                                  
-
+                                <div class="alert-warning"><?php echo (isset($message))? : "";?></div>                                  
 <?php echo validation_errors(); ?>
 <?php echo form_open_multipart ('admin/tambah_admin', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
     <table border="0px">                    
@@ -151,41 +100,7 @@
             </div>
         </div>
     </div>
-        © 2018 RentCar by Group4
-    </footer>
-</div>
-</div>
 
- <script src="../assets/admin/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/admin/plugins/bootstrap/js/tether.min.js"></script>
-    <script src="../assets/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="../assets/admin/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="../assets/admin/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="../assets/admin/js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="../assets/admin/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="../assets/admin/js/custom.min.js"></script>
-    <!-- Flot Charts JavaScript -->
-    <script src="../assets/admin/plugins/flot/jquery.flot.js"></script>
-    <script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="../assets/admin/js/flot-data.js"></script>
-    <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-    <!-- js2 dan css2 buat validation boostrap -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css2/custom.css">
-
-    <script src="<?php echo base_url() ?>assets/js2/jquery-1.9.1.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/js2/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="<?php echo base_url() ?>assets/js2/holder.min.js"></script>
-
-    <!-- Custom -->
-    <script src="<?php echo base_url() ?>assets/js2/custom.js"></script>
-</body>
-</html>
+<?php 
+    $this->load->view('template/footer2');
+?>

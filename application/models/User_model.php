@@ -44,7 +44,7 @@ class User_model extends CI_Model {
            return false;
        }
    }
-
+   
     public function insert_user_level($id_user)
     {
       $data = array(

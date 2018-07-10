@@ -46,7 +46,7 @@ class User extends CI_Controller
                 $this->session->set_flashdata('user_registered', 'Anda telah teregistrasi.');
                 // redirect('home/blog');
             }
-                redirect('rentcar/home');
+                redirect('home');
         }
     }
 
@@ -60,7 +60,7 @@ class User extends CI_Controller
 
         if($this->form_validation->run() === FALSE)
         {
-            $this->load->view('templates/header');
+            // $this->load->view('templates/header');
             $this->load->view('login', $data);
         } 
         else 
@@ -95,7 +95,7 @@ class User extends CI_Controller
 			        // Set message
 			        $this->session->set_flashdata('login_failed', 'Login is invalid');
 
-			        redirect('user/login');
+			        redirect('login');
 			    }       
 		}
 	}

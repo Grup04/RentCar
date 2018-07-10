@@ -79,9 +79,9 @@ class Home extends CI_Controller {
 	}
 	
 
-	public function home_login() //LOGIN USER
-	{
-		$this->load->view('home_login2');
-	}
+	// public function home_login() //LOGIN USER
+	// {
+	// 	$this->load->view('home_login2');
+	// }
 
 }

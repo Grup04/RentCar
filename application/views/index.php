@@ -34,7 +34,8 @@
           <li><a href="#section-about_car">About Cars</a></li>
           <li><a href="#section-order">Get Order</a></li>
           <li><a href="#section-contact">Contact</a></li>
-          <li><a href="#section-works">Login</a></li>
+          <li><a href=user/register>Register</a></li>
+          <li><a href=login>Login</a></li>
         </ul>
       </div>
     </div>

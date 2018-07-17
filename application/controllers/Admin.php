@@ -3,36 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
-
-	var $data;
-
-	public function __construct()
- 	{
- 		parent::__construct();
- 		// Do your magic here
- 		$this->load->library('session');
- 		// $this->load->model('m_global');
-		if($this->session->userdata('logged_in')){
-			$sess_data = $this->session->userdata('logged_in');
-			$this->data = array(
-				'username' => $sess_data['username'],
-				'id' => $sess_data['id'],
-
-			);
-			// $this->$data['nama'] = $sess_data['nama'];
-			// $this->$data['id'] = $sess_data['id_user'];
-		}else{
-			// redirect('login','refresh');
-			
-		}
- 	}
-
 // READ
 	public function index()
 	{
 		$this->load->model('blog_rentcar');
 		$data['categories'] = $this->blog_rentcar->get_all_categories();
-		// $this->load->view('cat_create', $data);
 		$this->load->view('dashboard');
 	}
 
@@ -152,8 +127,6 @@ class Admin extends CI_Controller {
 		{
 			$this->load->view('tambah_user', $data);
 		}
-
-		
 	}
 
 	public function tambah_car()
@@ -239,20 +212,6 @@ class Admin extends CI_Controller {
 
 		$this->load->model('blog_rentcar');
 		$data = array();
-
-		// $this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[login.username]',
-		// array(
-		// 		'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
-		// 		'is_unique' 	=> 'Judul ' .$this->input->post('input_username'). ' sudah ada!'
-		// 	));
-		// $this->form_validation->set_rules('input_password', 'Password', 'required');
-		// $this->form_validation->set_rules('input_email', 'Email', 'required');
-		// $this->form_validation->set_rules('input_no_telp', 'Contact', 'required|numeric|min_length[12]',
-		// 	array(
-		// 		'required' 		=> 'Isi %s, tidak boleh kosong',
-		// 		'min_length' 	=> 'angka %s belum mencapai limit',
-		// 	));
-		// $this->form_validation->set_rules('input_alamat', 'Alamat', 'required');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -356,37 +315,39 @@ class Admin extends CI_Controller {
 
 	    if($this->input->post('simpan'))
 		    {
-		    	$upload=$this->blog_rentcar->upload();
-		    	$this->blog_rentcar->update_user($upload, $id);
+		    	$this->blog_rentcar->update($id);
 		        redirect('admin/tampil_user');
 		    } 
-		    $data['tampil'] = $this->blog_rentcar->view_by_user($id);
+		    $data['tampil'] = $this->blog_rentcar->view_by($id);
 
 	    $this->load->helper('form');
 	    $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[user.username]',
+		$this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[login.username]',
 		array(
 				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
-				'is_unique' 	=> 'Username ' .$this->input->post('input_username'). ' sudah ada!'
+				'is_unique' 	=> 'Username ' .$this->input->post('input_judul'). ' sudah ada!'
 			));
-		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required|max_length[50]',
+		$this->form_validation->set_rules('input_password', 'Password', 'required|max_length[50]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'text %s belum mencapai limit',
 			));
+		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('input_no_telp', 'No HP', 'required|numeric|min_length[12]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'angka %s belum mencapai limit',
 			));
-		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
-		$this->form_validation->set_rules('input_birth', 'Birth', 'required');
-		$this->form_validation->set_rules('input_password', 'Password', 'required');
+		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required');
 
 		if ($this->form_validation->run() == TRUE)
 		{
-			echo "SUKSES";
+			if ($this->input->post('simpan'))
+			{
+				$this->blog_rentcar->update();
+				redirect('admin/tampil_user');
+			}
 		}
 		else
 		{

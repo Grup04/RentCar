@@ -29,7 +29,7 @@
                             <a href="tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
                         </li>
                         <li>
-                            <a href="<?=site_url('login/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
+                            <a href="<?=site_url('user/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
                         </li>
                     </ul>
                 </nav>
@@ -66,34 +66,54 @@
 
     <table border="0px">
             <tr>
-                <td class="control-label">Username</td>
+                <td class="control-label">Nama</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>"></td>
-                <div class="invalid-feedback">isi username</div></td>
+                <td>
+                <input type="text" class="form-control" name="nama" value="<?php echo set_value('nama', $tampil->nama); ?>"></td>
+                <div class="invalid-feedback">Isi Nama</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="control-label">Gender</td>
+                <td>:</td><br>
+                <td>
+                <input type="text" class="form-control" name="gender" value="<?php echo set_value('gender', $tampil->gender); ?>" required></td>
+                <div class="invalid-feedback">Isi Gender</div></td>
+            </tr>
+            <tr>
+                <td class="control-label">Kode Pos</td>
+                <td>:</td>
+                <td>
+                <input type="text" class="form-control" name="kodepos" value="<?php echo set_value('kodepos', $tampil->kodepos); ?>" required></td>
+                <div class="invalid-feedback">Isi Kode Pos</div></td>
+            </tr>
+            <tr>
+                <td class="control-label">Email</td>
+                <td>:</td><br>
+                <td>
+                <input type="text" class="form-control" name="email" value="<?php echo set_value('email', $tampil->email); ?>" required></td>
+                <div class="invalid-feedback">Isi Email</div></td>
+            </tr>
+            <tr>
+                <td class="control-label">No Telpon</td>
+                <td>:</td><br>
+                <td>
+                <input type="text" class="form-control" name="no_telp" value="<?php echo set_value('no_telp', $tampil->no_telp); ?>" required></td>
+                <div class="invalid-feedback">Isi No Telpon</div></td>
+            </tr>
+            <tr>
+                <td class="control-label">Username</td>
+                <td>:</td><br>
+                <td>
+                <input type="text" class="form-control" name="username" value="<?php echo set_value('username', $tampil->username); ?>" required></td>
+                <div class="invalid-feedback">Isi Username</div></td>
             </tr>
             <tr>
                 <td class="control-label">Password</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password', $tampil->password); ?>" required></td>
-                <div class="invalid-feedback">isi Password</div></td>
-            </tr>
-            <tr>
-                <td class="control-label">Email</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>" required></td>
-                <div class="invalid-feedback">isi Email</div></td>
-            </tr>
-            <tr>
-                <td class="control-label">No Telfon</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>" required></td>
-                <div class="invalid-feedback">isi nomer telfon</div></td>
-            </tr>
-            <tr>
-                <td class="control-label">Alamat</td>
-                <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>" required></td>
-                <div class="invalid-feedback">isi username</div></td>
+                <td>
+                <input type="text" class="form-control" name="password" value="<?php echo set_value('password', $tampil->password); ?>" required></td>
+                <div class="invalid-feedback">Isi Password</div></td>
             </tr>
             <td colspan="3" align="center">
                 <input type="submit" name="simpan" value="Update">

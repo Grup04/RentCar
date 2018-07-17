@@ -63,45 +63,55 @@
 <?php echo form_open_multipart ('admin/tambah_user', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
     <table border="0px">
             <tr>
-                <td>Username</td>
+                <td>Nama</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username'); ?>"required>
-                <div class="invalid-feedback">isi username </div></td>
+                <td><input type="text" class="form-control" name="nama" value="<?php echo set_value('nama'); ?>" required>
+                <div class="invalid-feedback">Isi Nama</div></td>
             </tr>
             <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat'); ?>"required>
-                <div class="invalid-feedback">isi alamat </div></td>
+                <td>Gender</td>
+                <td>:</td><br>
+                <td>
+                    <select name="input_gender" style="width: 200px;">
+                        <option value="Laki-Laki">Laki-Laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-                <td>No_Telp</td>
+                <td>Kode Pos</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp'); ?>"required>
-                <div class="invalid-feedback">isi notelp </div></td>
+                <td><input type="text" class="form-control" name="kodepos" value="<?php echo set_value('kodepos'); ?>"required><div class="invalid-feedback">Isi Kode Pos </div></td>
             </tr>
             <tr>
                 <td>Email</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email'); ?>"required>
-                <div class="invalid-feedback">isi email </div></td>
+                <td>:</td><br>
+                <td><input type="number" class="form-control" name="email" value="<?php echo set_value('email'); ?>"required><div class="invalid-feedback">Isi Email</div></td>
             </tr>
             <tr>
-                <td>Birth</td>
-                <td>:</td>
-                <td><input type="text" class="form-control" name="input_birth" value="<?php echo set_value('input_birth'); ?>"required>
-                <div class="invalid-feedback">isi birthday </div></td>
+                <td>No Telpon</td>
+                <td>:</td><br>
+                <td><input type="text" class="form-control" name="no_telp" value="<?php echo set_value('no_telp'); ?>"required><div class="invalid-feedback">Isi NomerTelpon</div></td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td>:</td><br>
+                <td><input type="text" class="form-control" name="iusername" value="<?php echo set_value('username'); ?>"required><div class="invalid-feedback">Isi Username</div></td>
             </tr>
             <tr>
                 <td>Password</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="input_password" value="<?php echo set_value('input_password'); ?>"required>
-                <div class="invalid-feedback">isi password </div></td>
+                <td><input type="text" class="form-control" name="password" value="<?php echo set_value('password'); ?>"required><div class="invalid-feedback">iIsi Password</div></td>
             </tr>
             <tr>
-                <td>Image</td>
-                <td>:</td>
-                <td><input type="file" name="input_gambar"></td>
+                <td>Register Date</td>
+                <td>:</td><br>
+                <td><input type="text" class="form-control" name="register_date" value="<?php echo set_value('register_date'); ?>"required><div class="invalid-feedback">Isi Register</div></td>
+            </tr>
+            <tr>
+                <td>Level ID</td>
+                <td>:</td><br>
+                <td><input type="text" class="form-control" name="level_id" value="<?php echo set_value('level_id'); ?>"required><div class="invalid-feedback">Isi Level ID</div></td>
             </tr>
             <td colspan="3" align="center">
                 <input type="submit" name="simpan" value="Add" id="submitBtn">

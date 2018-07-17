@@ -61,31 +61,35 @@
                                     <table class="table" id="myTable">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th>User ID</th>
+                                                <th>Nama</th>
+                                                <th>Gender</th>
+                                                <th>Kode Pos</th>
+                                                <th>Email</th>
+                                                <th>No Telpon</th>
                                                 <th>Username</th>
-                                                <th>alamat</th>
-                                                <th>no_telp</th>
-                                                <th>email</th>
-                                                <th>birth</th>
                                                 <th>Password</th>
-                                                <th>img</th>
+                                                <th>Register</th>
+                                                <th>Level ID</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($tampil_user as $key): ?>
-                                            <tr>
-                                                <td><?php echo $key-> id_user; ?></td>
-                                                <td><?php echo $key-> username; ?></td>
-                                                <td><?php echo $key-> alamat; ?></td>
-                                                <td><?php echo $key-> no_telp; ?></td>
-                                                <td><?php echo $key-> email; ?></td>
-                                                 <td><?php echo $key-> birth; ?></td>
-                                                <td><?php echo $key-> password; ?></td>
-                                                <td><img src="../assets/picture/<?php echo $key->img;?>" width="50px" height="50px"></td>
-                                                <td>
-                                                    <a href="../admin/ubah_user/<?=$key->id_user?>"><button type="button" class="btn btn-primary">Update</button></a>
-                                                    <a href="../admin/hapus_user/<?=$key->id_user?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
+                                            <?php foreach ($tampil_user as $key): ?>
+                                                <tr>
+                                                    <td><?php echo $key-> user_id; ?></td>
+                                                    <td><?php echo $key-> nama; ?></td>
+                                                    <td><?php echo $key-> gender; ?></td>
+                                                    <td><?php echo $key-> kodepos; ?></td>
+                                                    <td><?php echo $key-> email; ?></td>
+                                                    <td><?php echo $key-> no_telp; ?></td>
+                                                    <td><?php echo $key-> username; ?></td>
+                                                    <td><?php echo $key-> password; ?></td>
+                                                    <td><?php echo $key-> register_date; ?></td>
+                                                    <td><?php echo $key-> level_id; ?></td>
+                                                    <td>
+                                                    <a href="../admin/ubah_user/<?=$key->user_id?>"><button type="button" class="btn btn-primary">Update</button></a>
+                                                    <a href="../admin/hapus_user/<?=$key->user_id?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
                                                 </td>
                                             </tr>
                                     <?php endforeach ?>

@@ -28,13 +28,15 @@ class Blog_rentcar extends CI_Model {
 	public function tampil()
 	{
 		$this->db->select('*');
-		$query = $this->db->get('login');
+		$this->db->where('level_id', 1);
+		$query = $this->db->get('users');
 		return $query->result();
 	}
 	public function tampil_user()
 	{
 		$this->db->select('*');
-		$query = $this->db->get('user');
+		$this->db->where('level_id !=', 1);
+		$query = $this->db->get('users');
 		return $query->result();
 	}
 	public function tampil_car()
@@ -87,32 +89,37 @@ class Blog_rentcar extends CI_Model {
 	public function insert() //ADMIN
 	{
 		$data = array(
-			'id' => '',
-			'username' => $this->input->post('input_username'),
-			'password' => $this->input->post('input_password'),
-			'email' => $this->input->post('input_email'),
-			'no_telp' => $this->input->post('input_no_telp'),
-			'alamat' => $this->input->post('input_alamat'),
-			'level' => '1'
+			'user_id' => '',
+			'nama' => $this->input->post('nama'),
+			'gender' => $this->input->post('gender'),
+			'kodepos' => $this->input->post('kodepos'),
+			'email' => $this->input->post('email'),
+			'no_telp' => $this->input->post('no_telp'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+			'register_date' => date('Y-m-d'),
+			'level_id' => $this->input->post('level_id')
 		);
 
-		$this->db->insert('login', $data);
+		$this->db->insert('users', $data);
 	}
 
 	public function insert_user($upload) //USER
 	{
 		$data = array(
-			'id_user' => '',
-			'username' => $this->input->post('input_username'),
-			'alamat' => $this->input->post('input_alamat'),
-			'no_telp' => $this->input->post('input_no_telp'),
-			'email' => $this->input->post('input_email'),
-			'birth' => $this->input->post('input_birth'),
-			'password' => $this->input->post('input_password'),
-			'img' => $upload['file']['file_name']
+			'user_id' => '',
+			'nama' => $this->input->post('nama'),
+			'gender' => $this->input->post('gender'),
+			'kodepos' => $this->input->post('kodepos'),
+			'email' => $this->input->post('email'),
+			'no_telp' => $this->input->post('no_telp'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+			'register_date' => date('Y-m-d'),
+			'level_id' => $this->input->post('level_id')
 		);
 
-		$this->db->insert('user', $data);
+		$this->db->insert('users', $data);
 	}
 
 	public function insert_car($upload) //CAR
@@ -209,51 +216,39 @@ class Blog_rentcar extends CI_Model {
 	public function update($id)
 	{
 		$data = array(
-			'username' => $this->input->post('input_username'),
-			'password' => $this->input->post('input_password'),
-			'email' => $this->input->post('input_email'),
-			'no_telp' => $this->input->post('input_no_telp'),
-			'alamat' => $this->input->post('input_alamat')
+			'nama' => $this->input->post('nama'),
+			'gender' => $this->input->post('gender'),
+			'kodepos' => $this->input->post('kodepos'),
+			'email' => $this->input->post('email'),
+			'no_telp' => $this->input->post('no_telp'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password')
 		);
 
-		$this->db->where('id', $id);
-		$this->db->update('login', $data);
+		$this->db->where('user_id', $id);
+		$this->db->update('users', $data);
 	}
 
 	public function view_by($id)
 	{
-		$this->db->where('id', $id);
-		return $this->db->get('login')->row();
+		$this->db->where('user_id', $id);
+		return $this->db->get('users')->row();
 	}
 
 	public function update_user($upload, $id)
 	{
-		if ($upload['result'] == 'success') 
-		{
-			$data = array(
-				'username' => $this->input->post('input_username'),
-				'alamat' => $this->input->post('input_alamat'),
-				'no_telp' => $this->input->post('input_no_telp'),
-				'email' => $this->input->post('input_email'),
-				'birth' => $this->input->post('input_birth'),
-				'password' => $this->input->post('input_password'),
-				'img' => $upload['file']['file_name']
-			);
-		}
-		else
-		{
-			$data = array(
-				'username' => $this->input->post('input_username'),
-				'alamat' => $this->input->post('input_alamat'),
-				'no_telp' => $this->input->post('input_no_telp'),
-				'email' => $this->input->post('input_email'),
-				'birth' => $this->input->post('input_birth'),
-				'password' => $this->input->post('input_password')
-			);
-		}	    
+		$data = array(
+			'nama' => $this->input->post('nama'),
+			'gender' => $this->input->post('gender'),
+			'kodepos' => $this->input->post('kodepos'),
+			'email' => $this->input->post('email'),
+			'no_telp' => $this->input->post('no_telp'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password')
+		);
 
-		$this->db->where('id_user', $id);
-		$this->db->update('user', $data);
+		$this->db->where('user_id', $id);
+		$this->db->update('users', $data);
 	}
 
 	public function view_by_user($id)

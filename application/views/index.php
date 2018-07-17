@@ -35,7 +35,8 @@
           <li><a href="#section-order">Get Order</a></li>
           <li><a href="#section-contact">Contact</a></li>
           <li><a href=user/register>Register</a></li>
-          <li><a href=login>Login</a></li>
+          <li><a href=user/login>Login</a></li>
+          <li><a href=user/logout>Logout</a></li>
         </ul>
       </div>
     </div>

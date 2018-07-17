@@ -24,7 +24,7 @@
                             <a href="admin/tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
                         </li>
                         <li>
-                            <a href="<?=site_url('login/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
+                            <a href="<?=site_url('user/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
                         </li>
                     </ul>
                 </nav>

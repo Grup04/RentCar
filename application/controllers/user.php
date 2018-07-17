@@ -6,7 +6,6 @@ class User extends CI_Controller
         parent::__construct();
                 
         $this->load->library('form_validation');
-        //$this->load->helper('MY');
         $this->load->model('user_model');
     }
 
@@ -31,11 +30,10 @@ class User extends CI_Controller
                 'min_length'    => 'angka %s belum mencapai limit',
             ));
         $this->form_validation->set_rules('password', 'Password', 'required');
-        // $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]');
 
 		if($this->form_validation->run() === FALSE)
 		{
-            //$this->load->view('templates/header');
+            $this->load->view('template/header_login');
             $this->load->view('register', $data);
         } 
         else 
@@ -44,7 +42,6 @@ class User extends CI_Controller
             {
                 $this->user_model->register();
                 $this->session->set_flashdata('user_registered', 'Anda telah teregistrasi.');
-                // redirect('home/blog');
             }
                 redirect('home');
         }
@@ -88,14 +85,21 @@ class User extends CI_Controller
 			        // Set message
 			        $this->session->set_flashdata('user_loggedin', 'You are now logged in');
 
-			        redirect('rentcar/home');
+                    if($this->session->userdata('level') == 3){
+                        redirect('home');
+                    }
+                    if($this->session->userdata('level') == 2){
+                        redirect('home');
+                    }
+                    if($this->session->userdata('level') == 1){
+                        redirect('admin');
+                    }
 			    } 
 			    else 
 			    {
 			        // Set message
 			        $this->session->set_flashdata('login_failed', 'Login is invalid');
-
-			        redirect('login');
+			        redirect('user/login');
 			    }       
 		}
 	}
@@ -106,10 +110,10 @@ class User extends CI_Controller
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('username');
+        $this->session->unset_userdata('level');
 
         // Set message
         $this->session->set_flashdata('user_loggedout', 'Youre Logout, Thank You! :) ');
-
         redirect('user/login');
     }
 }

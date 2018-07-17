@@ -1,53 +1,65 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>RentCar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-  Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <link href="assets/login/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-  <!-- Custom Theme files -->
-  <link href="assets/login/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-  <!--js-->
-  <script src="assets/login/js/jquery-2.1.1.min.js"></script> 
-  <!--icons-css-->
-  <link href="assets/login/css/font-awesome.css" rel="stylesheet"> 
-  <!--Google Fonts-->
-  <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
-  <!--static chart-->
+    <title>Favorite Artikel</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/admin/images/favicon.png">
+    <link href="../assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/admin/css/style.css" rel="stylesheet">
+    <link href="../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
+    <style>
+        .p {
+            margin-left: 500px;
+        }
+    </style>
 </head>
-<body>  
-  <div class="login-page">
-    <div class="login-main">    
-     <div class="login-head">
-      <h1>Login</h1>
+<body>
+
+<?php echo validation_errors(); ?>
+<?php echo form_open_multipart('user/login', array('class' => 'needs-validation', 'novalidate' => '')); ?>
+<!-- <?php echo form_open('user/login'); ?> -->
+
+<br>
+<center>
+    <div class="row p">
+        <div class="col-md-4 col-md-offset-4">
+            <!-- <h1 class="text-center"><?php echo $page_title; ?></h1> -->
+            <p>^^ FORM LOGIN ^^</p>
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Input Username" required autofocus> 
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Input Password" required> 
+            </div>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </div>
+            <br>
+            <p>
+            Create New Account!
+            <a href="register">New Account</a>
+        </p>
     </div>
-    <div class="login-block">
-      <form action="<?=site_url('login/DoLogin');?>" method="POST" role="form">
-        <input type="text" name="username" placeholder="Username" required="">
-        <input type="password" name="password" class="lock" placeholder="Password">
-        <div class="forgot-top-grids">
-          <div class="forgot-grid">
-            <ul>
-              
-            </ul>
-          </div>
-          <div class="clearfix"> </div>
-        </div>
-        <input type="submit" name="login" value="Login">  
-      </form>
-    </div>
-  </div>
-</div>
-<div class="copyrights">
- <p>© 2016 Shoppy. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">Ajeng M Kartini</a> </p>
-</div>  
-<script src="assets/login/js/jquery.nicescroll.js"></script>
-<script src="assets/login/js/scripts.js"></script>
-<script src="assets/login/js/bootstrap.js"></script>
+</center>
+<?php echo form_close(); ?>
+
+<script src="../assets/admin/plugins/jquery/jquery.min.js"></script>
+<script src="../assets/admin/plugins/bootstrap/js/tether.min.js"></script>
+<script src="../assets/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/admin/js/jquery.slimscroll.js"></script>
+<script src="../assets/admin/js/waves.js"></script>
+<script src="../assets/admin/js/sidebarmenu.js"></script>
+<script src="../assets/admin/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+<script src="../assets/admin/js/custom.min.js"></script>
+<script src="../assets/admin/plugins/flot/jquery.flot.js"></script>
+<script src="../assets/admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="../assets/admin/js/flot-data.js"></script>
+<script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
 </html>

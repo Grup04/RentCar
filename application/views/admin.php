@@ -27,7 +27,7 @@
                             <a href="tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
                         </li>
                         <li>
-                            <a href="<?=site_url('login/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
+                            <a href="<?=site_url('user/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
                         </li>
                     </ul>
                 </nav>
@@ -57,27 +57,35 @@
                                     <table class="table" id="myTable">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th>User ID</th>
+                                                <th>Nama</th>
+                                                <th>Gender</th>
+                                                <th>Kode Pos</th>
+                                                <th>Email</th>
+                                                <th>No Telpon</th>
                                                 <th>Username</th>
                                                 <th>Password</th>
-                                                <th>Email</th>
-                                                <th>No Telfon</th>
-                                                <th>Alamat</th>
+                                                <th>Register</th>
+                                                <th>Level ID</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($tampil as $key): ?>
                                                 <tr>
-                                                    <td><?php echo $key-> id; ?></td>
-                                                    <td><?php echo $key-> username; ?></td>
-                                                    <td><?php echo $key-> password; ?></td>
+                                                    <td><?php echo $key-> user_id; ?></td>
+                                                    <td><?php echo $key-> nama; ?></td>
+                                                    <td><?php echo $key-> gender; ?></td>
+                                                    <td><?php echo $key-> kodepos; ?></td>
                                                     <td><?php echo $key-> email; ?></td>
                                                     <td><?php echo $key-> no_telp; ?></td>
-                                                    <td><?php echo $key-> alamat; ?></td>
+                                                    <td><?php echo $key-> username; ?></td>
+                                                    <td><?php echo $key-> password; ?></td>
+                                                    <td><?php echo $key-> register_date; ?></td>
+                                                    <td><?php echo $key-> level_id; ?></td>
                                                     <td>
-                                                        <a href="../admin/ubah/<?=$key->id?>"><button type="button" class="btn btn-primary">Update</button></a>
-                                                        <a href="../admin/hapus/<?=$key->id?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
+                                                        <a href="../admin/ubah/<?=$key->user_id?>"><button type="button" class="btn btn-primary">Update</button></a>
+                                                        <a href="../admin/hapus/<?=$key->user_id?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>

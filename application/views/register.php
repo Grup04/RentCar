@@ -74,6 +74,11 @@
        <td><input type="password" class="form-control" name="password" placeholder="Password"></td>
    </div>
 </tr> 
+ <tr>
+    <td>Image</td>
+    <td>:</td>
+    <td><input type="file" name="input_gambar"></td>
+</tr>
 <tr>
   <td><label for="">Pilih Paket Membership</label></td>
   <td>:</td>

@@ -1,4 +1,6 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 class User extends CI_Controller 
 {
     public function __construct()
@@ -62,46 +64,36 @@ class User extends CI_Controller
         } 
         else 
         {
-        	// Get username
-		    $username = $this->input->post('username');
-		    // Get & encrypt password
-		    $password = md5($this->input->post('password'));
-		    // Login user
-		    $user_id = $this->user_model->login($username, $password);
-			    if($user_id)
-			    {
-			        // Buat session
-                    $level = $this->user_model->get_user($user_id);
-			        $user_data = array
-			        (
-			            'user_id' => $user_id,
-			            'username' => $username,
-			            'logged_in' => true,
-                        'level' => $level[0]->level_id
-			        );
+		$this->load->library('session');
+        $username = $this->input->post('username');
+        $password = md5($this->input->post('password'));
 
-			        $this->session->set_userdata($user_data);
+        $login = $this->user_model->login($username,$password);
 
-			        // Set message
-			        $this->session->set_flashdata('user_loggedin', 'You are now logged in');
-
-                    if($this->session->userdata('level') == 3){
-                        redirect('home');
+        if ($login->num_rows() == 1) {
+            foreach ($login->result() as $sess) {
+                $sess_data['logged_in4'] = 'LogIn';
+                $sess_data['user_id'] = $sess->user_id;
+                $sess_data['username'] = $sess->username;
+                $sess_data['nama'] = $sess->nama;
+                $sess_data['level_id'] = $sess->level_id;
+            }
+            $this->session->set_userdata('logged_in4',$sess_data);
+            if($sess_data['level_id'] == 3){
+                        redirect('home_3','refresh');
                     }
-                    if($this->session->userdata('level') == 2){
-                        redirect('home');
+                    if($sess_data['level_id'] == 2){
+                        redirect('home_2','refresh');
                     }
-                    if($this->session->userdata('level') == 1){
-                        redirect('admin');
+                    if($sess_data['level_id'] == 1){
+                        redirect('admin','refresh');
                     }
-			    } 
-			    else 
-			    {
-			        // Set message
-			        $this->session->set_flashdata('login_failed', 'Login is invalid');
-			        redirect('user/login');
-			    }       
-		}
+        }
+        else{
+            $this->form_validation->set_message("Login Gagal Username dan Password tidak valid");
+            redirect(site_url('user/login'),'refresh');
+        }
+    }
 	}
 // Log user out
     public function logout()
@@ -114,6 +106,6 @@ class User extends CI_Controller
 
         // Set message
         $this->session->set_flashdata('user_loggedout', 'Youre Logout, Thank You! :) ');
-        redirect('user/login');
+        redirect('home');
     }
 }

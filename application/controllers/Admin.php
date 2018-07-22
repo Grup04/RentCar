@@ -10,7 +10,24 @@ class Admin extends CI_Controller {
 		$data['categories'] = $this->blog_rentcar->get_all_categories();
 		$this->load->view('dashboard');
 	}
-
+	public function antar($id_order)
+	{
+		$this->load->model('blog_rentcar');
+		$data = array(
+						'status' => "Antar"
+					);
+		$this->blog_rentcar->edit($id_order,'order',$data,'id_order');
+		redirect('admin/tampil_order','refresh');
+	}
+	public function selesai($id_order)
+	{
+		$this->load->model('blog_rentcar');
+		$data = array(
+						'status' => "Selesai"
+					);
+		$this->blog_rentcar->edit($id_order,'order',$data,'id_order');
+		redirect('admin/tampil_order','refresh');
+	}
 	public function artikel($id)
 	{
 		$data['page_title'] = $this->blog_model->get_category_by_id($id)->cat_mobil;
@@ -79,9 +96,10 @@ class Admin extends CI_Controller {
 
 		if ($this->form_validation->run() == TRUE)
 		{
+			$upload=$this->blog_rentcar->upload();
 			if ($this->input->post('simpan'))
 			{
-				$this->blog_rentcar->insert();
+				$this->blog_rentcar->insert($upload);
 				redirect('admin/tampil_admin');
 			}
 		}
@@ -266,7 +284,8 @@ class Admin extends CI_Controller {
 
 	    if($this->input->post('simpan'))
 		    {
-		    	$this->blog_rentcar->update($id);
+		    	$upload=$this->blog_rentcar->upload();
+		    	$this->blog_rentcar->update($upload, $id);
 		        redirect('admin/tampil_admin');
 		    } 
 		    $data['tampil'] = $this->blog_rentcar->view_by($id);
@@ -315,7 +334,8 @@ class Admin extends CI_Controller {
 
 	    if($this->input->post('simpan'))
 		    {
-		    	$this->blog_rentcar->update($id);
+		    	$upload=$this->blog_rentcar->upload();
+		    	$this->blog_rentcar->update($upload, $id);
 		        redirect('admin/tampil_user');
 		    } 
 		    $data['tampil'] = $this->blog_rentcar->view_by($id);

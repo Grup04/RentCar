@@ -115,6 +115,11 @@
                 <input type="text" class="form-control" name="password" value="<?php echo set_value('password', $tampil->password); ?>" required></td>
                 <div class="invalid-feedback">Isi Password</div></td>
             </tr>
+            <tr>
+                <td>Image</td>
+                <td>:</td>
+                <td><input type="file" name="input_gambar"></td>
+            </tr>
             <td colspan="3" align="center">
                 <input type="submit" name="simpan" value="Add">
                 <input type="reset" name="reset" value="Cancel">

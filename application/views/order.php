@@ -57,29 +57,38 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID Order</th>
-                                                    <th>Username</th>
-                                                    <th>Jenis Mobil</th>
+                                                    <!-- <th>Username</th>
+                                                    <th>Jenis Mobil</th> -->
                                                     <th>Merk</th>
                                                     <th>Day</th>
                                                     <th>Price</th>
                                                     <th>Date Order</th>
+                                                    <th>Status</th>
                                                     <th>Aksi</th>
+
                                                 </tr>
                                             </thead>
                                                 <tbody>
                                             <?php foreach ($tampil_order as $key): ?>
                                                     <tr>
                                                         <td><?php echo $key-> id_order; ?></td>
-                                                        <td><?php echo $key-> username; ?></td>
-                                                        <td><?php echo $key-> jenis_mobil; ?></td>
+                                                        <!-- <td><?php echo $key-> username; ?></td> -->
+                                                        <!-- <td><?php echo $key-> jenis_mobil; ?></td> -->
                                                         <td><?php echo $key-> merk; ?></td>
                                                         <td><?php echo $key-> day; ?></td>
                                                         <td><?php echo $key-> price; ?></td>
                                                         <td><?php echo $key-> date_order; ?></td>
+                                                        <td><?php echo $key-> status; ?></td>
                                                         <td>
-                                                            <a href="../admin/ubah_order/<?=$key->id_order?>"><button type="button" class="btn btn-primary">Update</button></a>
-                                                            <a href="../admin/hapus_order/<?=$key->id_order?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
+                                                            <?php if ($key->status == "Terbayar") {?>
+                                                              <a href="<?php echo site_url('admin/antar/'.$key->id_order);?>"><button type="button" class="btn btn-success">Antar</button></a>
+                                                           <?php } else if ($key->status == "Antar") {?>
+                                                              <a href="<?php echo site_url('admin/selesai/'.$key->id_order);?>"><button type="button" class="btn btn-success">Selesai</button></a>
+                                                           <?php } else if ($key->status == "Selesai") {?>
+                                                                -
+                                                           <?php } ?>
                                                         </td>
+                                                        
                                                     </tr>
                                             <?php endforeach ?>
                                                 </tbody>

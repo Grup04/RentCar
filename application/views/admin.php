@@ -67,6 +67,7 @@
                                                 <th>Password</th>
                                                 <th>Register</th>
                                                 <th>Level ID</th>
+                                                <th>Gambar</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -83,6 +84,7 @@
                                                     <td><?php echo $key-> password; ?></td>
                                                     <td><?php echo $key-> register_date; ?></td>
                                                     <td><?php echo $key-> level_id; ?></td>
+                                                    <td><img src="../assets/picture/<?php echo $key->img;?>" width="50px" height="50px"></td>
                                                     <td>
                                                         <a href="../admin/ubah/<?=$key->user_id?>"><button type="button" class="btn btn-primary">Update</button></a>
                                                         <a href="../admin/hapus/<?=$key->user_id?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>

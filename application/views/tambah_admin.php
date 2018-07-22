@@ -67,7 +67,7 @@
                 <td>Gender</td>
                 <td>:</td><br>
                 <td>
-                    <select name="input_gender" style="width: 200px;">
+                    <select name="gender" style="width: 200px;">
                         <option value="Laki-Laki">Laki-Laki</option>
                         <option value="Perempuan">Perempuan</option>
                     </select>
@@ -80,8 +80,8 @@
             </tr>
             <tr>
                 <td>Email</td>
-                <td>:</td><br>
-                <td><input type="number" class="form-control" name="email" value="<?php echo set_value('email'); ?>"required><div class="invalid-feedback">Isi Email</div></td>
+                <td>:</td>
+                <td><input type="text" class="form-control" name="email" value="<?php echo set_value('email'); ?>"required><div class="invalid-feedback">Isi Email</div></td>
             </tr>
             <tr>
                 <td>No Telpon</td>
@@ -91,12 +91,12 @@
             <tr>
                 <td>Username</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="iusername" value="<?php echo set_value('username'); ?>"required><div class="invalid-feedback">Isi Username</div></td>
+                <td><input type="text" class="form-control" name="username" value="<?php echo set_value('username'); ?>"required><div class="invalid-feedback">Isi Username</div></td>
             </tr>
             <tr>
                 <td>Password</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="password" value="<?php echo set_value('password'); ?>"required><div class="invalid-feedback">iIsi Password</div></td>
+                <td><input type="text" class="form-control" name="password" value="<?php echo set_value('password'); ?>"required><div class="invalid-feedback">Isi Password</div></td>
             </tr>
             <tr>
                 <td>Register Date</td>
@@ -107,6 +107,11 @@
                 <td>Level ID</td>
                 <td>:</td><br>
                 <td><input type="text" class="form-control" name="level_id" value="<?php echo set_value('level_id'); ?>"required><div class="invalid-feedback">Isi Level ID</div></td>
+            </tr>
+             <tr>
+                <td>Image</td>
+                <td>:</td>
+                <td><input type="file" name="input_gambar"></td>
             </tr>
             <td colspan="3" align="center">
                 <input type="submit" name="simpan" value="Add" id="submitBtn">

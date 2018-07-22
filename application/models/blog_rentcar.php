@@ -18,7 +18,33 @@ class Blog_rentcar extends CI_Model {
     	// Return dalam bentuk object
 		return $query->result();
 	}
-
+	public function tampil_id($id,$tabel,$primary_key){
+		$this->db->where($primary_key, $id);
+		return $this->db->get($tabel)->result();
+	}
+	public function tampilan($tabel,$primary_key){
+		$this->db->from($tabel);
+		$this->db->order_by($primary_key, 'DESC');
+		$query = $this->db->get(); 
+		return $query->result();
+	}	
+	public function tambah($tabel,$data){
+		$this->db->insert($tabel,$data);
+	}
+	public function edit($id,$tabel,$data,$primary_key){
+		$this->db->where($primary_key,$id);
+		$this->db->update($tabel,$data);
+	
+	}
+	public function tampil_order_bayar($id){
+		$query = $this->db->query("	SELECT *, `driver`.username as u FROM `order`,`users`,`car`,`driver`
+									WHERE `order`.id_mobil = `car`.id_mobil
+									AND `order`.user_id = `users`.user_id
+									AND `order`.id_driver = `driver`.id_driver
+									AND `order`.user_id = '$id'
+									order BY `order`.id_order DESC ");
+		return $query->result();
+	}
 	public function get_total() 
 	{
         // Dapatkan jumlah total artikel
@@ -54,8 +80,11 @@ class Blog_rentcar extends CI_Model {
 	}
 	public function tampil_order()
 	{
-		$this->db->select('*');
-		$query = $this->db->get('order');
+		$query = $this->db->query("	SELECT *, `driver`.username as u FROM `order`,`users`,`car`,`driver`
+									WHERE `order`.id_mobil = `car`.id_mobil
+									AND `order`.user_id = `users`.user_id
+									AND `order`.id_driver = `driver`.id_driver
+									order BY `order`.id_order DESC ");
 		return $query->result();
 	}
 	public function tampil_kategori()
@@ -86,7 +115,7 @@ class Blog_rentcar extends CI_Model {
 		}
 	}
 
-	public function insert() //ADMIN
+	public function insert($upload) //ADMIN
 	{
 		$data = array(
 			'user_id' => '',
@@ -98,7 +127,8 @@ class Blog_rentcar extends CI_Model {
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password'),
 			'register_date' => date('Y-m-d'),
-			'level_id' => $this->input->post('level_id')
+			'level_id' => $this->input->post('level_id'),
+			'img' => $upload['file']['file_name']
 		);
 
 		$this->db->insert('users', $data);
@@ -116,7 +146,8 @@ class Blog_rentcar extends CI_Model {
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password'),
 			'register_date' => date('Y-m-d'),
-			'level_id' => $this->input->post('level_id')
+			'level_id' => $this->input->post('level_id'),
+			'img' => $upload['file']['file_name']
 		);
 
 		$this->db->insert('users', $data);
@@ -213,17 +244,33 @@ class Blog_rentcar extends CI_Model {
 	}
 
 //UPDATE
-	public function update($id)
+	public function update($upload, $id)
 	{
-		$data = array(
-			'nama' => $this->input->post('nama'),
-			'gender' => $this->input->post('gender'),
-			'kodepos' => $this->input->post('kodepos'),
-			'email' => $this->input->post('email'),
-			'no_telp' => $this->input->post('no_telp'),
-			'username' => $this->input->post('username'),
-			'password' => $this->input->post('password')
-		);
+		if ($upload['result'] == 'success')
+		{
+			$data = array(
+				'nama' => $this->input->post('nama'),
+				'gender' => $this->input->post('gender'),
+				'kodepos' => $this->input->post('kodepos'),
+				'email' => $this->input->post('email'),
+				'no_telp' => $this->input->post('no_telp'),
+				'username' => $this->input->post('username'),
+				'password' => $this->input->post('password'),
+				'img' => $upload['file']['file_name']
+			);
+		}
+		else
+		{
+			$data = array(
+				'nama' => $this->input->post('nama'),
+				'gender' => $this->input->post('gender'),
+				'kodepos' => $this->input->post('kodepos'),
+				'email' => $this->input->post('email'),
+				'no_telp' => $this->input->post('no_telp'),
+				'username' => $this->input->post('username'),
+				'password' => $this->input->post('password')
+			);	
+		}
 
 		$this->db->where('user_id', $id);
 		$this->db->update('users', $data);
@@ -237,15 +284,30 @@ class Blog_rentcar extends CI_Model {
 
 	public function update_user($upload, $id)
 	{
-		$data = array(
-			'nama' => $this->input->post('nama'),
-			'gender' => $this->input->post('gender'),
-			'kodepos' => $this->input->post('kodepos'),
-			'email' => $this->input->post('email'),
-			'no_telp' => $this->input->post('no_telp'),
-			'username' => $this->input->post('username'),
-			'password' => $this->input->post('password')
-		);
+		if ($upload['result'] == 'success') 
+		{
+			$data = array(
+				'nama' => $this->input->post('nama'),
+				'gender' => $this->input->post('gender'),
+				'kodepos' => $this->input->post('kodepos'),
+				'email' => $this->input->post('email'),
+				'no_telp' => $this->input->post('no_telp'),
+				'username' => $this->input->post('username'),
+				'password' => $this->input->post('password'),
+				'img' => $upload['file']['file_name']
+			);
+		}
+		else{
+			$data = array(
+				'nama' => $this->input->post('nama'),
+				'gender' => $this->input->post('gender'),
+				'kodepos' => $this->input->post('kodepos'),
+				'email' => $this->input->post('email'),
+				'no_telp' => $this->input->post('no_telp'),
+				'username' => $this->input->post('username'),
+				'password' => $this->input->post('password')
+			);
+		}
 
 		$this->db->where('user_id', $id);
 		$this->db->update('users', $data);

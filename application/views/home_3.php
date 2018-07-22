@@ -24,7 +24,7 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="fa fa-bars color-white"></span>
         </button>
-        <h1><a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;">			RentCar
+        <h1><a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;">      RentCar
         </a></h1>
       </div>
       <div class="navbar-collapse collapse">
@@ -34,9 +34,7 @@
           <li><a href="#section-about_car">About Cars</a></li>
           <li><a href="#section-order">Get Order</a></li>
           <li><a href="#section-contact">Contact</a></li>
-          <li><a href="<?=site_url('user/register')?>">Register</a></li>
-          <li><a href="<?=site_url('user/login')?>">Login</a></li>
-          <li><a href="<?=site_url('user/logout')?>">Logout</a></li>
+          <li><a href=user/logout>Logout</a></li>
         </ul>
       </div>
     </div>

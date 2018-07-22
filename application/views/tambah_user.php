@@ -113,6 +113,11 @@
                 <td>:</td><br>
                 <td><input type="text" class="form-control" name="level_id" value="<?php echo set_value('level_id'); ?>"required><div class="invalid-feedback">Isi Level ID</div></td>
             </tr>
+             <tr>
+                <td>Image</td>
+                <td>:</td>
+                <td><input type="file" name="input_gambar"></td>
+            </tr>
             <td colspan="3" align="center">
                 <input type="submit" name="simpan" value="Add" id="submitBtn">
                 <input type="reset" name="reset" value="Cancel">

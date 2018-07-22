@@ -24,7 +24,7 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="fa fa-bars color-white"></span>
         </button>
-        <h1><a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;">			RentCar
+        <h1><a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;">      RentCar
         </a></h1>
       </div>
       <div class="navbar-collapse collapse">
@@ -33,9 +33,9 @@
           <li><a href="#section-about">About Drivers</a></li>
           <li><a href="#section-about_car">About Cars</a></li>
           <li><a href="#section-order">Get Order</a></li>
+          <li><a href="#section-car">Rent Car</a></li>
+          <li><a href="<?=site_url('home_2/pembayaran')?>">Notif</a></li>
           <li><a href="#section-contact">Contact</a></li>
-          <li><a href="<?=site_url('user/register')?>">Register</a></li>
-          <li><a href="<?=site_url('user/login')?>">Login</a></li>
           <li><a href="<?=site_url('user/logout')?>">Logout</a></li>
         </ul>
       </div>
@@ -49,7 +49,10 @@
 
           <div class="align-center">
             <i class="fa fa-flask fa-5x mar-bot20"></i>
-            <h2 class="slogan">Welcome to RentCar</h2>
+            <?php foreach ($nama as $key ) {?>
+            <h2 class="slogan">Welcome to <?=$key->nama; ?></h2>
+            <?php } ?>
+
             <p>
               GROUP 4
             </p>
@@ -175,7 +178,7 @@
         <div class="col-md-offset-3 col-md-6">
           <div class="section-header">
             <h2 class="section-heading animated" data-animation="bounceInUp">Get Order</h2>
-            <?php echo form_open_multipart ('home/index', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+            <!-- <?php echo form_open_multipart ('home/index', array('class' => 'needs-validation', 'novalidate' => '') ); ?> -->
             <p>Order your trip</p>
           </div>
         </div>
@@ -187,52 +190,31 @@
               Your message has been sent. Thank you!
             </div>
             <div id="errormessage"></div>
-            <form action="" method="post" role="form" class="contactForm">
+            <form action="<?=site_url('home_2/pemesanan')?>" method="post" role="form" class="contactForm">
               <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username'); ?>" required>
-                <!-- <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" /> -->
-                <div class="validation"></div>
+                <label>Mobil</label>
+                <select name="id_mobil" id="" class="form-control" required="required" >
+                              <?php foreach ($mobil as $key) {?>
+                                <option value="<?=$key->id_mobil;?>"><?=$key->merk;?> <?=$key->jenis_mobil;?> <?=$key->warna_mobil;?></option>
+                              <?php } ?>
+                    </select>
               </div>
               <div class="form-group">
-                <label for="email">Category Car</label>
-                <input type="text" class="form-control" name="input_jenis_mobil" value="<?php echo set_value('input_jenis_mobil'); ?>" required>
-                <!-- <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" /> -->
-                <div class="validation"></div>
+                <label>Driver</label>
+                <select name="id_driver" id="" class="form-control" required="required" >
+                              <?php foreach ($driver as $key) {?>
+                                <option value="<?=$key->id_driver;?>"><?=$key->username;?></option>
+                              <?php } ?>
+                </select> 
               </div>
-              <div class="form-group">
-                <label for="subject">Merk</label>
-                <input type="text" class="form-control" name="input_merk" value="<?php echo set_value('input_merk'); ?>" required>
-                <!-- <input type="text" class="form-control" name="subject" id="subject" placeholder="Your Number Phone" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
-                <div class="validation"></div>
+               <div class="form-group">
+                <label>Lama Peminjaman</label>
+                          <input type="text" name="day" id="input" class="form-control" placeholder="">
               </div>
-              <div class="form-group">
-                <label for="subject">Day</label>
-                <input type="text" class="form-control" name="input_day" value="<?php echo set_value('input_day'); ?>" required>
-                <!-- <input type="text" class="form-control" name="subject" id="subject" placeholder="Category Car" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="subject">Price</label>
-                <input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price'); ?>" required>
-                <!-- <input type="text" class="form-control" name="subject" id="subject" placeholder="Merk" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
-                <div class="validation"></div>
-              </div>
-              <!-- <div class="form-group">
-                <label for="subject">Day</label>
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Day" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validation"></div>
-              </div> -->
-             <!--  <div class="form-group">
-                <label for="message">Day</label>
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
-                <div class="validation"></div>
-              </div> -->
 
               <!-- <button type="submit" class="btn btn-theme pull-left">SEND ORDER</button> -->
-              <input type="submit" name="simpan" value="ORDER">
+              <input type="submit" value="ORDER">
             </form>
-
           </div>
         </div>
       </div>
@@ -253,48 +235,8 @@
           </div>
         </div>
       </div>
-   <!--    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <div class="cform" id="contact-form">
-            <div id="sendmessage">
-              Your message has been sent. Thank you!
-            </div>
-            <div id="errormessage"></div>
-            <form action="" method="post" role="form" class="contactForm">
-              <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
-                <div class="validation"></div>
-              </div>
-
-              <button type="submit" class="btn btn-theme pull-left">SEND MESSAGE</button>
-            </form>
-
-          </div>
-        </div>
-      </div> -->
-
     </div>
   </section>
-  <!-- map -->
- <!--  <section id="section-map" class="clearfix">
-    <div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div>
-  </section> -->
 
   <!-- pagination -->
   <center>

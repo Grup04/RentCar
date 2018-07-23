@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-  <!-- BASICS -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>RentCar</title>
@@ -12,7 +11,6 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-theme.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
-  <!-- skin -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/skin/default.css">
 </head>
 
@@ -34,7 +32,7 @@
           <li><a href="#section-about_car">About Cars</a></li>
           <li><a href="#section-order">Get Order</a></li>
           <li><a href="#section-car">Rent Car</a></li>
-          <li><a href="<?=site_url('home_2/pembayaran')?>">Notif</a></li>
+          <li><a href="<?=site_url('home_2/pembayaran')?>">Notifikasi</a></li>
           <li><a href="#section-contact">Contact</a></li>
           <li><a href="<?=site_url('user/logout')?>">Logout</a></li>
         </ul>
@@ -46,16 +44,12 @@
     <div class="container">
       <div class="row mar-bot40">
         <div class="col-md-6 col-md-offset-3">
-
           <div class="align-center">
             <i class="fa fa-flask fa-5x mar-bot20"></i>
             <?php foreach ($nama as $key ) {?>
             <h2 class="slogan">Welcome to <?=$key->nama; ?></h2>
             <?php } ?>
-
-            <p>
-              GROUP 4
-            </p>
+            <p>GROUP 4</p>
           </div>
         </div>
       </div>
@@ -173,12 +167,10 @@
 
 <section id="section-order" class="section appear clearfix">
     <div class="container">
-
       <div class="row mar-bot40">
         <div class="col-md-offset-3 col-md-6">
           <div class="section-header">
             <h2 class="section-heading animated" data-animation="bounceInUp">Get Order</h2>
-            <!-- <?php echo form_open_multipart ('home/index', array('class' => 'needs-validation', 'novalidate' => '') ); ?> -->
             <p>Order your trip</p>
           </div>
         </div>
@@ -194,25 +186,23 @@
               <div class="form-group">
                 <label>Mobil</label>
                 <select name="id_mobil" id="" class="form-control" required="required" >
-                              <?php foreach ($mobil as $key) {?>
-                                <option value="<?=$key->id_mobil;?>"><?=$key->merk;?> <?=$key->jenis_mobil;?> <?=$key->warna_mobil;?></option>
-                              <?php } ?>
-                    </select>
+                  <?php foreach ($mobil as $key) {?>
+                  <option value="<?=$key->id_mobil;?>"><?=$key->merk;?> <?=$key->warna_mobil;?></option>
+                  <?php } ?>
+                </select>
               </div>
               <div class="form-group">
                 <label>Driver</label>
                 <select name="id_driver" id="" class="form-control" required="required" >
-                              <?php foreach ($driver as $key) {?>
-                                <option value="<?=$key->id_driver;?>"><?=$key->username;?></option>
-                              <?php } ?>
+                  <?php foreach ($driver as $key) {?>
+                  <option value="<?=$key->id_driver;?>"><?=$key->username;?></option>
+                  <?php } ?>
                 </select> 
               </div>
-               <div class="form-group">
+              <div class="form-group">
                 <label>Lama Peminjaman</label>
-                          <input type="text" name="day" id="input" class="form-control" placeholder="">
+                <input type="text" name="day" id="input" class="form-control" placeholder="">
               </div>
-
-              <!-- <button type="submit" class="btn btn-theme pull-left">SEND ORDER</button> -->
               <input type="submit" value="ORDER">
             </form>
           </div>
@@ -220,6 +210,78 @@
       </div>
     </div>
   </section>
+
+  <section id="section-car" class="section appear clearfix">
+    <div class="container">
+      <div class="row mar-bot40">
+        <div class="col-md-offset-3 col-md-6">
+          <div class="section-header">
+            <h2 class="section-heading animated" data-animation="bounceInUp">Go To Rent Your Car</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="cform" id="contact-form">
+            <div id="sendmessage">
+              Your message has been sent. Thank you!
+            </div>
+            <div id="errormessage"></div>
+            <form action="<?=site_url('home_2/penyewaan')?>" method="post" role="form" class="contactForm" enctype="multipart/form-data">
+
+              <div class="form-group">
+                <label>No Polisi</label>
+                <input type="text" name="no_polisi" id="input" class="form-control" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label>Merk</label>
+                <input type="text" name="merk" id="input" class="form-control" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label>Category</label>
+                  <select name="id_cat" class="form-control">
+                      <option value="">Pilih Jenis Mobil</option>
+                      <?php foreach ($categories as $key) {?>
+                      <option value="<?=$key->id_cat;?>"><?=$key->cat_mobil;?></option>
+                      <?php } ?>
+                  </select>
+              </div>
+
+              <div class="form-group">
+                <label>Warna Mobil</label>
+                <input type="text" name="warna_mobil" id="input" class="form-control" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label>Tahun Mobil</label>
+                <input type="text" name="tahun_mobil" id="input" class="form-control" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label>Bahan Bakar</label>
+                <input type="text" name="bahan_bakar" id="input" class="form-control" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label>Harga Per Hari</label>
+                <input type="text" name="price" id="input" class="form-control" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label>Gambar</label>
+                <td><input type="file" name="input_gambar"></td>
+              </div>
+
+              <input type="submit" value="Rent">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- contact -->
   <section id="section-contact" class="section appear clearfix">
     <div class="container">

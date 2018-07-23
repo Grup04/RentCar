@@ -40,11 +40,18 @@
                             <form class="app-search p-l-20">
                                 <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
                             </form>
+                            
                         </li>
-                    </ul>
 
-                    <ul class="navbar-nav my-lg-0">
+                       
                     </ul>
+                     <ul class="navbar-nav my-lg-0" >
+                        <li class="nav-item dropdown"> 
+                        <?php foreach ($profil as $key) {?>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?=base_url()?>assets/picture/<?=$key->img ?>" alt="user" class="profile-pic m-r-5"/><?=$key->nama ?></a> 
+                            <?php } ?>
+                        </li> 
+                        </ul>
                 </div>
             </nav>
         </header>

@@ -7,30 +7,34 @@ class Home_2 extends CI_Controller {
 	function __construct() {
 		 parent::__construct();
 		 $this->load->library('session');
- 		// $this->load->model('m_global');
 		if($this->session->userdata('logged_in4')){
 			$sess_data = $this->session->userdata('logged_in4');
 			$this->data = array(
 				'user_id' => $sess_data['user_id'],
 				'username' => $sess_data['username'],
+				'level_id' => $sess_data['level_id'],
 				'nama' => $sess_data['nama']
-
 			);
-			// $this->$data['nama'] = $sess_data['nama'];
-			// $this->$data['id'] = $sess_data['id_user'];
 		}else{
 			redirect('home','refresh');
 		}
 	}
 	public function index()
-	{
+	{		
 		$data = $this->data;
 		$id = $data['user_id'];
+		// ini untuk hak akses
+		$level = $data['level_id'];
+		if ($level == 3) {
+			redirect('user/login');
+		}else{
+			// batas hak akses
 		$this->load->model('blog_rentcar');
 		$data['nama'] = $this->blog_rentcar->tampil_id($id,'users','user_id');
 		$data['mobil'] = $this->blog_rentcar->tampilan('car','id_mobil');
 		$data['driver'] = $this->blog_rentcar->tampilan('driver','id_driver');
 		$data['tampil'] = $this->blog_rentcar->tampil_driver();
+		$data['categories'] = $this->blog_rentcar->get_all_categories();
 		$data['tampil_mobil'] = $this->blog_rentcar->tampil_car();
 
 		$this->load->view('home_2',$data);
@@ -38,34 +42,29 @@ class Home_2 extends CI_Controller {
 		$data['blog_rentcar'] = 'blog_rentcar'; 
 		
 		$limit_per_page = 6;
-
-		// URI segment untuk mendeteksi "halaman ke berapa" dari URL
 		$start_index = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : 0;
-
-		// Dapatkan jumlah data 
 		$total_records = $this->blog_rentcar->get_total();
 		
 		if ($total_records > 0) {
-			// Dapatkan data pada halaman yg dituju
 			$data["all_artikel"] = $this->blog_rentcar->get_all_artikel($limit_per_page, $start_index);
-			
-			// Konfigurasi pagination
 			$config['base_url'] = base_url() . 'blog/index';
 			$config['total_rows'] = $total_records;
 			$config['per_page'] = $limit_per_page;
 			$config["uri_segment"] = 3;
 			
 			$this->pagination->initialize($config);
-
-			// Buat link pagination
 			$data["links"] = $this->pagination->create_links();
 		}
 	}
+	}
 
-	public function pemesanan()
-	{
+	public function pemesanan(){
 		$data = $this->data;
 		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
 		$data = array(
 					'user_id' => $id,	
@@ -77,29 +76,40 @@ class Home_2 extends CI_Controller {
 					);
 		$this->blog_rentcar->tambah('order',$data);
 		redirect('home_2/pembayaran','refresh');
+		}
 	}
-	public function pembayaran()
-	{
+	public function pembayaran(){
 		$data = $this->data;
 		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
 		$data['nama'] = $this->blog_rentcar->tampil_id($id,'users','user_id');
 		$data['tampil'] = $this->blog_rentcar->tampil_order_bayar($id);
 		$this->load->view('notif',$data);
 	}
-	public function pembayaran_detail($id_order)
-	{
+	}
+	public function pembayaran_detail($id_order){
+		
 		$data = $this->data;
 		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
 		$data['nama'] = $this->blog_rentcar->tampil_id($id,'users','user_id');
 		$data['order'] = $this->blog_rentcar->tampil_id($id_order,'order','id_order');
 		$this->load->view('notif_bayar',$data);
-
+		}
 	}
-	public function pembayaran_doadd()
-	{
-
+	public function pembayaran_doadd(){
+		$level = $data['level_id'];
+		if ($level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
 			$foto = "IMG_".time();
 			$config['upload_path'] = './upload/kwitansi';
@@ -110,7 +120,7 @@ class Home_2 extends CI_Controller {
 	        $this->load->library('upload', $config);
 	        $image_data = $this->upload->data();
 
-	        if (! $this->upload->do_upload('foto_bukti')){ // name="upload"
+	        if (! $this->upload->do_upload('foto_bukti')){
 				echo $this->upload->display_errors();
 		 	}else{
 
@@ -131,51 +141,58 @@ class Home_2 extends CI_Controller {
 	            $config['maintain_ratio'] 	= true;
 	            $config['width']          	= 100;
 	            $config['height']         	= 180;
-
-	            // kemudian panggil fungsi initialize() sebelum fungsi resize()
-	            // kalau tidak, hanya akan menghasilkan 1 file saja
 	            $this->image_lib->initialize($config);
 	            $this->image_lib->resize();
 
 	            redirect('home_2/pembayaran','refresh');
-	        }
+	        }}
 	}
 
-	public function tambah_car()
+	public function penyewaan()
 	{
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-
-		$this->load->model('category_model');
+		// $data = $this->data;
+		// $id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
-		
-		$data = array();
-		$data['categories'] = $this->category_model->get_all_categories();
+		$foto = "IMG_".time();
+			$config['upload_path'] = './assets/picture';
+	        $config['allowed_types'] = 'jpg|jpeg|png';
+	        $config['max_size']      = '1024';
+	        $config['file_name'] = $foto;
 
-		$this->form_validation->set_rules('input_no_polisi', 'No polisi', 'required');
-		$this->form_validation->set_rules('input_merk', 'Merk', 'required');
-		$this->form_validation->set_rules('input_warna_mobil', 'Warna Mobil', 'required');
-		$this->form_validation->set_rules('input_tahun_mobil', 'Tahun Mobil', 'required|numeric|min_length[4]',
-			array(
-				'differs' 		=> 'Isi %s, tidak boleh kosong',
-				'required' 		=> 'Isi %s, tidak boleh kosong',
-				'min_length' 	=> 'angka %s belum mencapai limit',
-			));
-		$this->form_validation->set_rules('input_bahan_bakar', 'Bahan Bakar', 'required');
+	        $this->load->library('upload', $config);
+	        $image_data = $this->upload->data();
 
-		if ($this->form_validation->run() == TRUE)
-		{
-			$upload=$this->blog_rentcar->upload();
-			if ($this->input->post('simpan'))
-			{
-				$this->blog_rentcar->insert_car($upload);
-				redirect('admin/tampil_car');
-			}
-		}
-		else
-		{
-			$this->load->view('tambah_car', $data);
-		}	
+	        if (! $this->upload->do_upload('input_gambar')){
+				echo $this->upload->display_errors();
+		 	}else{
+
+	            $image_data = $this->upload->data();
+	            $data['id_cat'] 		= $this->input->post("id_cat");
+	            $data['no_polisi'] 		= $this->input->post("no_polisi");
+	            $data['merk'] 			= $this->input->post("merk");
+	            $data['warna_mobil'] 	= $this->input->post("warna_mobil");
+	            $data['tahun_mobil'] 	= $this->input->post("tahun_mobil");
+	            $data['bahan_bakar'] 	= $this->input->post("bahan_bakar");
+	            $data['price'] 			= $this->input->post("price");;
+		 		$data['img'] 			= $image_data['file_name'];
+	            $this->blog_rentcar->tambah('car',$data);
+
+	            $config['source_image'] 	= $image_data['full_path'];
+	            $config['new_image']      	= './assets/picture';
+	            $config['maintain_ratio'] 	= true;
+	            $config['width']          	= 100;
+	            $config['height']         	= 180;
+	            $this->image_lib->initialize($config);
+	            $this->image_lib->resize();
+
+	            redirect('home_2','refresh');
+	        }
+	    }
 	}
+
 }
 ?>

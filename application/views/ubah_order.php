@@ -4,35 +4,38 @@
 
  <title>Data Order</title>
 
-        <aside class="left-sidebar">
-            <div class="scroll-sidebar">
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li>
-                            <a href="../admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
-                        </li>
-                        <li>
-                            <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Users</a>
-                        </li>
-                        <li>
-                            <a href="admin/tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
-                        </li>
-                        <li>
-                            <a href="tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
-                        </li>
-                        <li>
-                            <a href="../tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
-                        </li>
-                        <li>
-                            <a href="<?=site_url('login/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
+<aside class="left-sidebar">
+    <div class="scroll-sidebar">
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li>
+                    <a href="../admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
+                </li>
+                <li>
+            <a href="<?=site_url('home');?>" class="waves-effect"><i class="fa fa-home m-r-10" aria-hidden="true"></i>Home</a>
+        </li>
+                <li>
+                    <a href="admin/tampil_admin" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Admin</a>
+                </li>
+                <li>
+                    <a href="tampil_user" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Members</a>
+                </li>
+                <li>
+                    <a href="admin/tampil_car" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Cars</a>
+                </li>
+                <li>
+                    <a href="tampil_driver" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Drivers</a>
+                </li>
+                <li>
+                    <a href="../tampil_order" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Data Order</a>
+                </li>
+                <li>
+                    <a href="<?=site_url('user/logout');?>" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
 
         <div class="page-wrapper">
             <div class="container-fluid">

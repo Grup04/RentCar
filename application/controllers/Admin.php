@@ -3,12 +3,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
+	var $data;
+	function __construct() {
+		 parent::__construct();
+		 $this->load->library('session');
+		if($this->session->userdata('logged_in4')){
+			$sess_data = $this->session->userdata('logged_in4');
+			$this->data = array(
+				'user_id' => $sess_data['user_id'],
+				'username' => $sess_data['username'],
+				'level_id' => $sess_data['level_id'],
+				'img' => $sess_data['img'],
+				'nama' => $sess_data['nama']
+			);
+		}else{
+			redirect('home','refresh');
+		}
+	}
+
 // READ
 	public function index()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('home');
+		}else{
 		$this->load->model('blog_rentcar');
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 		$data['categories'] = $this->blog_rentcar->get_all_categories();
-		$this->load->view('dashboard');
+		$data['member'] = $this->blog_rentcar->hitMember();
+		$data['mobil'] = $this->blog_rentcar->hitMobil();
+		$data['order'] = $this->blog_rentcar->hitOrder();
+		$this->load->view('dashboard', $data);
+	}
 	}
 	public function antar($id_order)
 	{
@@ -30,54 +59,110 @@ class Admin extends CI_Controller {
 	}
 	public function artikel($id)
 	{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 		$data['page_title'] = $this->blog_model->get_category_by_id($id)->cat_mobil;
 		$data['all_artikel'] = $this->blog_model->get_artikel_by_category($id);
 	}
 
 	public function tampil_admin()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 		$data['tampil'] = $this->blog_rentcar->tampil();
 		$this->load->view('admin', $data);
 	}
+	}
 	public function tampil_user()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 		$data['tampil_user'] = $this->blog_rentcar->tampil_user();
 		$this->load->view('user', $data);
 	}
+	}
 	public function tampil_car()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 		$data['tampil_car'] = $this->blog_rentcar->tampil_car();
 		$this->load->view('car', $data);
 	}
+	}
 	public function tampil_driver()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 		$data['tampil_driver'] = $this->blog_rentcar->tampil_driver();
 		$this->load->view('driver', $data);
 	}
+	}
 	public function tampil_order()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 		$data['tampil_order'] = $this->blog_rentcar->tampil_order();
 		$this->load->view('order', $data);
 	}
+	}
 	public function tampil_kategori()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->model('blog_rentcar');
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 		$data['tampil_kategori'] = $this->blog_rentcar->tampil_kategori();
 		$this->load->view('tampil_kategori', $data);
+	}
 	}
 
 	// CREAT
 	public function tambah_admin()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		$this->load->model('blog_rentcar');
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
-		$this->load->model('blog_rentcar');
+		
 		$data = array();
 
 		$this->form_validation->set_rules('input_username', 'Username', 'is_unique[login.username]',
@@ -96,6 +181,7 @@ class Admin extends CI_Controller {
 
 		if ($this->form_validation->run() == TRUE)
 		{
+			$enc_password = md5($this->input->post('password'));
 			$upload=$this->blog_rentcar->upload();
 			if ($this->input->post('simpan'))
 			{
@@ -105,12 +191,23 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('tambah_admin', $data);
 		}
+	}
 	}
 
 	public function tambah_user()
 	{
+
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
@@ -143,12 +240,21 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('tambah_user', $data);
 		}
+	}
 	}
 
 	public function tambah_car()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
@@ -180,12 +286,21 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('tambah_car', $data);
 		}	
+	}
 	}
 
 	public function tambah_driver()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
@@ -219,12 +334,21 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('tambah_driver', $data);
-		}		
+		}	
+		}	
 	}
 
 	public function tambah_order()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
@@ -241,12 +365,21 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('tambah_order', $data);
 		}
+	}
 	}
 
 	public function tambah_kategori()
 	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
@@ -270,12 +403,22 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('cat_create', $data);
 		}
 	}
+	}
 
 //UPDATE
-	public function ubah($id){
+	public function ubah($id)
+	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 
 		$this->load->model('blog_rentcar');
 
@@ -321,11 +464,21 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('ubah_admin', $data);
 		}
 	}
+	}
 
-	public function ubah_user($id){
+	public function ubah_user($id)
+	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 
 		$this->load->model('blog_rentcar');
 
@@ -371,14 +524,25 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('ubah_user', $data);
 		}
+	}
 	 }
 
-	public function ubah_car($id){
+	public function ubah_car($id)
+	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 
 		$this->load->model('blog_rentcar');
 		$this->load->model('category_model');
+
 		$data['categories'] = $this->category_model->get_all_categories();
 
 		$this->load->helper(array('form', 'url'));
@@ -426,11 +590,21 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('ubah_car', $data);
 		}
+	}
 	 }
 
-	 public function ubah_driver($id){
+	 public function ubah_driver($id)
+	 {
+	 	$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+	 	if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 
 		$this->load->model('blog_rentcar');
 
@@ -473,11 +647,21 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('ubah_driver', $data);
 		}
+	}
 	 }
 
-	 public function ubah_order($id){
+	 public function ubah_order($id)
+	 {
+	 	$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+	 	if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 
 		$this->load->model('blog_rentcar');
 
@@ -502,11 +686,21 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
 			$this->load->view('ubah_order', $data);
 		}
+	}
 	 }
 
-	 public function ubah_kategori($id){
+	 public function ubah_kategori($id)
+	 {
+	 	$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+	 	if ($level == 2 || $level == 3) {
+			redirect('user/login');
+		}else{
 
 		$this->load->model('blog_rentcar');
 
@@ -536,8 +730,11 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+			
 			$this->load->view('ubah_kategori', $data);
 		}
+	}
 	 }
 
 //DELETE

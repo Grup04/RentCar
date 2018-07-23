@@ -59,7 +59,6 @@ class User extends CI_Controller
 
         if($this->form_validation->run() === FALSE)
         {
-            // $this->load->view('templates/header');
             $this->load->view('login', $data);
         } 
         else 
@@ -76,6 +75,7 @@ class User extends CI_Controller
                 $sess_data['user_id'] = $sess->user_id;
                 $sess_data['username'] = $sess->username;
                 $sess_data['nama'] = $sess->nama;
+                $sess_data['img'] = $sess->img;
                 $sess_data['level_id'] = $sess->level_id;
             }
             $this->session->set_userdata('logged_in4',$sess_data);

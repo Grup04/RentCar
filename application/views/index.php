@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-  <!-- BASICS -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>RentCar</title>
@@ -12,7 +11,6 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-theme.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
-  <!-- skin -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/skin/default.css">
 </head>
 
@@ -32,7 +30,6 @@
           <li class="active"><a href="home">Home</a></li>
           <li><a href="#section-about">About Drivers</a></li>
           <li><a href="#section-about_car">About Cars</a></li>
-          <li><a href="#section-order">Get Order</a></li>
           <li><a href="#section-contact">Contact</a></li>
           <li><a href="<?=site_url('user/register')?>">Register</a></li>
           <li><a href="<?=site_url('user/login')?>">Login</a></li>
@@ -50,27 +47,21 @@
           <div class="align-center">
             <i class="fa fa-flask fa-5x mar-bot20"></i>
             <h2 class="slogan">Welcome to RentCar</h2>
-            <p>
-              GROUP 4
-            </p>
+            <p>GROUP 4</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- spacer section:testimonial -->
   <section id="testimonials" class="section" data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="align-center">
             <div class="testimonial pad-top40 pad-bot40 clearfix">
-              <h5>
-                INI WEBSITE RENTAL MOBIL
-              </h5>
+              <h5>INI WEBSITE RENTAL MOBIL</h5>
               <br/>
-              <!-- <span class="author">&mdash; MIKE DOE <a href="#">www.siteurl.com</a></span> -->
             </div>
           </div>
         </div>
@@ -168,76 +159,6 @@
     </div>
   </section>
 
-<section id="section-order" class="section appear clearfix">
-    <div class="container">
-
-      <div class="row mar-bot40">
-        <div class="col-md-offset-3 col-md-6">
-          <div class="section-header">
-            <h2 class="section-heading animated" data-animation="bounceInUp">Get Order</h2>
-            <?php echo form_open_multipart ('home/index', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
-            <p>Order your trip</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <div class="cform" id="contact-form">
-            <div id="sendmessage">
-              Your message has been sent. Thank you!
-            </div>
-            <div id="errormessage"></div>
-            <form action="" method="post" role="form" class="contactForm">
-              <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username'); ?>" required>
-                <!-- <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" /> -->
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="email">Category Car</label>
-                <input type="text" class="form-control" name="input_jenis_mobil" value="<?php echo set_value('input_jenis_mobil'); ?>" required>
-                <!-- <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" /> -->
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="subject">Merk</label>
-                <input type="text" class="form-control" name="input_merk" value="<?php echo set_value('input_merk'); ?>" required>
-                <!-- <input type="text" class="form-control" name="subject" id="subject" placeholder="Your Number Phone" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="subject">Day</label>
-                <input type="text" class="form-control" name="input_day" value="<?php echo set_value('input_day'); ?>" required>
-                <!-- <input type="text" class="form-control" name="subject" id="subject" placeholder="Category Car" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="subject">Price</label>
-                <input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price'); ?>" required>
-                <!-- <input type="text" class="form-control" name="subject" id="subject" placeholder="Merk" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" /> -->
-                <div class="validation"></div>
-              </div>
-              <!-- <div class="form-group">
-                <label for="subject">Day</label>
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Day" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validation"></div>
-              </div> -->
-             <!--  <div class="form-group">
-                <label for="message">Day</label>
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
-                <div class="validation"></div>
-              </div> -->
-
-              <!-- <button type="submit" class="btn btn-theme pull-left">SEND ORDER</button> -->
-              <input type="submit" name="simpan" value="ORDER">
-            </form>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   <!-- contact -->
   <section id="section-contact" class="section appear clearfix">
     <div class="container">
@@ -253,48 +174,8 @@
           </div>
         </div>
       </div>
-   <!--    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <div class="cform" id="contact-form">
-            <div id="sendmessage">
-              Your message has been sent. Thank you!
-            </div>
-            <div id="errormessage"></div>
-            <form action="" method="post" role="form" class="contactForm">
-              <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
-                <div class="validation"></div>
-              </div>
-
-              <button type="submit" class="btn btn-theme pull-left">SEND MESSAGE</button>
-            </form>
-
-          </div>
-        </div>
-      </div> -->
-
-    </div>
+  </div>
   </section>
-  <!-- map -->
- <!--  <section id="section-map" class="clearfix">
-    <div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div>
-  </section> -->
 
   <!-- pagination -->
   <center>
@@ -309,9 +190,7 @@
   </nav>
   </center>
 
-  <?php        
-  // $links ini berasal dari fungsi pagination        
-  // Jika $links ada (data melebihi jumlah max per page), maka tampilkan        
+  <?php       
   if (isset($links)) {            
     echo $links;        
   }        
@@ -335,7 +214,6 @@
       <div class="col-sm-12">
         <p>Copyright &copy; RentCar</p>
         <div class="credits">
-          <!-- <a href="https://bootstrapmade.com/">Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
         </div>
       </div>
     </div>

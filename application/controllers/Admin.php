@@ -22,13 +22,12 @@ class Admin extends CI_Controller {
 	}
 
 // READ
-	public function index()
-	{
+	public function index(){
 		$data = $this->data;
 		$id = $data['user_id'];
 		$level = $data['level_id'];
 		if ($level == 2 || $level == 3) {
-			redirect('home');
+			redirect('user/login');
 		}else{
 		$this->load->model('blog_rentcar');
 		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
@@ -39,8 +38,7 @@ class Admin extends CI_Controller {
 		$this->load->view('dashboard', $data);
 	}
 	}
-	public function antar($id_order)
-	{
+	public function antar($id_order){
 		$this->load->model('blog_rentcar');
 		$data = array(
 						'status' => "Antar"
@@ -48,8 +46,7 @@ class Admin extends CI_Controller {
 		$this->blog_rentcar->edit($id_order,'order',$data,'id_order');
 		redirect('admin/tampil_order','refresh');
 	}
-	public function selesai($id_order)
-	{
+	public function selesai($id_order){
 		$this->load->model('blog_rentcar');
 		$data = array(
 						'status' => "Selesai"
@@ -57,15 +54,13 @@ class Admin extends CI_Controller {
 		$this->blog_rentcar->edit($id_order,'order',$data,'id_order');
 		redirect('admin/tampil_order','refresh');
 	}
-	public function artikel($id)
-	{
+	public function artikel($id){
 		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 		$data['page_title'] = $this->blog_model->get_category_by_id($id)->cat_mobil;
 		$data['all_artikel'] = $this->blog_model->get_artikel_by_category($id);
 	}
 
-	public function tampil_admin()
-	{
+	public function tampil_admin(){
 		$data = $this->data;
 		$id = $data['user_id'];
 		$level = $data['level_id'];
@@ -78,12 +73,11 @@ class Admin extends CI_Controller {
 		$this->load->view('admin', $data);
 	}
 	}
-	public function tampil_user()
-	{
+	public function tampil_user(){
 		$data = $this->data;
 		$id = $data['user_id'];
 		$level = $data['level_id'];
-		if ($level == 2 || $level == 3) {
+		if ($level == 3) {
 			redirect('user/login');
 		}else{
 		$this->load->model('blog_rentcar');
@@ -92,8 +86,7 @@ class Admin extends CI_Controller {
 		$this->load->view('user', $data);
 	}
 	}
-	public function tampil_car()
-	{
+	public function tampil_car(){
 		$data = $this->data;
 		$id = $data['user_id'];
 		$level = $data['level_id'];
@@ -106,8 +99,7 @@ class Admin extends CI_Controller {
 		$this->load->view('car', $data);
 	}
 	}
-	public function tampil_driver()
-	{
+	public function tampil_driver(){
 		$data = $this->data;
 		$id = $data['user_id'];
 		$level = $data['level_id'];
@@ -120,8 +112,7 @@ class Admin extends CI_Controller {
 		$this->load->view('driver', $data);
 	}
 	}
-	public function tampil_order()
-	{
+	public function tampil_order(){
 		$data = $this->data;
 		$id = $data['user_id'];
 		$level = $data['level_id'];
@@ -134,8 +125,7 @@ class Admin extends CI_Controller {
 		$this->load->view('order', $data);
 	}
 	}
-	public function tampil_kategori()
-	{
+	public function tampil_kategori(){
 		$data = $this->data;
 		$id = $data['user_id'];
 		$level = $data['level_id'];
@@ -150,34 +140,32 @@ class Admin extends CI_Controller {
 	}
 
 	// CREAT
-	public function tambah_admin()
-	{
+	public function tambah_admin(){
 		$data = $this->data;
 		$id = $data['user_id'];
+
 		$level = $data['level_id'];
 		$this->load->model('blog_rentcar');
+
 		if ($level == 2 || $level == 3) {
 			redirect('user/login');
 		}else{
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
-
 		
 		$data = array();
-
-		$this->form_validation->set_rules('input_username', 'Username', 'is_unique[login.username]',
+		$this->form_validation->set_rules('username', 'Username', 'is_unique[users.username]|min_length[5]',
 		array(
 				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
-				'is_unique' 	=> 'Judul ' .$this->input->post('input_username'). ' sudah ada!'
+				'is_unique' 	=> 'Judul ' .$this->input->post('username'). ' sudah ada!'
 			));
-		$this->form_validation->set_rules('input_password', 'Password');
-		$this->form_validation->set_rules('input_email', 'Email', 'valid_email');
-		$this->form_validation->set_rules('input_no_telp', 'Contact', 'numeric|min_length[12]',
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('no_telp', 'Contact', 'required|numeric|min_length[12]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'angka %s belum mencapai limit',
 			));
-		$this->form_validation->set_rules('input_alamat', 'Alamat');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -191,9 +179,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		
-		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
-
+			$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 			$this->load->view('tambah_admin', $data);
 		}
 	}
@@ -247,33 +233,33 @@ class Admin extends CI_Controller {
 	}
 	}
 
-	public function tambah_car()
-	{
+	public function tambah_car(){
 		$data = $this->data;
 		$id = $data['user_id'];
+
 		$level = $data['level_id'];
+		$this->load->model('category_model');
+		$this->load->model('blog_rentcar');
+
 		if ($level == 2 || $level == 3) {
 			redirect('user/login');
 		}else{
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
-		$this->load->model('category_model');
-		$this->load->model('blog_rentcar');
-		
 		$data = array();
 		$data['categories'] = $this->category_model->get_all_categories();
 
-		$this->form_validation->set_rules('input_no_polisi', 'No polisi', 'required');
-		$this->form_validation->set_rules('input_merk', 'Merk', 'required');
-		$this->form_validation->set_rules('input_warna_mobil', 'Warna Mobil', 'required');
+		$this->form_validation->set_rules('input_no_polisi', 'No polisi', 'required|is_unique[car.no_polisi]|min_length[5]');
+		$this->form_validation->set_rules('input_merk', 'Merk', 'required|min_length[5]');
+		$this->form_validation->set_rules('input_warna_mobil', 'Warna Mobil', 'required|min_length[3]');
 		$this->form_validation->set_rules('input_tahun_mobil', 'Tahun Mobil', 'required|numeric|min_length[4]',
 			array(
 				'differs' 		=> 'Isi %s, tidak boleh kosong',
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'angka %s belum mencapai limit',
 			));
-		$this->form_validation->set_rules('input_bahan_bakar', 'Bahan Bakar', 'required');
+		$this->form_validation->set_rules('input_bahan_bakar', 'Bahan Bakar', 'required|min_length[5]');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -286,29 +272,30 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
-
+			$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 			$this->load->view('tambah_car', $data);
 		}	
 	}
 	}
 
-	public function tambah_driver()
-	{
+	public function tambah_driver(){
 		$data = $this->data;
 		$id = $data['user_id'];
+
 		$level = $data['level_id'];
+		$this->load->model('blog_rentcar');
+
 		if ($level == 2 || $level == 3) {
 			redirect('user/login');
 		}else{
+
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
-
-		$this->load->model('blog_rentcar');
+		
 		$data = array();
 
-		$this->form_validation->set_rules('input_username', 'Nama', 'required');
-		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required');
+		$this->form_validation->set_rules('input_username', 'Nama', 'required|is_unique[driver.username]|min_length[5]');
+		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required|min_length[5]');
 		$this->form_validation->set_rules('input_no_telp', 'Contact', 'required|numeric|min_length[12]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
@@ -341,57 +328,59 @@ class Admin extends CI_Controller {
 		}	
 	}
 
-	public function tambah_order()
-	{
-		$data = $this->data;
-		$id = $data['user_id'];
-		$level = $data['level_id'];
-		if ($level == 2 || $level == 3) {
-			redirect('user/login');
-		}else{
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
+	// public function tambah_order()
+	// {
+	// 	$data = $this->data;
+	// 	$id = $data['user_id'];
+	// 	$level = $data['level_id'];
+	// 	if ($level == 2 || $level == 3) {
+	// 		redirect('user/login');
+	// 	}else{
+	// 	$this->load->helper(array('form', 'url'));
+	// 	$this->load->library('form_validation');
 
-		$this->load->model('blog_rentcar');
-		$data = array();
+	// 	$this->load->model('blog_rentcar');
+	// 	$data = array();
 
-		if ($this->form_validation->run() == TRUE)
-		{
-			if ($this->input->post('simpan'))
-			{
-				$this->blog_rentcar->insert_order();
-				redirect('admin/tampil_order');
-			}
-		}
-		else
-		{
-		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+	// 	if ($this->form_validation->run() == TRUE)
+	// 	{
+	// 		if ($this->input->post('simpan'))
+	// 		{
+	// 			$this->blog_rentcar->insert_order();
+	// 			redirect('admin/tampil_order');
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 	$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 
-			$this->load->view('tambah_order', $data);
-		}
-	}
-	}
+	// 		$this->load->view('tambah_order', $data);
+	// 	}
+	// }
+	// }
 
 	public function tambah_kategori()
 	{
 		$data = $this->data;
 		$id = $data['user_id'];
+
 		$level = $data['level_id'];
+		$this->load->model('blog_rentcar');
+
 		if ($level == 2 || $level == 3) {
 			redirect('user/login');
 		}else{
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
-		$this->load->model('blog_rentcar');
 		$data = array();
 
-		$this->form_validation->set_rules('cat_mobil', 'Cat', 'required|is_unique[categories.cat_mobil]',
+		$this->form_validation->set_rules('cat_mobil', 'Cat', 'required|is_unique[categories.cat_mobil]|min_length[5]',
 		array(
 				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
 				'is_unique' 	=> 'Judul ' .$this->input->post('cat_mobil'). ' sudah ada!'
 			));
-		$this->form_validation->set_rules('description', 'Desc', 'required');
+		$this->form_validation->set_rules('description', 'Desc', 'required|min_length[5]');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -411,17 +400,16 @@ class Admin extends CI_Controller {
 	}
 
 //UPDATE
-	public function ubah($id)
-	{
+	public function ubah($id){
 		$data = $this->data;
 		$id = $data['user_id'];
+
 		$level = $data['level_id'];
+		$this->load->model('blog_rentcar');
+
 		if ($level == 2 || $level == 3) {
 			redirect('user/login');
 		}else{
-
-		$this->load->model('blog_rentcar');
-
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
@@ -436,12 +424,12 @@ class Admin extends CI_Controller {
 	    $this->load->helper('form');
 	    $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[login.username]',
+		$this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[users.username]|min_length[5]',
 		array(
 				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
 				'is_unique' 	=> 'Username ' .$this->input->post('input_judul'). ' sudah ada!'
 			));
-		$this->form_validation->set_rules('input_password', 'Password', 'required|max_length[50]',
+		$this->form_validation->set_rules('input_password', 'Password', 'required|min_length[8]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'text %s belum mencapai limit',
@@ -452,7 +440,7 @@ class Admin extends CI_Controller {
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'angka %s belum mencapai limit',
 			));
-		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required');
+		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required|min_length[5]');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -476,7 +464,7 @@ class Admin extends CI_Controller {
 		$data = $this->data;
 		$id = $data['user_id'];
 		$level = $data['level_id'];
-		if ($level == 2 || $level == 3) {
+		if ($level == 3) {
 			redirect('user/login');
 		}else{
 
@@ -534,16 +522,16 @@ class Admin extends CI_Controller {
 	public function ubah_car($id)
 	{
 		$data = $this->data;
-		$id = $data['user_id'];
 		$level = $data['level_id'];
+
 		if ($level == 2 || $level == 3) {
 			redirect('user/login');
 		}else{
 
 		$this->load->model('blog_rentcar');
 		$this->load->model('category_model');
-
 		$data['categories'] = $this->category_model->get_all_categories();
+
 
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
@@ -560,7 +548,7 @@ class Admin extends CI_Controller {
 	    $this->load->helper('form');
 	    $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('input_no_polisi', 'No Polisi', 'required|is_unique[car.no_polisi]',
+		$this->form_validation->set_rules('input_no_polisi', 'No Polisi', 'required|is_unique[car.no_polisi]|min_length[3]',
 		array(
 				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
 				'is_unique' 	=> 'Username ' .$this->input->post('input_no_polisi'). ' sudah ada!'
@@ -570,15 +558,14 @@ class Admin extends CI_Controller {
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'text %s belum mencapai limit',
 			));
-		$this->form_validation->set_rules('input_jenis_mobil', 'Jenis Mobil', 'required');
-		$this->form_validation->set_rules('input_warna_mobil', 'Warna Mobil', 'required');
+		$this->form_validation->set_rules('input_warna_mobil', 'Warna Mobil', 'required|min_length[3]');
 		$this->form_validation->set_rules('input_tahun_mobil', 'Tahun Mobil', 'required|numeric|min_length[4]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'angka %s belum mencapai limit',
 			));
-		$this->form_validation->set_rules('input_bahan_bakar', 'Bahan Bakar', 'required');
-		$this->form_validation->set_rules('input_price', 'Price', 'required|numeric|max_length[10]',
+		$this->form_validation->set_rules('input_bahan_bakar', 'Bahan Bakar', 'required|min_length[5]');
+		$this->form_validation->set_rules('input_price', 'Price', 'required|numeric|min_length[6]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'angka %s belum mencapai limit',
@@ -590,24 +577,21 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
-
+			$id = $data['user_id'];
+			$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 			$this->load->view('ubah_car', $data);
 		}
 	}
 	 }
 
-	 public function ubah_driver($id)
-	 {
+	 public function ubah_driver($id){
 	 	$data = $this->data;
-		$id = $data['user_id'];
 		$level = $data['level_id'];
-	 	if ($level == 2 || $level == 3) {
+
+		if ($level == 2 || $level == 3) {
 			redirect('user/login');
 		}else{
-
 		$this->load->model('blog_rentcar');
-
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
@@ -622,12 +606,12 @@ class Admin extends CI_Controller {
 	    $this->load->helper('form');
 	    $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[user.username]',
+		$this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[driver.username]|min_length[5]',
 		array(
 				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
 				'is_unique' 	=> 'Username ' .$this->input->post('input_username'). ' sudah ada!'
 			));
-		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required|max_length[50]',
+		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required|min_length[5]',
 			array(
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'text %s belum mencapai limit',
@@ -637,9 +621,9 @@ class Admin extends CI_Controller {
 				'required' 		=> 'Isi %s, tidak boleh kosong',
 				'min_length' 	=> 'angka %s belum mencapai limit',
 			));
-		$this->form_validation->set_rules('input_email', 'Email', 'required');
-		$this->form_validation->set_rules('input_umur', 'Umur', 'required');
-		$this->form_validation->set_rules('input_price', 'Price', 'required');
+		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('input_umur', 'Umur', 'required|max_length[2]');
+		$this->form_validation->set_rules('input_price', 'Price', 'required|min_length[6]');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -647,63 +631,60 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
-
+			$id = $data['user_id'];
+			$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 			$this->load->view('ubah_driver', $data);
 		}
 	}
 	 }
 
-	 public function ubah_order($id)
-	 {
+	//  public function ubah_order($id)
+	//  {
+	//  	$data = $this->data;
+	// 	$id = $data['user_id'];
+	// 	$level = $data['level_id'];
+	//  	if ($level == 2 || $level == 3) {
+	// 		redirect('user/login');
+	// 	}else{
+
+	// 	$this->load->model('blog_rentcar');
+
+	//     if($this->input->post('simpan'))
+	// 	    {
+	// 	    	$this->blog_rentcar->update_order($id);
+	// 	        redirect('admin/tampil_order');
+	// 	    } 
+	// 	    $data['tampil'] = $this->blog_rentcar->view_by_order($id);
+
+	//     $this->load->helper('form');
+	//     $this->load->library('form_validation');
+
+	// 	$this->form_validation->set_rules('input_merk', 'Merk', 'required');
+	// 	$this->form_validation->set_rules('input_day', 'Day', 'required');
+	// 	$this->form_validation->set_rules('input_price', 'Price', 'required');
+
+
+	// 	if ($this->form_validation->run() == TRUE)
+	// 	{
+	// 		echo "SUKSES";
+	// 	}
+	// 	else
+	// 	{
+	// 	$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
+	// 		$this->load->view('ubah_order', $data);
+	// 	}
+	// }
+	//  }
+
+	 public function ubah_kategori($id){
 	 	$data = $this->data;
-		$id = $data['user_id'];
 		$level = $data['level_id'];
-	 	if ($level == 2 || $level == 3) {
+
+		if ($level == 2 || $level == 3) {
 			redirect('user/login');
 		}else{
-
 		$this->load->model('blog_rentcar');
-
-	    if($this->input->post('simpan'))
-		    {
-		    	$this->blog_rentcar->update_order($id);
-		        redirect('admin/tampil_order');
-		    } 
-		    $data['tampil'] = $this->blog_rentcar->view_by_order($id);
-
-	    $this->load->helper('form');
-	    $this->load->library('form_validation');
-
-		$this->form_validation->set_rules('input_merk', 'Merk', 'required');
-		$this->form_validation->set_rules('input_day', 'Day', 'required');
-		$this->form_validation->set_rules('input_price', 'Price', 'required');
-
-
-		if ($this->form_validation->run() == TRUE)
-		{
-			echo "SUKSES";
-		}
-		else
-		{
-		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
-
-			$this->load->view('ubah_order', $data);
-		}
-	}
-	 }
-
-	 public function ubah_kategori($id)
-	 {
-	 	$data = $this->data;
-		$id = $data['user_id'];
-		$level = $data['level_id'];
-	 	if ($level == 2 || $level == 3) {
-			redirect('user/login');
-		}else{
-
-		$this->load->model('blog_rentcar');
-
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
@@ -717,12 +698,12 @@ class Admin extends CI_Controller {
 	    $this->load->helper('form');
 	    $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('cat_mobil', 'Cat', 'required|is_unique[categories.cat_mobil]',
+		$this->form_validation->set_rules('cat_mobil', 'Cat', 'required|is_unique[categories.cat_mobil]|min_length[5]',
 		array(
 				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
 				'is_unique' 	=> 'Username ' .$this->input->post('cat_mobil'). ' sudah ada!'
 			));
-		$this->form_validation->set_rules('description', 'Desc', 'required');
+		$this->form_validation->set_rules('description', 'Desc', 'required|min_length[5]');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -730,7 +711,8 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+			$id = $data['user_id'];
+			$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 			
 			$this->load->view('ubah_kategori', $data);
 		}

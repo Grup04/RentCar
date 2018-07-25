@@ -7,6 +7,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="assets/text/css" href="<?php echo base_url()?>assets/css/isotope.css" media="screen" />
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url()?>assets/admin/images/favicon.png">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-theme.css">
@@ -33,6 +34,7 @@
           <li><a href="#section-order">Get Order</a></li>
           <li><a href="#section-car">Rent Car</a></li>
           <li><a href="<?=site_url('home_2/pembayaran')?>">Notifikasi</a></li>
+          <li><a href="<?=site_url('admin/tampil_user')?>">Edit Profile</a></li>
           <li><a href="#section-contact">Contact</a></li>
           <li><a href="<?=site_url('user/logout')?>">Logout</a></li>
         </ul>
@@ -45,7 +47,8 @@
       <div class="row mar-bot40">
         <div class="col-md-6 col-md-offset-3">
           <div class="align-center">
-            <i class="fa fa-flask fa-5x mar-bot20"></i>
+            <!-- <i class="fa fa-flask fa-5x mar-bot20"></i> -->
+            <img src="assets/admin/images/logo-text.png" alt="homepage" width="500" height="250" />
             <?php foreach ($nama as $key ) {?>
             <h2 class="slogan">Welcome to <?=$key->nama; ?></h2>
             <?php } ?>
@@ -99,7 +102,6 @@
           </div>
         </div>
         <?php  } ?>
-        
       </div>
     </div>
   </section>
@@ -182,7 +184,12 @@
               Your message has been sent. Thank you!
             </div>
             <div id="errormessage"></div>
-            <form action="<?=site_url('home_2/pemesanan')?>" method="post" role="form" class="contactForm">
+
+<?php echo validation_errors(); ?>
+
+            <!-- <form action="<?=site_url('home_2/pemesanan')?>" method="post" role="form" class="needs-validation" enctype="multipart/form-data"> -->
+<?php echo form_open_multipart ('home_2/pemesanan', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+
               <div class="form-group">
                 <label>Mobil</label>
                 <select name="id_mobil" id="" class="form-control" required="required" >
@@ -201,7 +208,8 @@
               </div>
               <div class="form-group">
                 <label>Lama Peminjaman</label>
-                <input type="text" name="day" id="input" class="form-control" placeholder="">
+                <!-- <input type="text" name="day" class="form-control" value="<?php echo set_value('day'); ?>" placeholder="Day" required> -->
+                <input type="text" class="form-control" name="day" value="<?php echo set_value('day'); ?>" required>
               </div>
               <input type="submit" value="ORDER">
             </form>
@@ -231,12 +239,12 @@
 
               <div class="form-group">
                 <label>No Polisi</label>
-                <input type="text" name="no_polisi" id="input" class="form-control" placeholder="">
+                <input type="text" name="no_polisi" id="input" class="form-control" placeholder="" required="required">
               </div>
 
               <div class="form-group">
                 <label>Merk</label>
-                <input type="text" name="merk" id="input" class="form-control" placeholder="">
+                <input type="text" name="merk" id="input" class="form-control" placeholder="" required="required">
               </div>
 
               <div class="form-group">
@@ -248,25 +256,24 @@
                       <?php } ?>
                   </select>
               </div>
-
               <div class="form-group">
                 <label>Warna Mobil</label>
-                <input type="text" name="warna_mobil" id="input" class="form-control" placeholder="">
+                <input type="text" name="warna_mobil" id="input" class="form-control" placeholder="" required="required">
               </div>
 
               <div class="form-group">
                 <label>Tahun Mobil</label>
-                <input type="text" name="tahun_mobil" id="input" class="form-control" placeholder="">
+                <input type="text" name="tahun_mobil" id="input" class="form-control" placeholder="" required="required">
               </div>
 
               <div class="form-group">
                 <label>Bahan Bakar</label>
-                <input type="text" name="bahan_bakar" id="input" class="form-control" placeholder="">
+                <input type="text" name="bahan_bakar" id="input" class="form-control" placeholder="" required="required">
               </div>
 
               <div class="form-group">
                 <label>Harga Per Hari</label>
-                <input type="text" name="price" id="input" class="form-control" placeholder="">
+                <input type="text" name="price" id="input" class="form-control" placeholder="" required="required">
               </div>
 
               <div class="form-group">

@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <title>Register</title>
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/admin/images/favicon.png">
-    <link href="../assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/admin/css/style.css" rel="stylesheet">
-    <link href="../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/admin/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
 </head>
 <body>
 
 <div class="table-responsive">
 <div class="alert-warning"><?php echo (isset($message))? : "";?></div>
 
-<?php echo form_open('user/register', array('class' => 'needs-validation', 'novalidate' => '')); ?>
+<?php echo validation_errors(); ?>
+<?php echo form_open('user/register', array('class' => 'needs-validation', 'novalidate' => '','enctype' => 'multipart/form-data')); ?>
 
 <table border="0px">
 
@@ -25,7 +26,7 @@
    <div class="form-group">
        <td><label>Nama Lengkap</label></td>
        <td>:</td>
-       <td><input type="text" class="form-control" name="nama" placeholder="Nama Lengkap"></td>
+       <td><input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" value="<?php echo set_value('nama'); ?>" required></td>
    </div>
 </tr>
 <tr>
@@ -43,35 +44,35 @@
    <div class="form-group">
        <td><label>Kode Pos</label></td>
        <td>:</td>
-       <td><input type="text" class="form-control" name="kodepos" placeholder="Kode Pos"></td>
+       <td><input type="text" class="form-control" name="kodepos" placeholder="Kode Pos" value="<?php echo set_value('kodepos'); ?>" required></td>
    </div>
 </tr>
 <tr>
    <div class="form-group">
        <td><label>Email</label></td>
        <td>:</td>
-       <td><input type="text" class="form-control" name="email" placeholder="Email"></td>
+       <td><input type="text" class="form-control" name="email" placeholder="Email" value="<?php echo set_value('email'); ?>" required></td>
    </div>
 </tr>
 <tr>
    <div class="form-group">
        <td><label>No Telp</label></td>
        <td>:</td>
-       <td><input type="text" class="form-control" name="no_telp" placeholder="No Telp"></td>
+       <td><input type="text" class="form-control" name="no_telp" placeholder="No Telp" value="<?php echo set_value('no_telp'); ?>" required></td>
    </div>
 </tr>
 <tr>
    <div class="form-group">
        <td><label>Username</label>
        <td>:</td>
-       <td><input type="text" class="form-control" name="username" placeholder="Username"></td>
+       <td><input type="text" class="form-control" name="username" placeholder="Username" value="<?php echo set_value('username'); ?>" required></td>
    </div>
 </tr>
 <tr>
    <div class="form-group">
        <td><label>Password</label></td>
        <td>:</td>
-       <td><input type="password" class="form-control" name="password" placeholder="Password"></td>
+       <td><input type="password" class="form-control" name="password" placeholder="Password" value="<?php echo set_value('password'); ?>" required></td>
    </div>
 </tr> 
  <tr>

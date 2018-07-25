@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Favorite Artikel</title>
+    <title>Form Login</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/admin/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url()?>assets/admin/images/favicon.png">
     <link href="../assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/admin/css/style.css" rel="stylesheet">
     <link href="../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
@@ -28,7 +28,7 @@
     <div class="row p">
         <div class="col-md-4 col-md-offset-4">
             <!-- <h1 class="text-center"><?php echo $page_title; ?></h1> -->
-            <p>^^ FORM LOGIN ^^</p>
+            <p>^^ FORM LOGIN RENTCAR ^^</p>
             <div class="form-group">
                 <input type="text" name="username" class="form-control" placeholder="Input Username" required autofocus> 
             </div>

@@ -22,30 +22,38 @@ class User extends CI_Controller
 
         $data['page_title'] = 'Pendaftaran User';
 
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('nama', 'Nama', 'required|min_length[5]');
         $this->form_validation->set_rules('gender', 'Gender', 'required');
-        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
+        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]|min_length[5]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
         $this->form_validation->set_rules('no_telp', 'No Telp', 'required|numeric|min_length[12]',
             array(
                 'required'      => 'Isi %s, tidak boleh kosong',
                 'min_length'    => 'angka %s belum mencapai limit',
             ));
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]',
+        array(
+                'required'      => 'Minimal panjang password 8 karakter dengan 2 angka',
+                // 'is_unique'     => 'Judul ' .$this->input->post('password'). ' sudah ada!'
+            ));
 
 		if($this->form_validation->run() === FALSE)
 		{
             $this->load->view('template/header_login');
+            $this->session->set_flashdata('user_registered', 'Maaf Anda belum memenuhi syarat registrasi!!');
             $this->load->view('register', $data);
         } 
         else 
         {
+            // $upload=$this->user_model->upload();
+
             if ($this->input->post('daftar'))
             {
+                // $this->user_model->register();
                 $this->user_model->register();
-                $this->session->set_flashdata('user_registered', 'Anda telah teregistrasi.');
+                $this->session->set_flashdata('user_registered', 'Anda telah teregistrasi, silahkan login :)');
+                redirect('user/register');
             }
-                redirect('home');
         }
     }
 

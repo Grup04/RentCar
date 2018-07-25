@@ -9,25 +9,25 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li>
-                    <a href="../admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
-                </li>
-                <li>
                     <a href="<?=site_url('home');?>" class="waves-effect"><i class="fa fa-home m-r-10" aria-hidden="true"></i>Home</a>
                 </li>
                 <li>
-                    <a href="../admin/tampil_admin" class="waves-effect"><i class="fa fa-user-circle m-r-10" aria-hidden="true"></i>Admin</a>
+                    <a href="<?=site_url('admin');?>" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
+                </li>               
+                <li>
+                    <a href="<?=site_url('admin/tampil_admin');?>" class="waves-effect"><i class="fa fa-user-circle m-r-10" aria-hidden="true"></i>Admin</a>
                 </li>
                 <li>
-                    <a href="admin/tampil_user" class="waves-effect"><i class="fa fa-vcard-o m-r-10" aria-hidden="true"></i>Members</a>
+                    <a href="<?=site_url('admin/tampil_user');?>" class="waves-effect"><i class="fa fa-vcard-o m-r-10" aria-hidden="true"></i>Members</a>
                 </li>
                 <li>
-                    <a href="tampil_car" class="waves-effect"><i class="fa fa-car m-r-10" aria-hidden="true"></i>Cars</a>
+                    <a href="<?=site_url('admin/tampil_car');?>" class="waves-effect"><i class="fa fa-car m-r-10" aria-hidden="true"></i>Cars</a>
                 </li>
                 <li>
-                    <a href="tampil_driver" class="waves-effect"><i class="fa fa-group (alias) m-r-10" aria-hidden="true"></i>Drivers</a>
+                    <a href="<?=site_url('admin/tampil_driver');?>" class="waves-effect"><i class="fa fa-group (alias) m-r-10" aria-hidden="true"></i>Drivers</a>
                 </li>
                 <li>
-                    <a href="tampil_order" class="waves-effect"><i class="fa fa-file-text-o m-r-10" aria-hidden="true"></i>Data Order</a>
+                    <a href="<?=site_url('admin/tampil_order');?>" class="waves-effect"><i class="fa fa-file-text-o m-r-10" aria-hidden="true"></i>Data Order</a>
                 </li>
                 <li>
                     <a href="<?=site_url('user/logout');?>" class="waves-effect"><i class="fa fa-ban m-r-10" aria-hidden="true"></i>Logout</a>
@@ -54,7 +54,7 @@
                     <div class="card-block">
                         <h4 class="card-title">User Table</h4>
                         <h6 class="card-subtitle">Add User<code>.table</code></h6>
-                         <a href="../admin/tambah_user"><button type="button" class="btn btn-primary">Tambah User</button></a>
+                         <!-- <a href="../admin/tambah_user"><button type="button" class="btn btn-primary">Tambah User</button></a> -->
                         <div class="table-responsive">
                             <table class="table" id="myTable">
                                 <thead>
@@ -89,7 +89,7 @@
                                             <td><img src="../assets/picture/<?php echo $key->img;?>" width="50px" height="50px"></td>
                                             <td>
                                             <a href="../admin/ubah_user/<?=$key->user_id?>"><button type="button" class="btn btn-primary">Update</button></a>
-                                            <a href="../admin/hapus_user/<?=$key->user_id?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p>
+                                            <!-- <a href="../admin/hapus_user/<?=$key->user_id?>"><button type="button" class="btn btn-primary" name="delete">Delete</button></a></p> -->
                                         </td>
                                     </tr>
                             <?php endforeach ?>

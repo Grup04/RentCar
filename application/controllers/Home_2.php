@@ -65,7 +65,16 @@ class Home_2 extends CI_Controller {
 		if ($level == 3) {
 			redirect('user/login');
 		}else{
+		
+		// 
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+		$data = array();
+		$this->form_validation->set_rules('day', 'Day', 'required|numeric[2]');
+		//
+		
 		$this->load->model('blog_rentcar');
+		// batas validasi
 		$data = array(
 					'user_id' => $id,	
 					'id_mobil' => $this->input->post('id_mobil'),	
@@ -76,8 +85,10 @@ class Home_2 extends CI_Controller {
 					);
 		$this->blog_rentcar->tambah('order',$data);
 		redirect('home_2/pembayaran','refresh');
-		}
 	}
+		
+	}
+	
 	public function pembayaran(){
 		$data = $this->data;
 		$id = $data['user_id'];

@@ -86,7 +86,7 @@ class Home_3 extends CI_Controller {
 		$this->load->model('blog_rentcar');
 		$data['nama'] = $this->blog_rentcar->tampil_id($id,'users','user_id');
 		$data['tampil'] = $this->blog_rentcar->tampil_order_bayar($id);
-		$this->load->view('notif',$data);
+		$this->load->view('notif1',$data);
 	}
 }
 	public function pembayaran_detail($id_order){
@@ -99,7 +99,7 @@ class Home_3 extends CI_Controller {
 		$this->load->model('blog_rentcar');
 		$data['nama'] = $this->blog_rentcar->tampil_id($id,'users','user_id');
 		$data['order'] = $this->blog_rentcar->tampil_id($id_order,'order','id_order');
-		$this->load->view('notif_bayar',$data);
+		$this->load->view('notif_bayar1',$data);
 	}
 	}
 	public function pembayaran_doadd(){

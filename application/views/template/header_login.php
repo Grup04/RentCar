@@ -12,8 +12,8 @@
 
 <?php if(!$this->session->userdata('logged_in')) : ?>
 	<div class="btn-group" role="group" aria-label="Data baru">
-       <?php echo anchor('user/register', 'Register', array('class' => 'btn btn-outline-light')); ?>
-       <?php echo anchor('login', 'Login', array('class' => 'btn btn-outline-light')); ?>
+       <?php echo anchor('home', 'Home', array('class' => 'btn btn-outline-light')); ?>
+       <?php echo anchor('user/login', 'Login', array('class' => 'btn btn-outline-light')); ?>
    </div>
 <?php endif; ?>
 

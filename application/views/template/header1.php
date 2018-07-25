@@ -24,11 +24,8 @@
             <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
-                        <b>
-                            <img src="assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
-                        </b>
                         <span>
-                            <img src="assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/admin/images/logo-text.png" alt="homepage" width="150" height="90" />
                         </span>
                     </a>
                 </div>
@@ -40,10 +37,7 @@
                             <form class="app-search p-l-20">
                                 <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
                             </form>
-                            
                         </li>
-
-                       
                     </ul>
                      <ul class="navbar-nav my-lg-0" >
                         <li class="nav-item dropdown"> 

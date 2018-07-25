@@ -4,18 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Favicon icon -->
     <link rel="icon" type="../image/png" sizes="16x16" href="../../assets/admin/images/favicon.png">
-<!--     <title>RentCar Admin</title> -->
-    <!-- Bootstrap Core CSS -->
     <link href="../../assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link href="../../assets/admin/css/style.css" rel="stylesheet">
-    <!-- You can change the theme colors from here -->
     <link href="../../assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
 </head>
 
@@ -25,12 +19,8 @@
             <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
-                        <b>
-                            <img src="../../assets/admin//images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            
-                        </b>
                         <span>
-                            <img src="../../assets/admin/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="../../assets/admin/images/logo-text.png" alt="homepage" width="150" height="90" />
                         </span>
                     </a>
                 </div>

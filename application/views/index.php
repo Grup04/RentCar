@@ -7,6 +7,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="assets/text/css" href="<?php echo base_url()?>assets/css/isotope.css" media="screen" />
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url()?>assets/admin/images/favicon.png">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-theme.css">
@@ -45,7 +46,8 @@
         <div class="col-md-6 col-md-offset-3">
 
           <div class="align-center">
-            <i class="fa fa-flask fa-5x mar-bot20"></i>
+            <img src="assets/admin/images/logo-text.png" alt="homepage" width="500" height="250" />
+            <!-- <i class="fa fa-flask fa-5x mar-bot20"></i> -->
             <h2 class="slogan">Welcome to RentCar</h2>
             <p>GROUP 4</p>
           </div>

@@ -9,25 +9,25 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li>
-                    <a href="../admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
-                </li>
-                <li>
                     <a href="<?=site_url('home');?>" class="waves-effect"><i class="fa fa-home m-r-10" aria-hidden="true"></i>Home</a>
                 </li>
                 <li>
-                    <a href="../admin/tampil_admin" class="waves-effect"><i class="fa fa-user-circle m-r-10" aria-hidden="true"></i>Admin</a>
+                    <a href="<?=site_url('admin');?>" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
+                </li>               
+                <li>
+                    <a href="<?=site_url('admin/tampil_admin');?>" class="waves-effect"><i class="fa fa-user-circle m-r-10" aria-hidden="true"></i>Admin</a>
                 </li>
                 <li>
-                    <a href="tampil_user" class="waves-effect"><i class="fa fa-vcard-o m-r-10" aria-hidden="true"></i>Members</a>
+                    <a href="<?=site_url('admin/tampil_user');?>" class="waves-effect"><i class="fa fa-vcard-o m-r-10" aria-hidden="true"></i>Members</a>
                 </li>
                 <li>
-                    <a href="tampil_car" class="waves-effect"><i class="fa fa-car m-r-10" aria-hidden="true"></i>Cars</a>
+                    <a href="<?=site_url('admin/tampil_car');?>" class="waves-effect"><i class="fa fa-car m-r-10" aria-hidden="true"></i>Cars</a>
                 </li>
                 <li>
-                    <a href="tampil_driver" class="waves-effect"><i class="fa fa-group (alias) m-r-10" aria-hidden="true"></i>Drivers</a>
+                    <a href="<?=site_url('admin/tampil_driver');?>" class="waves-effect"><i class="fa fa-group (alias) m-r-10" aria-hidden="true"></i>Drivers</a>
                 </li>
                 <li>
-                    <a href="tampil_order" class="waves-effect"><i class="fa fa-file-text-o m-r-10" aria-hidden="true"></i>Data Order</a>
+                    <a href="<?=site_url('admin/tampil_order');?>" class="waves-effect"><i class="fa fa-file-text-o m-r-10" aria-hidden="true"></i>Data Order</a>
                 </li>
                 <li>
                     <a href="<?=site_url('user/logout');?>" class="waves-effect"><i class="fa fa-ban m-r-10" aria-hidden="true"></i>Logout</a>
@@ -78,32 +78,32 @@
             <tr>
                 <td>Kode Pos</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="kodepos" value="<?php echo set_value('kodepos'); ?>"required><div class="invalid-feedback">Isi Kode Pos </div></td>
+                <td><input type="text" class="form-control" name="kodepos" value="<?php echo set_value('kodepos'); ?>" required><div class="invalid-feedback">Isi Kode Pos</div></td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>:</td>
-                <td><input type="text" class="form-control" name="email" value="<?php echo set_value('email'); ?>"required><div class="invalid-feedback">Isi Email</div></td>
+                <td><input type="text" class="form-control" name="email" value="<?php echo set_value('email'); ?>" required><div class="invalid-feedback">Isi Email</div></td>
             </tr>
             <tr>
                 <td>No Telpon</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="no_telp" value="<?php echo set_value('no_telp'); ?>"required><div class="invalid-feedback">Isi NomerTelpon</div></td>
+                <td><input type="text" class="form-control" name="no_telp" value="<?php echo set_value('no_telp'); ?>" required><div class="invalid-feedback">Isi NomerTelpon</div></td>
             </tr>
             <tr>
                 <td>Username</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="username" value="<?php echo set_value('username'); ?>"required><div class="invalid-feedback">Isi Username</div></td>
+                <td><input type="text" class="form-control" name="username" value="<?php echo set_value('username'); ?>" required><div class="invalid-feedback">Isi Username</div></td>
             </tr>
             <tr>
                 <td>Password</td>
                 <td>:</td><br>
-                <td><input type="password" class="form-control" name="password" value="<?php echo set_value('password'); ?>"required><div class="invalid-feedback">Isi Password</div></td>
+                <td><input type="password" class="form-control" name="password" value="<?php echo set_value('password'); ?>" required><div class="invalid-feedback">Isi Password</div></td>
             </tr>
             <tr>
                 <td>Level ID</td>
                 <td>:</td><br>
-                <td><input type="text" class="form-control" name="level_id" value="<?php echo set_value('level_id'); ?>"required><div class="invalid-feedback">Isi Level ID</div></td>
+                <td><input type="text" class="form-control" name="level_id" value="<?php echo set_value('level_id'); ?>" required><div class="invalid-feedback">Isi Level ID</div></td>
             </tr>
              <tr>
                 <td>Image</td>

@@ -49,7 +49,6 @@ class Blog_rentcar extends CI_Model {
 	public function get_total(){
 		return $this->db->count_all("car");
 	}
-
 	public function tampil(){
 		$this->db->select('*');
 		$this->db->where('level_id', 1);
@@ -321,7 +320,6 @@ class Blog_rentcar extends CI_Model {
 			$data = array(
 				'no_polisi' => $this->input->post('input_no_polisi'),
 				'merk' => $this->input->post('input_merk'),
-				'jenis_mobil' => $this->input->post('input_jenis_mobil'),
 				'warna_mobil' => $this->input->post('input_warna_mobil'),
 				'tahun_mobil' => $this->input->post('input_tahun_mobil'),
 				'bahan_bakar' => $this->input->post('input_bahan_bakar'),
@@ -334,7 +332,6 @@ class Blog_rentcar extends CI_Model {
 			$data = array(
 				'no_polisi' => $this->input->post('input_no_polisi'),
 				'merk' => $this->input->post('input_merk'),
-				'jenis_mobil' => $this->input->post('input_jenis_mobil'),
 				'warna_mobil' => $this->input->post('input_warna_mobil'),
 				'tahun_mobil' => $this->input->post('input_tahun_mobil'),
 				'bahan_bakar' => $this->input->post('input_bahan_bakar'),

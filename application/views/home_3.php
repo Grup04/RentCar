@@ -8,6 +8,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="assets/text/css" href="<?php echo base_url()?>assets/css/isotope.css" media="screen" />
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url()?>assets/admin/images/favicon.png">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-theme.css">
@@ -33,8 +34,8 @@
           <li><a href="#section-about">About Drivers</a></li>
           <li><a href="#section-about_car">About Cars</a></li>
           <li><a href="#section-order">Get Order</a></li>
-          <li><a href="#section-car">Rent Car</a></li>
-          <li><a href="<?=site_url('home_2/pembayaran')?>">Notif</a></li>
+          <!-- <li><a href="#section-car">Rent Car</a></li> -->
+          <li><a href="<?=site_url('home_3/pembayaran')?>">Notifikasi</a></li>
           <li><a href="#section-contact">Contact</a></li>
           <li><a href="<?=site_url('user/logout')?>">Logout</a></li>
         </ul>
@@ -48,7 +49,8 @@
         <div class="col-md-6 col-md-offset-3">
 
           <div class="align-center">
-            <i class="fa fa-flask fa-5x mar-bot20"></i>
+            <!-- <i class="fa fa-flask fa-5x mar-bot20"></i> -->
+            <img src="assets/admin/images/logo-text.png" alt="homepage" width="500" height="250" />
             <?php foreach ($nama as $key ) {?>
             <h2 class="slogan">Welcome to <?=$key->nama; ?></h2>
             <?php } ?>
@@ -189,12 +191,12 @@
               Your message has been sent. Thank you!
             </div>
             <div id="errormessage"></div>
-            <form action="<?=site_url('home_2/pemesanan')?>" method="post" role="form" class="contactForm">
+            <form action="<?=site_url('home_3/pemesanan')?>" method="post" role="form" class="contactForm">
               <div class="form-group">
                 <label>Mobil</label>
                 <select name="id_mobil" id="" class="form-control" required="required" >
                   <?php foreach ($mobil as $key) {?>
-                  <option value="<?=$key->id_mobil;?>"><?=$key->merk;?> <?=$key->jenis_mobil;?> <?=$key->warna_mobil;?></option>
+                  <option value="<?=$key->id_mobil;?>"><?=$key->merk;?> <?=$key->warna_mobil;?></option>
                   <?php } ?>
                 </select>
               </div>

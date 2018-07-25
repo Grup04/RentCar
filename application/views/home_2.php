@@ -28,7 +28,7 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-          <li class="active"><a href="home">Home</a></li>
+          <li class="active"><a href="home_2">Home</a></li>
           <li><a href="#section-about">About Drivers</a></li>
           <li><a href="#section-about_car">About Cars</a></li>
           <li><a href="#section-order">Get Order</a></li>
@@ -110,7 +110,9 @@
   <section id="parallax1" class="section pad-top40 pad-bot40" data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="align-center pad-top40 pad-bot40">
-        <blockquote class="bigquote color-white">Harga Sewa</blockquote>
+        <blockquote class="bigquote color-white">Menu Harga</blockquote>
+        <blockquote class="bigquote color-white">Harga Mulai</blockquote>
+
         <p class="color-white">1 hari = 250k</p>
         <p class="color-white">2 hari = 400k</p>
         <p class="color-white">3 hari = 600k</p>
@@ -181,14 +183,11 @@
         <div class="col-md-8 col-md-offset-2">
           <div class="cform" id="contact-form">
             <div id="sendmessage">
-              Your message has been sent. Thank you!
+              Your Order has been sent. Thank you!
             </div>
             <div id="errormessage"></div>
 
-<?php echo validation_errors(); ?>
-
-            <!-- <form action="<?=site_url('home_2/pemesanan')?>" method="post" role="form" class="needs-validation" enctype="multipart/form-data"> -->
-<?php echo form_open_multipart ('home_2/pemesanan', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+            <form action="<?=site_url('home_2/pemesanan')?>" method="post" role="form" class="contactForm">
 
               <div class="form-group">
                 <label>Mobil</label>
@@ -208,8 +207,7 @@
               </div>
               <div class="form-group">
                 <label>Lama Peminjaman</label>
-                <!-- <input type="text" name="day" class="form-control" value="<?php echo set_value('day'); ?>" placeholder="Day" required> -->
-                <input type="text" class="form-control" name="day" value="<?php echo set_value('day'); ?>" required>
+                <input type="number" name="day" id="input" class="form-control" placeholder="Day" required="required">
               </div>
               <input type="submit" value="ORDER">
             </form>
@@ -232,7 +230,7 @@
         <div class="col-md-8 col-md-offset-2">
           <div class="cform" id="contact-form">
             <div id="sendmessage">
-              Your message has been sent. Thank you!
+              Your car has been sent. Thank you!
             </div>
             <div id="errormessage"></div>
             <form action="<?=site_url('home_2/penyewaan')?>" method="post" role="form" class="contactForm" enctype="multipart/form-data">

@@ -30,7 +30,7 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-          <li class="active"><a href="home">Home</a></li>
+          <li class="active"><a href="home_3">Home</a></li>
           <li><a href="#section-about">About Drivers</a></li>
           <li><a href="#section-about_car">About Cars</a></li>
           <li><a href="#section-order">Get Order</a></li>
@@ -175,7 +175,6 @@
 
 <section id="section-order" class="section appear clearfix">
     <div class="container">
-
       <div class="row mar-bot40">
         <div class="col-md-offset-3 col-md-6">
           <div class="section-header">
@@ -191,6 +190,7 @@
               Your message has been sent. Thank you!
             </div>
             <div id="errormessage"></div>
+
             <form action="<?=site_url('home_3/pemesanan')?>" method="post" role="form" class="contactForm">
               <div class="form-group">
                 <label>Mobil</label>
@@ -210,7 +210,7 @@
               </div>
                <div class="form-group">
                 <label>Lama Peminjaman</label>
-                <input type="text" name="day" id="input" class="form-control" placeholder="">
+                <input type="number" name="day" id="input" class="form-control" placeholder="Day" required="required">
               </div>
               <input type="submit" value="ORDER">
             </form>

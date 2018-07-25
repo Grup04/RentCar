@@ -67,33 +67,33 @@
              <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td><input type="text" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_username" value="<?php echo set_value('input_username', $tampil->username); ?>" required></td>
             </tr>
             <tr>
                 <td>Alamat</td>
                 <td>:</td>
-                <td><input type="text" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_alamat" value="<?php echo set_value('input_alamat', $tampil->alamat); ?>" required></td>
             </tr>
             <tr>
                 <td>No Telpon</td>
                 <td>:</td>
-                <td><input type="text" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_no_telp" value="<?php echo set_value('input_no_telp', $tampil->no_telp); ?>" required></td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>:</td>
-                <td><input type="text" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_email" value="<?php echo set_value('input_email', $tampil->email); ?>" required></td>
             </tr>
             <tr>
                 <td>Umur</td>
                 <td>:</td>
-                <td><input type="text" name="input_umur" value="<?php echo set_value('input_umur', $tampil->umur); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_umur" value="<?php echo set_value('input_umur', $tampil->umur); ?>" required></td>
             </tr>
             <tr>
                 <td>Gender</td>
                 <td>:</td>
                 <td>
-                    <select name="input_gender" style="width: 169px;" value="<?php echo set_value('input_gender', $tampil->gender); ?>" required>
+                    <select name="input_gender" class="form-control" value="<?php echo set_value('input_gender', $tampil->gender); ?>" required>
                         <option value="Laki-Laki">Laki-Laki</option>
                         <option value="Perempuan">Perempuan</option>
                     </select>
@@ -102,7 +102,7 @@
             <tr>
                 <td>Price/Day</td>
                 <td>:</td><br>
-                <td><input type="text" name="input_price" value="<?php echo set_value('input_price', $tampil->price); ?>" required></td>
+                <td><input type="text" class="form-control" name="input_price" value="<?php echo set_value('input_price', $tampil->price); ?>" required></td>
             </tr>
             <tr>
                 <td>Foto</td>

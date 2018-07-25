@@ -58,7 +58,7 @@
             <div class="alert-warning"><?php echo (isset($message))? : "";?></div>                                  
 <?php echo validation_errors(); ?>
 <?php echo form_open_multipart ('admin/tambah_admin', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
-    <table border="0px">                    
+        <table border="0px">                    
             <tr>
                 <td>Nama</td>
                 <td>:</td>
@@ -69,7 +69,7 @@
                 <td>Gender</td>
                 <td>:</td><br>
                 <td>
-                    <select name="gender" style="width: 200px;">
+                    <select name="gender" class="form-control" required>
                         <option value="Laki-Laki">Laki-Laki</option>
                         <option value="Perempuan">Perempuan</option>
                     </select>

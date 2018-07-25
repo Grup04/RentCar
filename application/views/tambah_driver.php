@@ -96,7 +96,7 @@
                 <td>Gender</td>
                 <td>:</td>
                 <td>
-                    <select name="input_gender" style="width: 200px;">
+                    <select name="input_gender" class="form-control" required>
                         <option value="Laki-Laki">Laki-Laki</option>
                         <option value="Perempuan">Perempuan</option>
                     </select>

@@ -104,7 +104,9 @@
   <section id="parallax1" class="section pad-top40 pad-bot40" data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="align-center pad-top40 pad-bot40">
-        <blockquote class="bigquote color-white">Harga Sewa</blockquote>
+        <blockquote class="bigquote color-white">Menu Harga Sewa</blockquote>
+        <blockquote class="bigquote color-white">Mulai Dari</blockquote>
+
         <p class="color-white">1 hari = 250k</p>
         <p class="color-white">2 hari = 400k</p>
         <p class="color-white">3 hari = 600k</p>

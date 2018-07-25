@@ -33,7 +33,7 @@
    <div class="form-group">
        <td><label>Gender</label></td>
        <td>:</td>
-       <td><select name="gender" class="form-control" style="width: 250px;">
+       <td><select name="gender" class="form-control" required>
                   <option value="Perempuan">Perempuan</option>
                   <option value="Laki-laki">Laki-Laki</option>
               </select>
@@ -84,8 +84,9 @@
   <td><label for="">Pilih Paket Membership</label></td>
   <td>:</td>
   <td>
-        <input type="radio" name="membership" value="2">Gold member
-        <input type="radio" name="membership" value="3">Silver member
+    <br>
+        <p><input type="radio" name="membership" value="2">Super User</p>
+        <input type="radio" name="membership" value="3">Limit User
  </td>
 </tr>
     

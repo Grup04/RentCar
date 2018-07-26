@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,3 +118,6 @@
 <script src="../assets/admin/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
 </html>
+<?php 
+    $this->load->view('template/footer2');
+?>

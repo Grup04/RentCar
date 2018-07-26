@@ -117,7 +117,9 @@ class Home_2 extends CI_Controller {
 		}
 	}
 	public function pembayaran_doadd(){
-		$level = $data['level_id'];
+		// $data = $this->data;
+		// $id = $data['user_id'];
+		$level = $this->session->userdata('level_id');
 		if ($level == 3) {
 			redirect('user/login');
 		}else{

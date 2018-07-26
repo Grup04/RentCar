@@ -43,7 +43,7 @@
             <br>
             <p>
             Create New Account!
-            <a href="register">New Account</a>
+            <a href="<?php echo site_url().'User/register/' ?>">New Account</a>
         </p>
     </div>
 </center>

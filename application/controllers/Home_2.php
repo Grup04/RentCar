@@ -163,7 +163,7 @@ class Home_2 extends CI_Controller {
 
 	public function penyewaan()
 	{
-		// $data = $this->data;
+		$data = $this->data;
 		// $id = $data['user_id'];
 		$level = $data['level_id'];
 		if ($level == 3) {

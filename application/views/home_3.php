@@ -36,6 +36,7 @@
           <li><a href="#section-order">Get Order</a></li>
           <!-- <li><a href="#section-car">Rent Car</a></li> -->
           <li><a href="<?=site_url('home_3/pembayaran')?>">Notifikasi</a></li>
+          <li><a href="<?=site_url('admin/tampil_user2')?>">Edit Profile</a></li>
           <li><a href="#section-contact">Contact</a></li>
           <li><a href="<?=site_url('user/logout')?>">Logout</a></li>
         </ul>

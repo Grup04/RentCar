@@ -86,6 +86,32 @@ class Admin extends CI_Controller {
 		$this->load->view('user', $data);
 	}
 	}
+	public function tampil_user2(){
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2) {
+			redirect('user/login');
+		}else{
+		$this->load->model('blog_rentcar');
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+		$data['tampil_user'] = $this->blog_rentcar->tampil_user();
+		$this->load->view('user2', $data);
+	}
+	}
+	public function tampil_user1(){
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 3) {
+			redirect('user/login');
+		}else{
+		$this->load->model('blog_rentcar');
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+		$data['tampil_user'] = $this->blog_rentcar->tampil_user();
+		$this->load->view('user1', $data);
+	}
+	}
 	public function tampil_car(){
 		$data = $this->data;
 		$id = $data['user_id'];
@@ -515,6 +541,126 @@ class Admin extends CI_Controller {
 		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
 
 			$this->load->view('ubah_user', $data);
+		}
+	}
+	 }
+
+	public function ubah_user1($id)
+	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 3) {
+			redirect('user/login');
+		}else{
+
+		$this->load->model('blog_rentcar');
+
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+
+	    if($this->input->post('simpan'))
+		    {
+		    	$upload=$this->blog_rentcar->upload();
+		    	$this->blog_rentcar->update($upload, $id);
+		        redirect('admin/tampil_user1');
+		    } 
+		    $data['tampil'] = $this->blog_rentcar->view_by($id);
+
+	    $this->load->helper('form');
+	    $this->load->library('form_validation');
+
+		$this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[login.username]',
+		array(
+				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
+				'is_unique' 	=> 'Username ' .$this->input->post('input_judul'). ' sudah ada!'
+			));
+		$this->form_validation->set_rules('input_password', 'Password', 'required|max_length[50]',
+			array(
+				'required' 		=> 'Isi %s, tidak boleh kosong',
+				'min_length' 	=> 'text %s belum mencapai limit',
+			));
+		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('input_no_telp', 'No HP', 'required|numeric|min_length[12]',
+			array(
+				'required' 		=> 'Isi %s, tidak boleh kosong',
+				'min_length' 	=> 'angka %s belum mencapai limit',
+			));
+		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required');
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			if ($this->input->post('simpan'))
+			{
+				$this->blog_rentcar->update();
+				redirect('admin/tampil_user1');
+			}
+		}
+		else
+		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
+			$this->load->view('ubah_user1', $data);
+		}
+	}
+	 }
+
+	 public function ubah_user2($id)
+	{
+		$data = $this->data;
+		$id = $data['user_id'];
+		$level = $data['level_id'];
+		if ($level == 2) {
+			redirect('user/login');
+		}else{
+
+		$this->load->model('blog_rentcar');
+
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+
+	    if($this->input->post('simpan'))
+		    {
+		    	$upload=$this->blog_rentcar->upload();
+		    	$this->blog_rentcar->update($upload, $id);
+		        redirect('admin/tampil_user2');
+		    } 
+		    $data['tampil'] = $this->blog_rentcar->view_by($id);
+
+	    $this->load->helper('form');
+	    $this->load->library('form_validation');
+
+		$this->form_validation->set_rules('input_username', 'Username', 'required|is_unique[login.username]',
+		array(
+				'required' 		=> 'Harap " %s " di isi agar bisa di simpan',
+				'is_unique' 	=> 'Username ' .$this->input->post('input_judul'). ' sudah ada!'
+			));
+		$this->form_validation->set_rules('input_password', 'Password', 'required|max_length[50]',
+			array(
+				'required' 		=> 'Isi %s, tidak boleh kosong',
+				'min_length' 	=> 'text %s belum mencapai limit',
+			));
+		$this->form_validation->set_rules('input_email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('input_no_telp', 'No HP', 'required|numeric|min_length[12]',
+			array(
+				'required' 		=> 'Isi %s, tidak boleh kosong',
+				'min_length' 	=> 'angka %s belum mencapai limit',
+			));
+		$this->form_validation->set_rules('input_alamat', 'Alamat', 'required');
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			if ($this->input->post('simpan'))
+			{
+				$this->blog_rentcar->update();
+				redirect('admin/tampil_user2');
+			}
+		}
+		else
+		{
+		$data['profil'] = $this->blog_rentcar->tampil_id($id,'users','user_id'); //untuk gambar profil
+
+			$this->load->view('ubah_user2', $data);
 		}
 	}
 	 }

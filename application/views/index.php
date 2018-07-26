@@ -34,7 +34,7 @@
           <li><a href="#section-contact">Contact</a></li>
           <li><a href="<?=site_url('user/register')?>">Register</a></li>
           <li><a href="<?=site_url('user/login')?>">Login</a></li>
-          <li><a href="<?=site_url('user/logout')?>">Logout</a></li>
+          <!-- <li><a href="<?=site_url('user/logout')?>">Logout</a></li> -->
         </ul>
       </div>
     </div>
